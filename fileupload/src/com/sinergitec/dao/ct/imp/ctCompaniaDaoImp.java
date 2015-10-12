@@ -149,7 +149,6 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			
 		
 			app.as_ctCompañia_get(cUsuario, cCveCia , tt_ctCompania, ps_Resultado, ps_Texto);
-			app.as_ct
 			
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
 			
