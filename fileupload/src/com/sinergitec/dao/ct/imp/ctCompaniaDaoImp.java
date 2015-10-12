@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-
-
 import com.sinergitec.progress.*;
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
@@ -19,13 +17,12 @@ import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
 
-
 public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctCompania(String cUsuario, ctCompania obj_ctCompania) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		List<ctCompania> Lista = new ArrayList<ctCompania>();
 
 		Lista.add(obj_ctCompania);
@@ -39,27 +36,22 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
 
-		
 		for (ctCompania obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
 			vecTabla1.add(vecRow1);
 		}
 
-		
 		ResultSetHolder ttCompania = new ResultSetHolder(new VectorResultSet(vecTabla1));
-		
-		try {		
-			
-			app.as_ctCompañia_Inserta(cUsuario , ttCompania, ps_Resultado, ps_Texto);
-			
-			System.out.println(ps_Texto.getStringValue());
 
-			
+		try {
+
+			app.as_ctCompañia_Inserta(cUsuario, ttCompania, ps_Resultado, ps_Texto);
+
+			System.out.println(ps_Texto.getStringValue());
 
 		} catch (Exception ex) {
 			System.out.println(ex);
-			
-			
+
 		} finally {
 			app._release();
 			DBConexion.closeConnection(conexion);
@@ -70,9 +62,9 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void update_ctCompania(String cUsuario,ctCompania obj_ctCompania) throws Open4GLException, IOException {
+	public void update_ctCompania(String cUsuario, ctCompania obj_ctCompania) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		List<ctCompania> Lista = new ArrayList<ctCompania>();
 		Lista.add(obj_ctCompania);
 
@@ -92,7 +84,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		ResultSet companiaModificados = new VectorResultSet(vecTabla1);
 
 		try {
-			app.as_ctCompañia_Actualiza(cUsuario , companiaModificados, ps_Resultado, ps_Texto);
+			app.as_ctCompañia_Actualiza(cUsuario, companiaModificados, ps_Resultado, ps_Texto);
 
 		} finally {
 			// TODO: handle finally clause
@@ -100,11 +92,11 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			DBConexion.closeConnection(conexion);
 		}
 	}
-	
+
 	@Override
 	public void remove_ctCompania(String cUsuario, String cCveCia) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
 
@@ -112,23 +104,23 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		myDigital app = new myDigital(conexion);
 
 		try {
-			
-			app.as_ctCompañia_Borra(cUsuario, cCveCia , ps_Resultado, ps_Texto);
-					
+
+			app.as_ctCompañia_Borra(cUsuario, cCveCia, ps_Resultado, ps_Texto);
+
 			System.err.println(ps_Texto.getValue());
-			
+
 		} finally {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
 	}
 
-
 	@Override
 	public List<ctCompania> list_ctCompania() throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
 		
 		
+
 		return null;
 	}
 
@@ -149,7 +141,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			
 		
 			app.as_ctCompañia_get(cUsuario, cCveCia , tt_ctCompania, ps_Resultado, ps_Texto);
-			app.as_ct
+		
 			
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
 			
