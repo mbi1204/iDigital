@@ -14,7 +14,7 @@ public interface ctCompaniaDao {
 	
 	public void remove_ctCompania(String cUsuario  ,String cCveCia) throws Open4GLException, IOException;
 	
-	public List<ctCompania> list_ctCompania() throws Open4GLException, IOException;
+	public List<ctCompania> list_ctCompania(boolean bTodos) throws Open4GLException, IOException;
 	
 	public ctCompania get_ctCompania(String cUsuario,String cCveCia) throws Open4GLException, IOException;
 }
