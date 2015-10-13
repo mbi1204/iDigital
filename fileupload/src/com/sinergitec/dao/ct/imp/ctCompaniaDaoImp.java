@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import com.sinergitec.progress.*;
+import com.sinergitec.progress.myDigital;
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
@@ -132,6 +132,8 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 			app.as_ctCompañia_Carga(bTodos, tt_ctCompania, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
+			
+			
 
 			/*while (rs_tt_ctCompania.next()) {
 
