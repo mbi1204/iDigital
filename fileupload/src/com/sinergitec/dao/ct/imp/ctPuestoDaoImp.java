@@ -20,6 +20,7 @@ import com.sinergitec.mydigital.util.VectorResultSet;
 
 public class ctPuestoDaoImp {
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException{
 		
 		List<ctPuesto> Lista = new ArrayList<ctPuesto>();
@@ -58,6 +59,7 @@ public class ctPuestoDaoImp {
 		}
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void update_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException{
 		
 		List<ctPuesto> Lista = new ArrayList<ctPuesto>();
@@ -82,7 +84,6 @@ public class ctPuestoDaoImp {
 			app.as_ctPuesto_Actualiza(cUsuario, puestoModificados, ps_Resultado, ps_Texto);
 
 		} finally {
-			// TODO: handle finally clause
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}

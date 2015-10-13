@@ -20,6 +20,7 @@ import com.sinergitec.mydigital.util.VectorResultSet;
 
 public class ctMenuDaoImp implements ctMenuDao {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctMenu(String cUsuario, ctMenu obj_ctMenu) throws Open4GLException, IOException{
 		
 		List<ctMenu> Lista = new ArrayList<ctMenu>();
@@ -58,6 +59,7 @@ public class ctMenuDaoImp implements ctMenuDao {
 		}
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void update_ctMenu(String cUsuario, ctMenu obj_ctMenu) throws Open4GLException, IOException{
 		
 		List<ctMenu> Lista = new ArrayList<ctMenu>();
@@ -82,7 +84,6 @@ public class ctMenuDaoImp implements ctMenuDao {
 			app.as_ctMenu_Actualiza(cUsuario, menuModificados, ps_Resultado, ps_Texto);
 
 		} finally {
-			// TODO: handle finally clause
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
