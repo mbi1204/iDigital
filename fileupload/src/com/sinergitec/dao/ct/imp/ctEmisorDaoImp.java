@@ -22,6 +22,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctEmisor(String cUsuario, ctEmisor obj_ctEmisor) throws Open4GLException, IOException{
 		
+		
 		List<ctEmisor> Lista = new ArrayList<ctEmisor>();
 
 		Lista.add(obj_ctEmisor);
