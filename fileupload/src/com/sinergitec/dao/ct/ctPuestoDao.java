@@ -7,14 +7,14 @@ import com.sinergitec.model.ct.ctPuesto;
 
 public interface ctPuestoDao {
 	
-public void add_ctPuesto(ctPuesto obj_ctPuesto) throws Open4GLException, IOException;
+	public void add_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException;
 	
-	public void update_ctPuesto(ctPuesto obj_ctPuesto) throws Open4GLException, IOException;
+	public void update_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException;
 	
-	public void remove_ctPuesto(int iPuesto) throws Open4GLException, IOException;
+	public void remove_ctPuesto(String cUsuario, int iPuesto) throws Open4GLException, IOException;
 	
-	public List<ctPuesto> list_ctPuesto() throws Open4GLException, IOException;
+	public List<ctPuesto> list_ctPuesto(boolean bTodos) throws Open4GLException, IOException;
 	
-	public ctPuesto get_ctPuesto(int iPuesto) throws Open4GLException, IOException;
+	public ctPuesto get_ctPuesto(String cUsuario, int iPuesto) throws Open4GLException, IOException;
 
 }

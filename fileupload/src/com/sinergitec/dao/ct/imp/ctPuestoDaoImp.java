@@ -12,19 +12,19 @@ import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
 import com.sinergitec.appserver.myDigital;
-import com.sinergitec.dao.ct.ctMenuDao;
-import com.sinergitec.model.ct.ctMenu;
+import com.sinergitec.model.ct.ctPuesto;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
 
 
-public class ctMenuDaoImp implements ctMenuDao {
 
-	public void add_ctMenu(String cUsuario, ctMenu obj_ctMenu) throws Open4GLException, IOException{
+public class ctPuestoDaoImp {
+	
+	public void add_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException{
 		
-		List<ctMenu> Lista = new ArrayList<ctMenu>();
+		List<ctPuesto> Lista = new ArrayList<ctPuesto>();
 
-		Lista.add(obj_ctMenu);
+		Lista.add(obj_ctPuesto);
 
 		Vector vecTabla1, vecRow1;
 		vecTabla1 = new Vector();
@@ -35,16 +35,16 @@ public class ctMenuDaoImp implements ctMenuDao {
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
 
-		for (ctMenu obj : Lista) {
+		for (ctPuesto obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
 			vecTabla1.add(vecRow1);
 		}
 
-		ResultSetHolder ttMenu = new ResultSetHolder(new VectorResultSet(vecTabla1));
+		ResultSetHolder ttPuesto = new ResultSetHolder(new VectorResultSet(vecTabla1));
 
 		try {
 
-			app.as_ctMenu_Inserta(cUsuario, ttMenu, ps_Resultado, ps_Texto);
+			app.as_ctPuesto_Inserta(cUsuario, ttPuesto, ps_Resultado, ps_Texto);
 
 			System.out.println(ps_Texto.getStringValue());
 
@@ -58,10 +58,10 @@ public class ctMenuDaoImp implements ctMenuDao {
 		}
 	}
 	
-	public void update_ctMenu(String cUsuario, ctMenu obj_ctMenu) throws Open4GLException, IOException{
+	public void update_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException{
 		
-		List<ctMenu> Lista = new ArrayList<ctMenu>();
-		Lista.add(obj_ctMenu);
+		List<ctPuesto> Lista = new ArrayList<ctPuesto>();
+		Lista.add(obj_ctPuesto);
 
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
@@ -71,15 +71,15 @@ public class ctMenuDaoImp implements ctMenuDao {
 		Vector vecTabla1, vecRow1;
 		vecTabla1 = new Vector();
 
-		for (ctMenu obj : Lista) {
+		for (ctPuesto obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
 			vecTabla1.add(vecRow1);
 		}
 
-		ResultSet menuModificados = new VectorResultSet(vecTabla1);
+		ResultSet puestoModificados = new VectorResultSet(vecTabla1);
 
 		try {
-			app.as_ctMenu_Actualiza(cUsuario, menuModificados, ps_Resultado, ps_Texto);
+			app.as_ctPuesto_Actualiza(cUsuario, puestoModificados, ps_Resultado, ps_Texto);
 
 		} finally {
 			// TODO: handle finally clause
@@ -88,7 +88,7 @@ public class ctMenuDaoImp implements ctMenuDao {
 		}
 	}
 	
-	public void remove_ctMenu(String cUsuario, int iMenu) throws Open4GLException, IOException{
+	public void remove_ctPuesto(String cUsuario, int iPuesto) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
@@ -98,7 +98,7 @@ public class ctMenuDaoImp implements ctMenuDao {
 
 		try {
 
-			app.as_ctMenu_Borra(cUsuario, iMenu, ps_Resultado, ps_Texto);
+			app.as_ctPuesto_Borra(cUsuario, iPuesto, ps_Resultado, ps_Texto);
 
 			System.err.println(ps_Texto.getValue());
 
@@ -108,29 +108,29 @@ public class ctMenuDaoImp implements ctMenuDao {
 		}
 	}
 	
-	public List<ctMenu> list_ctMenu(boolean bTodos) throws Open4GLException, IOException{
+	public List<ctPuesto> list_ctPuesto(boolean bTodos) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
 
-		List<ctMenu> Lista = new ArrayList<ctMenu>();
+		List<ctPuesto> Lista = new ArrayList<ctPuesto>();
 
-		ResultSetHolder tt_ctMenu = new ResultSetHolder();
+		ResultSetHolder tt_ctPuesto = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
 	try {
 
-			app.as_ctMenu_Carga(bTodos, tt_ctMenu, ps_Resultado, ps_Texto);
-			ResultSet rs_tt_ctMenu = tt_ctMenu.getResultSetValue();
+			app.as_ctPuesto_Carga(bTodos, tt_ctPuesto, ps_Resultado, ps_Texto);
+			ResultSet rs_tt_ctPuesto = tt_ctPuesto.getResultSetValue();
 
-			while (rs_tt_ctMenu.next()) {
+			while (rs_tt_ctPuesto.next()) {
 
-				ctMenu obj = new ctMenu();
+				ctPuesto obj = new ctPuesto();
 
-				obj.setiMenu(rs_tt_ctMenu.getInt("iMenu"));
-				obj.setcMenu(rs_tt_ctMenu.getString("cPais"));
-				obj.setlActivo(rs_tt_ctMenu.getBoolean("lActivo"));				
-				obj.setId(rs_tt_ctMenu.getBytes("id"));
+				obj.setiPuesto(rs_tt_ctPuesto.getInt("iPuesto"));
+				obj.setcPuesto(rs_tt_ctPuesto.getString("cPuesto"));
+				obj.setlActivo(rs_tt_ctPuesto.getBoolean("lActivo"));				
+				obj.setId(rs_tt_ctPuesto.getBytes("id"));
 				Lista.add(obj);
 
 			}
@@ -147,28 +147,28 @@ public class ctMenuDaoImp implements ctMenuDao {
 		return Lista;
 	}
 	
-	public ctMenu get_ctMenu(String cUsuario, int iMenu) throws Open4GLException, IOException{
+	public ctPuesto get_ctPuesto(String cUsuario, int iPuesto) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
 
-		ResultSetHolder tt_ctMenu = new ResultSetHolder();
+		ResultSetHolder tt_ctPuesto = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
-		ctMenu obj = new ctMenu();
+		ctPuesto obj = new ctPuesto();
 
 		try {
 
-			app.as_ctMenu_get(cUsuario, iMenu, tt_ctMenu, ps_Resultado, ps_Texto);
+			app.as_ctPuesto_get(cUsuario, iPuesto, tt_ctPuesto, ps_Resultado, ps_Texto);
 
-			ResultSet rs_tt_ctMenu = tt_ctMenu.getResultSetValue();
+			ResultSet rs_tt_ctPuesto = tt_ctPuesto.getResultSetValue();
 
-			while (rs_tt_ctMenu.next()) {
+			while (rs_tt_ctPuesto.next()) {
 
-				obj.setiMenu(rs_tt_ctMenu.getInt("iMenu"));
-				obj.setcMenu(rs_tt_ctMenu.getString("cMenu"));
-				obj.setlActivo(rs_tt_ctMenu.getBoolean("lActivo"));
-				obj.setId(rs_tt_ctMenu.getBytes("id"));
+				obj.setiPuesto(rs_tt_ctPuesto.getInt("iPuesto"));
+				obj.setcPuesto(rs_tt_ctPuesto.getString("cPuesto"));
+				obj.setlActivo(rs_tt_ctPuesto.getBoolean("lActivo"));
+				obj.setId(rs_tt_ctPuesto.getBytes("id"));
 
 			}
 
