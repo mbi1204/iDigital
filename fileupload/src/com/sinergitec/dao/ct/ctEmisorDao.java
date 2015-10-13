@@ -12,10 +12,10 @@ public interface ctEmisorDao {
 	
 	public void update_ctEmisor(String cUsuario, ctEmisor obj_ctEmisor) throws Open4GLException, IOException;
 	
-	public void remove_ctEmisor(String cUsuario, int iEmisor, String cCveCia) throws Open4GLException, IOException;
+	public void remove_ctEmisor(String cCveCia, int iEmisor) throws Open4GLException, IOException;
 	
 	public List<ctEmisor> list_ctEmisor() throws Open4GLException, IOException;
 	
-	public ctEmisor get_ctEmisor(String cUsuario, int iEmisor, String cCveCia) throws Open4GLException, IOException;
+	public ctEmisor get_ctEmisor(String cCveCia, int iEmisor) throws Open4GLException, IOException;
 
 }

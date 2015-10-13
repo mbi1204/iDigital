@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import com.sinergitec.progress.myDigital;
+import com.sinergitec.appserver.myDigital;
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
