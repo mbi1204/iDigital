@@ -115,39 +115,28 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		}
 	}
 
-	@Override
-	public List<ctCompania> list_ctCompania() throws Open4GLException, IOException {
+	public List<ctCompania> list_ctCompania(boolean bTodos) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+		System.out.println("entro al dao");
 
-		return null;
-	}
-
-	@Override
-	public ctCompania get_ctCompania(String cUsuario, String cCveCia) throws Open4GLException, IOException {
-		// TODO Auto-generated method stub
-		
-		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
+
+		List<ctCompania> Lista = new ArrayList<ctCompania>();
 
 		ResultSetHolder tt_ctCompania = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
-		ctCompania obj = new ctCompania();
-		
-		try {
-			
-		
-			app.as_ctCompañia_get(cUsuario, cCveCia , tt_ctCompania, ps_Resultado, ps_Texto);
-		
-			
-			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
-			
 
-			while (rs_tt_ctCompania.next()) {
-											
+		try {
+
+			app.as_ctCompañia_Carga(bTodos, tt_ctCompania, ps_Resultado, ps_Texto);
+			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
+
+			/*while (rs_tt_ctCompania.next()) {
+
+				ctCompania obj = new ctCompania();
+
 				obj.setcCveCia(rs_tt_ctCompania.getString("cCveCia"));
 				obj.setcRazonS(rs_tt_ctCompania.getString("cRazonS"));
 				obj.setcRFC(rs_tt_ctCompania.getString("cRFC"));
@@ -163,20 +152,73 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 				obj.setcEmail(rs_tt_ctCompania.getString("cEmail"));
 				obj.setcContacto(rs_tt_ctCompania.getString("cContacto"));
 				obj.setcPais(rs_tt_ctCompania.getString("cPais"));
-				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));;
-				obj.setId(rs_tt_ctCompania.getBytes("id"));	
+				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));				
+				obj.setId(rs_tt_ctCompania.getBytes("id"));
+				Lista.add(obj);
 
-			}
-			
+			}*/
 		} catch (Exception ex) {
 			System.err.println(ex);
 
-			
 		} finally {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
 		
+		System.out.println("salio del dao");
+
+		return Lista;
+	}
+
+	@Override
+	public ctCompania get_ctCompania(String cUsuario, String cCveCia) throws Open4GLException, IOException {
+		// TODO Auto-generated method stub
+
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+
+		ResultSetHolder tt_ctCompania = new ResultSetHolder();
+		Connection conexion = DBConexion.getConnection();
+		myDigital app = new myDigital(conexion);
+		ctCompania obj = new ctCompania();
+
+		try {
+
+			app.as_ctCompañia_get(cUsuario, cCveCia, tt_ctCompania, ps_Resultado, ps_Texto);
+
+			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
+
+			while (rs_tt_ctCompania.next()) {
+
+				obj.setcCveCia(rs_tt_ctCompania.getString("cCveCia"));
+				obj.setcRazonS(rs_tt_ctCompania.getString("cRazonS"));
+				obj.setcRFC(rs_tt_ctCompania.getString("cRFC"));
+				obj.setcCalle(rs_tt_ctCompania.getString("cCalle"));
+				obj.setcNExterior(rs_tt_ctCompania.getString("cNExterior"));
+				obj.setcNInterior(rs_tt_ctCompania.getString("cNInterior"));
+				obj.setcColonia(rs_tt_ctCompania.getString("cColonia"));
+				obj.setcMpioDeleg(rs_tt_ctCompania.getString("cMpioDeleg"));
+				obj.setiCP(rs_tt_ctCompania.getInt("iCP"));
+				obj.setcCiudad(rs_tt_ctCompania.getString("cCiudad"));
+				obj.setcEstado(rs_tt_ctCompania.getString("cEstado"));
+				obj.setcTelefono(rs_tt_ctCompania.getString("cTelefono"));
+				obj.setcEmail(rs_tt_ctCompania.getString("cEmail"));
+				obj.setcContacto(rs_tt_ctCompania.getString("cContacto"));
+				obj.setcPais(rs_tt_ctCompania.getString("cPais"));
+				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));
+				;
+				obj.setId(rs_tt_ctCompania.getBytes("id"));
+
+			}
+
+		} catch (Exception ex) {
+			System.err.println(ex);
+
+		} finally {
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
+
 		return null;
 	}
 
