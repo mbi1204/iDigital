@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import com.sinergitec.progress.myDigital;
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
+import com.sinergitec.appserver.myDigital;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
+
+
 
 public class ctCompaniaDaoImp implements ctCompaniaDao {
 
@@ -35,6 +37,8 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
+		
+		
 
 		for (ctCompania obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
