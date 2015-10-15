@@ -17,8 +17,6 @@ import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
 
-
-
 public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -37,8 +35,6 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
-		
-		
 
 		for (ctCompania obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
@@ -49,7 +45,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		try {
 
-			app.as_ctCompañia_Inserta(cUsuario, ttCompania, ps_Resultado, ps_Texto);
+			app.as_ctCompania_Inserta(cUsuario, ttCompania, ps_Resultado, ps_Texto);
 
 			System.out.println(ps_Texto.getStringValue());
 
@@ -69,6 +65,8 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 	public void update_ctCompania(String cUsuario, ctCompania obj_ctCompania) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
 
+		System.out.println("entro al update"  +cUsuario);
+
 		List<ctCompania> Lista = new ArrayList<ctCompania>();
 		Lista.add(obj_ctCompania);
 
@@ -83,12 +81,21 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		for (ctCompania obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
 			vecTabla1.add(vecRow1);
+			System.out.println(obj.toString());
+			System.out.println(obj.getVectorDatos());
 		}
+		
 
-		ResultSet companiaModificados = new VectorResultSet(vecTabla1);
+		ResultSet rs_Modificados = new VectorResultSet(vecTabla1);
+		
+		
+		
 
 		try {
-			app.as_ctCompañia_Actualiza(cUsuario, companiaModificados, ps_Resultado, ps_Texto);
+			app.as_ctCompania_Actualiza(cUsuario, rs_Modificados, ps_Resultado, ps_Texto);
+
+		} catch (Exception ex) {
+			System.out.println(ex);
 
 		} finally {
 			// TODO: handle finally clause
@@ -109,7 +116,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		try {
 
-			app.as_ctCompañia_Borra(cUsuario, cCveCia, ps_Resultado, ps_Texto);
+			app.as_ctCompania_Borra(cUsuario, cCveCia, ps_Resultado, ps_Texto);
 
 			System.err.println(ps_Texto.getValue());
 
@@ -134,12 +141,10 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		try {
 
-			app.as_ctCompañia_Carga(bTodos, tt_ctCompania, ps_Resultado, ps_Texto);
+			app.as_ctCompania_Carga(bTodos, tt_ctCompania, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
-			
-			
 
-			/*while (rs_tt_ctCompania.next()) {
+			while (rs_tt_ctCompania.next()) {
 
 				ctCompania obj = new ctCompania();
 
@@ -158,11 +163,12 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 				obj.setcEmail(rs_tt_ctCompania.getString("cEmail"));
 				obj.setcContacto(rs_tt_ctCompania.getString("cContacto"));
 				obj.setcPais(rs_tt_ctCompania.getString("cPais"));
-				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));				
+				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));
 				obj.setId(rs_tt_ctCompania.getBytes("id"));
+
 				Lista.add(obj);
 
-			}*/
+			}
 		} catch (Exception ex) {
 			System.err.println(ex);
 
@@ -170,7 +176,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
-		
+
 		System.out.println("salio del dao");
 
 		return Lista;
@@ -190,7 +196,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		try {
 
-			app.as_ctCompañia_get(cUsuario, cCveCia, tt_ctCompania, ps_Resultado, ps_Texto);
+			app.as_ctCompania_get(cUsuario, cCveCia, tt_ctCompania, ps_Resultado, ps_Texto);
 
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
 
@@ -212,7 +218,6 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 				obj.setcContacto(rs_tt_ctCompania.getString("cContacto"));
 				obj.setcPais(rs_tt_ctCompania.getString("cPais"));
 				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));
-				;
 				obj.setId(rs_tt_ctCompania.getBytes("id"));
 
 			}

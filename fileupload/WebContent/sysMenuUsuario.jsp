@@ -10,7 +10,9 @@
 
 
 <%-- <jsp:forward page="/ctCompaniaCtrl?action=list" /> --%>
-<a href="ctCompaniaCtrl?action=list">Compañias</a>
+<a href="ctCompaniaCtrl?action=list">Compañias</a>	
+		 
+          
 
 </body>
 </html>
