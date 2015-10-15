@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+
+import com.sinergitec.appserver.myDigital;
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
-import com.sinergitec.appserver.myDigital;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.mydigital.util.DBConexion;
@@ -138,8 +139,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		ResultSetHolder tt_ctCompania = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
-
-		try {
+	try {
 
 			app.as_ctCompania_Carga(bTodos, tt_ctCompania, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
