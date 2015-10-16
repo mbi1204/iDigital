@@ -129,7 +129,7 @@ public class ctMenuDaoImp implements ctMenuDao {
 				ctMenu obj = new ctMenu();
 
 				obj.setiMenu(rs_tt_ctMenu.getInt("iMenu"));
-				obj.setcMenu(rs_tt_ctMenu.getString("cPais"));
+				obj.setcMenu(rs_tt_ctMenu.getString("cMenu"));
 				obj.setlActivo(rs_tt_ctMenu.getBoolean("lActivo"));				
 				obj.setId(rs_tt_ctMenu.getBytes("id"));
 				Lista.add(obj);

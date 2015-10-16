@@ -29,4 +29,14 @@
     <servlet-name>ctCompaniaCtrl</servlet-name>
     <url-pattern>/ctCompaniaCtrl</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>ctMenuCtrl</display-name>
+    <servlet-name>ctMenuCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.ct.ctMenuCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ctMenuCtrl</servlet-name>
+    <url-pattern>/ctMenuCtrl</url-pattern>
+  </servlet-mapping>
 </web-app>

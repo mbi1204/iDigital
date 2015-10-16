@@ -12,7 +12,7 @@
 <%-- <jsp:forward page="/ctCompaniaCtrl?action=list" /> --%>
 <a href="ctCompaniaCtrl?action=list">Compañias</a>	
 		 
-          
+<a href = "ctMenuCtrl?action=list" >Menu</a>
 
 </body>
 </html>
