@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-
 import com.sinergitec.appserver.myDigital;
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
@@ -66,7 +65,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 	public void update_ctCompania(String cUsuario, ctCompania obj_ctCompania) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("entro al update"  +cUsuario);
+		System.out.println("entro al update" + cUsuario);
 
 		List<ctCompania> Lista = new ArrayList<ctCompania>();
 		Lista.add(obj_ctCompania);
@@ -85,15 +84,13 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			System.out.println(obj.toString());
 			System.out.println(obj.getVectorDatos());
 		}
-		
 
 		ResultSet rs_Modificados = new VectorResultSet(vecTabla1);
-		
-		
-		
 
 		try {
 			app.as_ctCompania_Actualiza(cUsuario, rs_Modificados, ps_Resultado, ps_Texto);
+
+			System.out.println("error" + ps_Texto.getStringValue());
 
 		} catch (Exception ex) {
 			System.out.println(ex);
@@ -116,10 +113,13 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		myDigital app = new myDigital(conexion);
 
 		try {
-
+			System.out.println("entro al app del remove");
 			app.as_ctCompania_Borra(cUsuario, cCveCia, ps_Resultado, ps_Texto);
+			System.out.println("salio al app del remove");
 
 			System.err.println(ps_Texto.getValue());
+		} catch (Exception ex) {
+			System.out.println(ex);
 
 		} finally {
 			app._release();
@@ -129,7 +129,6 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 	public List<ctCompania> list_ctCompania(boolean bTodos) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("entro al dao");
 
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
@@ -140,10 +139,14 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		Connection conexion = DBConexion.getConnection();
 		System.out.println("antes del conexion");		
 		myDigital app = new myDigital(conexion);
-		System.out.println("despues del conexion");
+
+
 		
-	try {
-		System.out.println("antes del app");
+	//try {
+
+		try {
+
+
 			app.as_ctCompania_Carga(bTodos, tt_ctCompania, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
 
@@ -179,8 +182,6 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
-
-		System.out.println("salio del dao");
 
 		return Lista;
 	}
