@@ -36,7 +36,6 @@
 					<th width="30">Menu</th>
 					<th width="20">Estatus</th>
 
-
 				</tr>
 			</thead>
 
