@@ -39,4 +39,14 @@
     <servlet-name>ctMenuCtrl</servlet-name>
     <url-pattern>/ctMenuCtrl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ctPuestoCtrl</display-name>
+    <servlet-name>ctPuestoCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.ct.ctPuestoCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ctPuestoCtrl</servlet-name>
+    <url-pattern>/ctPuestoCtrl</url-pattern>
+  </servlet-mapping>
 </web-app>

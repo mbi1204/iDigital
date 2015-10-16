@@ -12,13 +12,14 @@ import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
 import com.sinergitec.appserver.myDigital;
+import com.sinergitec.dao.ct.ctPuestoDao;
 import com.sinergitec.model.ct.ctPuesto;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
 
 
 
-public class ctPuestoDaoImp {
+public class ctPuestoDaoImp implements ctPuestoDao {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctPuesto(String cUsuario, ctPuesto obj_ctPuesto) throws Open4GLException, IOException{

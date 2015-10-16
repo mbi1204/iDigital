@@ -14,5 +14,7 @@
 		 
 <a href = "ctMenuCtrl?action=list" >Menu</a>
 
+<a href = "ctPuestoCtrl?action=list" >Puesto</a>
+
 </body>
 </html>
