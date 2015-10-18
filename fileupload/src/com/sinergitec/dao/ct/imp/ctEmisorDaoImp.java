@@ -116,7 +116,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		}
 	}
 	
-	public List<ctEmisor> list_ctEmisor() throws Open4GLException, IOException{
+	public List<ctEmisor> list_ctEmisor(boolean bTodos) throws Open4GLException, IOException{
 		
 		ResultSetHolder tt_ctEmisor = new ResultSetHolder();
 		
@@ -130,7 +130,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		
 		try {
 			
-			app.as_ctEmisor_Carga(true, tt_ctEmisor, oplError, opcError);
+			app.as_ctEmisor_Carga(bTodos, tt_ctEmisor, oplError, opcError);
 
 			ResultSet rs_tt_ctEmisor = tt_ctEmisor.getResultSetValue();
 			

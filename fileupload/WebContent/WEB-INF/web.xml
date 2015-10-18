@@ -49,4 +49,34 @@
     <servlet-name>ctPuestoCtrl</servlet-name>
     <url-pattern>/ctPuestoCtrl</url-pattern>
   </servlet-mapping>
+  <servlet>
+  <description></description>
+    <display-name>ctEmisorCtrl</display-name>
+    <servlet-name>ctEmisorCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.ct.ctEmisorCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ctEmisorCtrl</servlet-name>
+    <url-pattern>/ctEmisorCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <description></description>
+    <display-name>ctProgramaCtrl</display-name>
+    <servlet-name>ctProgramaCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.ct.ctProgramaCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ctProgramaCtrl</servlet-name>
+    <url-pattern>/ctProgramaCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <description></description>
+    <display-name>ctUsuarioCtrl</display-name>
+    <servlet-name>ctUsuarioCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.ct.ctUsuarioCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ctUsuarioCtrl</servlet-name>
+    <url-pattern>/ctUsuarioCtrl</url-pattern>
+  </servlet-mapping>
 </web-app>

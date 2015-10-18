@@ -13,7 +13,7 @@ public void add_ctPrograma(String cUsuario , ctPrograma obj_ctPrograma) throws O
 	
 	public void remove_ctPrograma(String cUsuario,  int iMenu, int iPrograma) throws Open4GLException, IOException;
 	
-	public List<ctPrograma> list_ctPrograma() throws Open4GLException, IOException;
+	public List<ctPrograma> list_ctPrograma(boolean bTodos) throws Open4GLException, IOException;
 	
 	public ctPrograma get_ctPrograma(String cUsuario, int iMenu, int iPrograma) throws Open4GLException, IOException;
 

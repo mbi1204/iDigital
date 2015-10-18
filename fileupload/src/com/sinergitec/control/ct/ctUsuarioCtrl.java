@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.progress.open4gl.Open4GLException;
-import com.sinergitec.dao.ct.ctPuestoDao;
-import com.sinergitec.dao.ct.imp.ctPuestoDaoImp;
-import com.sinergitec.model.ct.ctPuesto;
+import com.sinergitec.dao.ct.ctUsuarioDao;
+import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
+import com.sinergitec.model.ct.ctUsuario;
 
-public class ctPuestoCtrl extends HttpServlet {
+public class ctUsuarioCtrl extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private ctPuestoDao ctPuesto_dao;
-	private List<ctPuesto> lista = new ArrayList<ctPuesto>();
+	private ctUsuarioDao ctUsuario_dao;
+	private List<ctUsuario> lista = new ArrayList<ctUsuario>();
 	
-	public ctPuestoCtrl() {
+	public ctUsuarioCtrl() {
 		super();
-		ctPuesto_dao =  new ctPuestoDaoImp();
+		ctUsuario_dao = new ctUsuarioDaoImp();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,19 +36,18 @@ public class ctPuestoCtrl extends HttpServlet {
 
 		if (action.equals("list")) {
 			try {
-				lista = ctPuesto_dao.list_ctPuesto(true);
+				lista = ctUsuario_dao.list_ctUsuario(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			request.setAttribute("lista_ctPuesto", lista);
+			request.setAttribute("lista_ctUsuario", lista);
 
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("/ctEmisor_List.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/ctUsuario_List.jsp");
 		view.forward(request, response);
 
 	}
-	
 }

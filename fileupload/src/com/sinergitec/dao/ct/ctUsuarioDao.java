@@ -15,7 +15,7 @@ public void add_ctUsuario(String cUsuario, ctUsuario obj_ctUsuario) throws Open4
 	
 	public void remove_ctUsuario(String cUsuario) throws Open4GLException, IOException;
 	
-	public List<ctUsuario> list_ctUsuario() throws Open4GLException, IOException;
+	public List<ctUsuario> list_ctUsuario(boolean bTodos) throws Open4GLException, IOException;
 	
 	public ctUsuario get_ctUsuario(String CveUsuario, String cUsuario) throws Open4GLException, IOException;
 

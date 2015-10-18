@@ -16,5 +16,11 @@
 
 <a href = "ctPuestoCtrl?action=list" >Puesto</a>
 
+<a href = "ctProgramaCtrl?action=list" >Programa</a>
+
+<a href = "ctEmisorCtrl?action=list" >Emisor</a>
+
+<a href = "ctUsuarioCtrl?action=list" >Usuario</a>
+
 </body>
 </html>

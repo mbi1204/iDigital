@@ -14,7 +14,7 @@ public interface ctEmisorDao {
 	
 	public void remove_ctEmisor(String cCveCia, int iEmisor) throws Open4GLException, IOException;
 	
-	public List<ctEmisor> list_ctEmisor() throws Open4GLException, IOException;
+	public List<ctEmisor> list_ctEmisor(boolean bTodos) throws Open4GLException, IOException;
 	
 	public ctEmisor get_ctEmisor(String cCveCia, int iEmisor) throws Open4GLException, IOException;
 

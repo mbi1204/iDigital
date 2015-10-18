@@ -115,7 +115,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 		}
 	}
 	
-	public List<ctPrograma> list_ctPrograma() throws Open4GLException, IOException{
+	public List<ctPrograma> list_ctPrograma(boolean bTodos) throws Open4GLException, IOException{
 		
 				
 		StringHolder opcError = new StringHolder();
@@ -128,7 +128,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 		
 		try {
 			
-			app.as_ctPrograma_Carga(true, tt_ctPrograma, oplError, opcError);
+			app.as_ctPrograma_Carga(bTodos, tt_ctPrograma, oplError, opcError);
 
 			ResultSet rs_tt_ctPrograma = tt_ctPrograma.getResultSetValue();
 			

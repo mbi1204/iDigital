@@ -116,7 +116,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		}
 	}
 	
-	public List<ctUsuario> list_ctUsuario() throws Open4GLException, IOException{
+	public List<ctUsuario> list_ctUsuario(boolean bTodos) throws Open4GLException, IOException{
 		
 		ResultSetHolder tt_ctUsuario = new ResultSetHolder();
 		
@@ -130,7 +130,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		
 		try {
 			
-			app.as_ctUsuario_Carga(true, tt_ctUsuario, oplError, opcError);
+			app.as_ctUsuario_Carga(bTodos, tt_ctUsuario, oplError, opcError);
 			
 			ResultSet rs_tt_ctUsuario = tt_ctUsuario.getResultSetValue();
 			
