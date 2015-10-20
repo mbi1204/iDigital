@@ -46,7 +46,7 @@ public class ctPuestoCtrl extends HttpServlet {
 
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("/ctEmisor_List.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/ctPuesto_List.jsp");
 		view.forward(request, response);
 
 	}
