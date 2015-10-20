@@ -138,11 +138,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		ResultSetHolder tt_ctCompania = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
 		System.out.println("antes del conexion");		
-		myDigital app = new myDigital(conexion);
-
-
-		
-	//try {
+		myDigital app = new myDigital(conexion);	
 
 		try {
 

@@ -7,16 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Insert title here</title>
 
 
-<link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="css/font-awesome-4.0.3/css/font-awesome.css"
-	rel="stylesheet" type="text/css" media="screen" />
-<link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet"
-	type="text/css" media="screen" />
-
+<link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"	media="screen" />
+<link href="css/font-awesome-4.0.3/css/font-awesome.css"	rel="stylesheet" type="text/css" media="screen" />
+<link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet"	type="text/css" media="screen" />
 
 
 </head>
@@ -24,14 +21,15 @@
 
 	<div style="width: 95%; margin: 0 auto;">
 
-		<div id="ctCompania_add_Dialog" style="display: none;">
+		<div id="ctCompania_Dialog" style="display: none;">
+		 <%@ include file="ctCompania_Add.jsp"%>
 		
 		</div>
 
 		<h1>Lista Compañias</h1>
 
 		<button class="pure-button pure-button-primary"
-			onclick="addCompania()">
+			onclick="add_ctCompania()">
 			<i class="fa fa-plus"></i> Agregar Compañia
 		</button>
 
@@ -100,6 +98,15 @@
 
 		</table>
 	</div>
+ 
+ <script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+ <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
+ <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
+ <script type="text/javascript" src="js/view/ctCompania.js"></script>
+
+
+ 
+
 
 </body>
 </html>
