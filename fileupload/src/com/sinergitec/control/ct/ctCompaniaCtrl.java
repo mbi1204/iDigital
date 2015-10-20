@@ -38,28 +38,28 @@ public class ctCompaniaCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("entro al doGet");
+	
 		String action = request.getParameter("action");
 		String cCveCia = request.getParameter("cCveCia");
 
-		if (action.equals("list")) {
+		
+			System.out.println("ENTRO A LA LISTA");
 			try {
 				lista = ctCompania_dao.list_ctCompania(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 			request.setAttribute("lista_ctCompania", lista);
-			
+		
+		
+		
+		System.out.println("entro al doGet ");
 
-			
-			
-
-		}
-
-		RequestDispatcher view = request.getRequestDispatcher("/ctCompania_List.jsp");
-		view.forward(request, response);
+	    RequestDispatcher view = request.getRequestDispatcher("/ctCompania_List.jsp");
+        view.forward(request, response);
+		System.out.println("salio al doGet ");
+  
 
 	}
 
@@ -71,16 +71,26 @@ public class ctCompaniaCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println("entro al doPost");
+		
 
 		String cCveCia = request.getParameter("cCveCia");
 		String action = request.getParameter("action");
 
-		System.out.println("accion  " + action);
-		System.out.println("compania " + cCveCia);
+		
 
 		if (action.equals("add") || action.equals("edit")) {
+			
+			System.out.println("entro al add");
 			ctCompania obj = new ctCompania();
+			
+			System.out.println(request.getParameter("cCveCia"));
+			System.out.println(request.getParameter("cRazonS"));
+			System.out.println(request.getParameter("cRFC"));
+			System.out.println(request.getParameter("cCalle"));
+			System.out.println(request.getParameter("cNExterior"));
+			System.out.println(request.getParameter("cNInterior"));
+			
+			
 
 			obj.setcCveCia(request.getParameter("cCveCia"));
 			obj.setcRazonS(request.getParameter("cRazonS"));
@@ -137,17 +147,20 @@ public class ctCompaniaCtrl extends HttpServlet {
 		} catch (Open4GLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}			
+	
 		
+		System.out.println("antes del request");
 		
+		//request.setAttribute("lista_ctCompania", lista);
 		
-		 request.getRequestDispatcher("/ctCompania_List.jsp").forward(request, response);
-		 
-	//	RequestDispatcher view = request.getRequestDispatcher("/ctCompania_List.jsp");
-
-//		request.setAttribute("lista_ctCompania", lista);
-
-	//	view.forward(request, response);
+		//RequestDispatcher view = request.getRequestDispatcher("ctCompaniaCtrl?action=list");		
+		//view.forward(request, response);
+		
+		request.getRequestDispatcher("/ctCompania_List.jsp").forward(request, response);
+		 		
+		System.out.println("despues del request"); 
+		
 		 
 
 	}
