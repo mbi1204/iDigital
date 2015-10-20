@@ -16,14 +16,15 @@
 <body>
 <div style="width: 95%; margin: 0 auto;">
 
-		<div id="ctCompania_add_Dialog" style="display: none;">
 		
+		<div id="ctPuesto_Dialog" style="display: none;">
+		 <%@ include file="ctPuesto_Add.jsp"%>
 		</div>
 
 		<h1>Lista Puesto</h1>
 
 		<button class="pure-button pure-button-primary"
-			onclick="addCompania()">
+			onclick="add_ctPuesto()">
 			<i class="fa fa-plus"></i> Agregar Puesto
 		</button>
 
@@ -65,5 +66,11 @@
 			</tbody>
 		</table>
 	</div>
+	
+		 <script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+		 <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
+		 <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
+		 <script type="text/javascript" src="js/view/ctPuesto.js"></script>
+		 
 </body>
 </html>

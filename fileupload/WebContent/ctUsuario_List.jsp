@@ -6,24 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ctUsuario</title>
-<link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="css/font-awesome-4.0.3/css/font-awesome.css"
-	rel="stylesheet" type="text/css" media="screen" />
-<link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet"
-	type="text/css" media="screen" />
+
+<link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
+
 <body>
 <div style="width: 95%; margin: 0 auto;">
 
-		<div id="ctCompania_add_Dialog" style="display: none;">
+		<div id="ctUsuario_Dialog" style="display: none;">
+		 <%@ include file="ctUsuario_Add.jsp"%>
 		
 		</div>
 
 		<h1>Lista Usuario</h1>
 
 		<button class="pure-button pure-button-primary"
-			onclick="addCompania()">
+			onclick="add_ctUsuario()">
 			<i class="fa fa-plus"></i> Agregar Usuario
 		</button>
 
@@ -73,5 +73,11 @@
 
 		</table>
 	</div>
+	
+			 <script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+			 <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
+			 <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
+			 <script type="text/javascript" src="js/view/ctUsuario.js"></script>
+			 
 </body>
 </html>
