@@ -3,7 +3,7 @@
  */
 function add_ctMenu() {
 	$('#ctMenu_Dialog').dialog("option", "title", 'Agregar Menu');
-	$('#ctmenu_Dialog').dialog('open');
+	$('#ctMenu_Dialog').dialog('open');
 }
 
 
