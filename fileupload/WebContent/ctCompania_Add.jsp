@@ -10,7 +10,7 @@
 
 			<tr>
 				<td><label for="cCveCia">Clave</label></td>
-				<td><input id="cCveCia" name="cCveCia" type="text" maxlength="15"
+				<td><input id="cCveCia" name="cCveCia" type="text" maxlength="15" value="<c:out value="${ctCompania.cCveCia}" />"
 					placeholder="Clave de la compañia"></td>
 			</tr>
 

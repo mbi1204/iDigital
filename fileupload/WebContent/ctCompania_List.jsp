@@ -79,14 +79,14 @@
 						<td><c:out value="${ctCompania.lActivo}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
-									onclick="edit_ctCompania(${book.id});">
+									onclick="update_ctCompania('${ctCompania.cCveCia}');">
 
 									<i class="fa fa-pencil"></i> Editar
 								</button>
 
 								<a class="pure-button pure-button-primary"
-									onclick="return confirm('Are you sure you want to delete this book?');"
-									href="delete/${book.id}"> <i class="fa fa-times"></i>Eliminar
+									onclick="return confirm('¿Desea Eliminar la Compañia?');"
+									href="ctCompaniaCtrl?action=delete&cCveCia=${ctCompania.cCveCia}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 
 							</nobr></td>

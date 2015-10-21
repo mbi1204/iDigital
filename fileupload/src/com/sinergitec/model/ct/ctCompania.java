@@ -1,6 +1,7 @@
 package com.sinergitec.model.ct;
 
 
+import java.util.Arrays;
 import java.util.Vector;
 
 public class ctCompania {
@@ -152,6 +153,16 @@ public class ctCompania {
 		vector.add(this.getId());
 
 		return vector;
+	}
+	@Override
+	public String toString() {
+		return "ctCompania [cCveCia=" + cCveCia + ", cRazonS=" + cRazonS + ", cRFC=" + cRFC + ", cCalle=" + cCalle
+				+ ", cNExterior=" + cNExterior + ", cNInterior=" + cNInterior + ", cColonia=" + cColonia
+				+ ", cMpioDeleg=" + cMpioDeleg + ", iCP=" + iCP + ", cCiudad=" + cCiudad + ", cEstado=" + cEstado
+				+ ", cTelefono=" + cTelefono + ", cEmail=" + cEmail + ", cContacto=" + cContacto + ", cPais=" + cPais
+				+ ", lActivo=" + lActivo + ", id=" + Arrays.toString(id) + "]";
 	}	
+	
+	
 	
 }
