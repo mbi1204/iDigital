@@ -193,6 +193,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
 		ctCompania obj = new ctCompania();
+		
 
 		try {
 
@@ -201,6 +202,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			ResultSet rs_tt_ctCompania = tt_ctCompania.getResultSetValue();
 
 			while (rs_tt_ctCompania.next()) {
+				
 
 				obj.setcCveCia(rs_tt_ctCompania.getString("cCveCia"));
 				obj.setcRazonS(rs_tt_ctCompania.getString("cRazonS"));
@@ -219,6 +221,8 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 				obj.setcPais(rs_tt_ctCompania.getString("cPais"));
 				obj.setlActivo(rs_tt_ctCompania.getBoolean("lActivo"));
 				obj.setId(rs_tt_ctCompania.getBytes("id"));
+				
+			
 
 			}
 
@@ -230,7 +234,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			DBConexion.closeConnection(conexion);
 		}
 
-		return null;
+		return obj;
 	}
 
 }
