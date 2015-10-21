@@ -45,64 +45,64 @@
 			</tr>
 
 			<tr>
-				<td><label for="cColonia">Colonia</label></td>
-				<td><input id="cColonia" name="cColonia" type="text" placeholder="Colonia"></td>
+				<td><label for="cNumeroInterior">Num. Interior</label></td>
+				<td><input id="cNumeroInterior" name="cNumeroInterior" type="text" placeholder="NumeroInterior"></td>
+			</tr>
+			
+			<tr>
+				<td><label for="cNumeroExterior">Num. Exterior</label></td>
+				<td><input id="cNumeroExterior" name="cNumeroExterior" type="text" placeholder="NumeroExterior"></td>
 			</tr>
 
 			<tr>
-				<td><label for="cMpioDeleg">Deleg /Mpio</label></td>
-				<td><input id="cMpioDeleg" name="cMpioDeleg" type="text"
-					placeholder="Deleg/Mpio"></td>
+				<td><label for="cMpioDelg">Deleg /Mpio</label></td>
+				<td><input id="cMpioDelg" name="cMpioDelg" type="text"
+					placeholder="MpioDelg"></td>
 			</tr>
-
-			<tr>
-				<td><label for="iCP">Codigo Postal</label></td>
-				<td><input id="iCP"  name="iCP" type="text" placeholder="CP"></td>
-			</tr>
-
-			<tr>
-				<td><label for="cCiudad">Ciudad</label></td>
-				<td><input id="cCiudad" name="cCiudad" type="text" placeholder="Ciudad"></td>
-			</tr>
-
-			<tr>
-				<td><label for="cEstado">Estado</label></td>
-				<td><input id="cEstado" name="cEstado" type="text" placeholder="Estado"></td>
-			<tr>
-				<td><label for="cTelefono">Telefono</label></td>
-				<td><input id="cTelefono" name="cTelefono" type="text" placeholder="Telefono"></td>
-			</tr>
-
-
+			
 			<tr>
 				<td><label for="cEmail">Email</label></td>
 				<td><input id="cEmail"  name="cEmail" type="text" placeholder="E Mail"></td>
 			</tr>
-
-
-			<tr>
-				<td><label for="cContacto">Contacto</label></td>
-				<td><input id="cContacto" name="cContacto" type="text" placeholder="Contacto"></td>
-			</tr>
-
-
+			
 			<tr>
 				<td><label for="cPais">Pais</label></td>
 				<td><input id="cPais" name="cPais" type="text" placeholder="Pais"></td>
+			<tr>
+			
+			<tr>
+				<td><label for="cEstado">Estado</label></td>
+				<td><input id="cEstado" name="cEstado" type="text" placeholder="Estado"></td>
+			<tr>
 
+			<tr>
+				<td><label for="cCP">Codigo Postal</label></td>
+				<td><input id="cCP"  name="cCP" type="text" placeholder="CP"></td>
+			</tr>
 
+			<tr>
+				<td><label for="dtFechaAlta">Fecha de Alta</label></td>
+				<td><input id="dtFechaAlta" name="dtFechaAlta" type="date" placeholder="Fecha de Alta"></td>
+			</tr>
+
+			
+			<tr>
+				<td><label for="dtFechaCancel">Fecha de Cancelar</label></td>
+				<td><input id="dtFechaCancel" name="dtFechaCancel" type="date" placeholder="Fecha de Cancelar"></td>
+			</tr>
 
 			<tr>
 				<td><label for="lActivo">Activo?</label></td>
 				<td><input id="lActivo" name="lActivo" type="text" placeholder="lActivo"></td>
 			</tr>
-
+			
+			<tr>
+				<td><label for="cAlias">Alias</label></td>
+				<td><input id="cAlias" name="cAlias" type="text" placeholder="Alias"></td>
+			</tr>
 
 		</table>
 
-
 	</fieldset>
 
-
 </form>
-

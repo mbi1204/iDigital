@@ -1,7 +1,6 @@
 package com.sinergitec.model.ct;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Vector;
 
 public class ctEmisor {
@@ -19,8 +18,8 @@ public class ctEmisor {
 	private String cPais;
 	private String cEstado;
 	private String cCP;
-	private Timestamp dtFechaAlta;
-	private Timestamp dtFechaCancel;
+	private String dtFechaAlta;
+	private String dtFechaCancel;
 	private Boolean lActivo;
 	private String cAlias;
 	byte[] id;
@@ -104,18 +103,20 @@ public class ctEmisor {
 	public void setcCP(String cCP) {
 		this.cCP = cCP;
 	}
-	public Timestamp getDtFechaAlta() {
+	
+	public String getDtFechaAlta() {
 		return dtFechaAlta;
 	}
-	public void setDtFechaAlta(Timestamp dtFechaAlta) {
+	public void setDtFechaAlta(String dtFechaAlta) {
 		this.dtFechaAlta = dtFechaAlta;
 	}
-	public Timestamp getDtFechaCancel() {
+	public String getDtFechaCancel() {
 		return dtFechaCancel;
 	}
-	public void setDtFechaCancel(Timestamp dtFechaCancel) {
+	public void setDtFechaCancel(String dtFechaCancel) {
 		this.dtFechaCancel = dtFechaCancel;
 	}
+	
 	public Boolean getlActivo() {
 		return lActivo;
 	}
@@ -141,11 +142,16 @@ public class ctEmisor {
 		Vector vector = new Vector();
 
 		
-		Date date = new java.util.Date();
+		/*Date date = new java.util.Date();
 		this.setDtFechaAlta(new Timestamp(date.getTime()));
 		
 		Date dat = new java.util.Date();
-		this.setDtFechaCancel(new Timestamp(dat.getTime()));
+		this.setDtFechaCancel(new Timestamp(dat.getTime()));*/
+		
+		
+		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta() + "00:00:00.000000" );
+		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel() + "00:00:00.000000");
+		
 
 		vector.add(this.getiEmisor());
 		vector.add(this.getcCveCia());
@@ -160,8 +166,8 @@ public class ctEmisor {
 		vector.add(this.getcPais());
 		vector.add(this.getcEstado());
 		vector.add(this.getcCP());
-		vector.add(this.getDtFechaAlta());
-		vector.add(this.getDtFechaCancel());
+		vector.add(dtFechaAlta);
+		vector.add(dtFechaCancel);
 		vector.add(this.getlActivo());
 		vector.add(this.getcAlias());
 		vector.add(this.getId());

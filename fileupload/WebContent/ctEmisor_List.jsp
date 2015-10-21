@@ -17,14 +17,15 @@
 
 <div style="width: 95%; margin: 0 auto;">
 
-		<div id="ctCompania_add_Dialog" style="display: none;">
+		<div id="ctEmisor_Dialog" style="display: none;">
+		 <%@ include file="ctEmisor_Add.jsp"%>
 		
 		</div>
 
 		<h1>Lista Emisor</h1>
 
 		<button class="pure-button pure-button-primary"
-			onclick="addEmisor()">
+			onclick="add_ctEmisor()">
 			<i class="fa fa-plus"></i> Agregar Emisor
 		</button>
 
@@ -48,7 +49,7 @@
 					<th width="20">Baja</th>
 					<th width="20">Alias</th>
 					<th width="10">Activa?</th>
-					<th width="12%"></th>
+					<!-- <th width="12%"></th> -->
 
 
 				</tr>
@@ -95,6 +96,11 @@
 
 		</table>
 	</div>
+	
+	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+			 <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
+			 <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
+			 <script type="text/javascript" src="js/view/ctEmisor.js"></script>
 
 </body>
 </html>
