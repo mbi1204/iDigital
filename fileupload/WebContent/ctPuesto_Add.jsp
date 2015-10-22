@@ -11,7 +11,7 @@
 					<tr>
 						<td><label for="iPuesto">Id Puesto</label></td>
 						<td><input id="iPuesto" name="iPuesto" type="text" maxlength="15"
-							placeholder="Puesto"></td>
+							placeholder="ID Puesto"></td>
 					</tr>
 		
 					<tr>
