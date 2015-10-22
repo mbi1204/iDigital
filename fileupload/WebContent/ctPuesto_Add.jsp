@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url var="actionUrl" value="ctUsuarioCtrl?action=add" />
+<c:url var="actionUrl" value="ctPuestoCtrl?action=add" />
 
 <form id="ctPuesto_Form" class="pure-form pure-form-aligned" method="post" action="${actionUrl}" >
 
