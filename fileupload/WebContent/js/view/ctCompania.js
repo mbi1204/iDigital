@@ -3,20 +3,27 @@
  */
 
 function add_ctCompania() {
-	$('#ctCompania_Dialog').dialog("option", "title", 'Agregar Compañia');
-	$('#ctCompania_Dialog').dialog('open');
+
+	$.get("ctCompaniaCtrl?action=add", function(result) {
+		$("#ctCompania_Dialog").html(result);
+		$('#ctCompania_Dialog').dialog("option", "title", 'Agregar Compañia');
+		$("#ctCompania_Dialog").dialog('open');
+	});
+
 }
 
-function update_ctCompania(cCveCia) {	                      
-	
-	  $.get("ctCompaniaCtrl?action=update&cCveCia=" + cCveCia  , function(result) {
-		  
-		  alert(result);
-          $("#ctCompania_Dialog").html(result);
-          $('#ctCompania_Dialog').dialog("option", "title", 'Editar Compañia');
-          $("#ctCompania_Dialog").dialog('open');
-   });	
-   
+function update_ctCompania(cCveCia) {
+
+	$.get("ctCompaniaCtrl?action=update&cCveCia=" + cCveCia, function(result) {
+		$("#ctCompania_Dialog").html(result);
+		$('#ctCompania_Dialog').dialog("option", "title", 'Editar Compañia');
+		$("#ctCompania_Dialog").dialog('open');
+	});
+
+}
+
+function resetDialog(form) {
+
 }
 
 $(document).ready(function() {

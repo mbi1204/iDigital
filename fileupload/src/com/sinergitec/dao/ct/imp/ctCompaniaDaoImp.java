@@ -65,7 +65,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 	public void update_ctCompania(String cUsuario, ctCompania obj_ctCompania) throws Open4GLException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("entro al update" + cUsuario);
+	
 
 		List<ctCompania> Lista = new ArrayList<ctCompania>();
 		Lista.add(obj_ctCompania);
@@ -80,17 +80,14 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		for (ctCompania obj : Lista) {
 			vecRow1 = obj.getVectorDatos();
-			vecTabla1.add(vecRow1);
-			System.out.println(obj.toString());
-			System.out.println(obj.getVectorDatos());
+			vecTabla1.add(vecRow1);		
 		}
 
 		ResultSet rs_Modificados = new VectorResultSet(vecTabla1);
 
 		try {
 			app.as_ctCompania_Actualiza(cUsuario, rs_Modificados, ps_Resultado, ps_Texto);
-
-			System.out.println("error" + ps_Texto.getStringValue());
+		
 
 		} catch (Exception ex) {
 			System.out.println(ex);
@@ -100,6 +97,8 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
+		
+		
 	}
 
 	@Override
@@ -113,9 +112,9 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 		myDigital app = new myDigital(conexion);
 
 		try {
-			System.out.println("entro al app del remove");
+		
 			app.as_ctCompania_Borra(cUsuario, cCveCia, ps_Resultado, ps_Texto);
-			System.out.println("salio al app del remove");
+		
 
 			System.err.println(ps_Texto.getValue());
 		} catch (Exception ex) {
@@ -137,7 +136,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 
 		ResultSetHolder tt_ctCompania = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
-		System.out.println("antes del conexion");		
+		
 		myDigital app = new myDigital(conexion);	
 
 		try {

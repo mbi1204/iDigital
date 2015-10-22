@@ -20,9 +20,8 @@ public class ctCompaniaCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_dao;
 	private List<ctCompania> lista = new ArrayList<ctCompania>();
-	private static String INSERT_OR_EDIT  = "/ctCompania_Add.jsp";
+	private static String INSERT_OR_EDIT = "/ctCompania_Add.jsp";
 	private static String LIST_CTCOMPANIA = "/ctCompania_List.jsp";
-
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -40,57 +39,53 @@ public class ctCompaniaCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String forward = "";
 		String action = request.getParameter("action");
 		String cCveCia = request.getParameter("cCveCia");
-		
-		System.out.println(action);
-		System.out.println(cCveCia);
-		
 
-	
 		if (action.equals("delete")) {
-			System.out.println("entro al delete do get");
+			
 			try {
 				ctCompania_dao.remove_ctCompania("SISIMB", cCveCia);
+				lista = ctCompania_dao.list_ctCompania(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.setAttribute("lista_ctCompania", lista);
+			forward = LIST_CTCOMPANIA;
 
-		}
-		else if (action.equals("update")){
+		} else if (action.equals("add")) {
+			ctCompania obj = new ctCompania();		
+			request.setAttribute("ctCompania", obj);
+			forward = INSERT_OR_EDIT;
+		} else if (action.equals("update")) {
 			ctCompania obj = new ctCompania();
 			try {
-				
-			
-				obj = 	ctCompania_dao.get_ctCompania("SISIMB", cCveCia);
+
+				obj = ctCompania_dao.get_ctCompania("SISIMB", cCveCia);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			request.setAttribute("ctCompania", obj);	
-			
-			
-			
-		}else if  (action.equals("list")) {
+			request.setAttribute("ctCompania", obj);
+			forward = INSERT_OR_EDIT;
+
+		} else if (action.equals("list")) {
 			try {
 				lista = ctCompania_dao.list_ctCompania(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("lista_ctCompania", lista);		
-			
-			
-			
-			
+			request.setAttribute("lista_ctCompania", lista);
+			forward = LIST_CTCOMPANIA;
+
 		}
-		
-		 RequestDispatcher view = request.getRequestDispatcher("/ctCompania_List.jsp");
-	
-	     view.forward(request, response);
+
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+
+		view.forward(request, response);
 
 	}
 
@@ -98,26 +93,23 @@ public class ctCompaniaCtrl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	//Agregar <------------
+	// Agregar <------------
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
+		
+		System.out.println("entro al do post");
+		System.out.println("activo? cntrl" + request.getParameter("lActivo"));
+		
+		String action = request.getParameter("action");		
 
-		String cCveCia = request.getParameter("cCveCia");
-		String action = request.getParameter("action");
+		if (action.equals("add") || action.equals("update")) {
 
-		if (action.equals("add") || action.equals("edit")) {
-
-			System.out.println("doPost entro al add o update ");
 			ctCompania obj = new ctCompania();
-
-			System.out.println(request.getParameter("cCveCia"));
-			System.out.println(request.getParameter("cRazonS"));
-			System.out.println(request.getParameter("cRFC"));
-			System.out.println(request.getParameter("cCalle"));
-			System.out.println(request.getParameter("cNExterior"));
-			System.out.println(request.getParameter("cNInterior"));
+			
+			
+			//System.out.println("activo?" + request.getParameter("lActivo"));
 
 			obj.setcCveCia(request.getParameter("cCveCia"));
 			obj.setcRazonS(request.getParameter("cRazonS"));
@@ -144,34 +136,30 @@ public class ctCompaniaCtrl extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (action.equals("edit")) {
-					try {
-						ctCompania_dao.update_ctCompania("SISTEMAS", obj);
-					} catch (Open4GLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 
+			} else if (action.equals("update")) {
+
+				System.out.println("ento ctrl update");
+				try {
+					ctCompania_dao.update_ctCompania("SISTEMAS", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 
 			}
-		}
-		
 
-		
-		try {
-			lista = ctCompania_dao.list_ctCompania(true);
-		} catch (Open4GLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				lista = ctCompania_dao.list_ctCompania(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctCompania", lista);
 		}
-		
-		System.out.println("pao por el do post");
 
-		request.setAttribute("lista_ctCompania", lista);
 		request.getRequestDispatcher("/ctCompania_List.jsp").forward(request, response);
 
-		
 	}
 
 }

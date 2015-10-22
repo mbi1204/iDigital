@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Insert title here</title>
+<title>Catalogo de compañias</title>
 
 
 <link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"	media="screen" />
@@ -22,6 +22,7 @@
 	<div style="width: 95%; margin: 0 auto;">
 
 		<div id="ctCompania_Dialog" style="display: none;">
+		
 		 <%@ include file="ctCompania_Add.jsp"%>
 		
 		</div>
