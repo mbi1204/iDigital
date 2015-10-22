@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctPuestoDao;
 import com.sinergitec.dao.ct.imp.ctPuestoDaoImp;
+import com.sinergitec.model.ct.ctPrograma;
 import com.sinergitec.model.ct.ctPuesto;
 
 public class ctPuestoCtrl extends HttpServlet {
@@ -49,6 +50,61 @@ public class ctPuestoCtrl extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/ctPuesto_List.jsp");
 		view.forward(request, response);
 
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// doGet(request, response);
+
+		String cCveCia = request.getParameter("cCveCia");
+		String action = request.getParameter("action");
+
+		if (action.equals("add") || action.equals("edit")) {
+
+			System.out.println("doPost entro al add o update ");
+			ctPuesto obj = new ctPuesto();
+
+			obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
+			obj.setcPuesto(request.getParameter("cPuesto"));
+			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
+
+			if (action.equals("add")) {
+
+				try {
+					ctPuesto_dao.add_ctPuesto("SISTEMAS", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if (action.equals("edit")) {
+					try {
+						ctPuesto_dao.update_ctPuesto("SISTEMAS", obj);
+					} catch (Open4GLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}
+
+			}
+		}
+		
+
+		
+		try {
+			lista = ctPuesto_dao.list_ctPuesto(true);
+		} catch (Open4GLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("pao por el do post");
+
+		request.setAttribute("lista_ctPuesto", lista);
+		request.getRequestDispatcher("/ctPuesto_List.jsp").forward(request, response);
+
+		
 	}
 	
 }
