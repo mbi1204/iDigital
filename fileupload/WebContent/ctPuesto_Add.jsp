@@ -22,7 +22,7 @@
 		
 					<tr>
 						<td><label for="lActivo">Activo?</label></td>
-						<td><input id="lActivo" name="lActivo" type="text" placeholder="Activo"></td>
+						<td><input id="lActivo" name="lActivo" type="checkbox" placeholder="Activo"></td>
 					</tr>
 		
 										
