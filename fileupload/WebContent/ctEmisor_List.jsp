@@ -15,12 +15,14 @@
 </head>
 <body>
 
-<div style="width: 95%; margin: 0 auto;">
+	<div style="width: 95%; margin: 0 auto;">
 
 		<div id="ctEmisor_Dialog" style="display: none;">
+		
 		 <%@ include file="ctEmisor_Add.jsp"%>
 		
 		</div>
+
 
 		<h1>Lista Emisor</h1>
 
@@ -77,14 +79,14 @@
 						<td><c:out value="${ctEmisor.lActivo}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
-									onclick="edit_ctCompania(${book.id});">
+									onclick="update_ctEmisor(${ctEmisor.iEmisor});">
 
 									<i class="fa fa-pencil"></i> Editar
 								</button>
 
 								<a class="pure-button pure-button-primary"
-									onclick="return confirm('Are you sure you want to delete this book?');"
-									href="delete/${book.id}"> <i class="fa fa-times"></i>Eliminar
+									onclick="return confirm('¿Desea Eliminar el Emisor?');"
+									href="ctEmisorCtrl?action=delete&iEmisor=${ctEmisor.iEmisor}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 
 							</nobr></td>
@@ -97,7 +99,7 @@
 		</table>
 	</div>
 	
-	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+			<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
 			 <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
 			 <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
 			 <script type="text/javascript" src="js/view/ctEmisor.js"></script>

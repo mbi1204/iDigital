@@ -15,7 +15,6 @@ import com.sinergitec.dao.ct.ctEmisorDao;
 import com.sinergitec.dao.ct.imp.ctEmisorDaoImp;
 import com.sinergitec.model.ct.ctEmisor;
 
-import sun.misc.Perf.GetPerfAction;
 
 
 public class ctEmisorCtrl extends HttpServlet {
@@ -23,6 +22,8 @@ public class ctEmisorCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctEmisorDao ctEmisor_dao;
 	private List<ctEmisor> lista = new ArrayList<ctEmisor>();
+	private static String INSERT_OR_EDIT = "/ctEmisor_Add.jsp";
+	private static String LIST_CTEMISOR = "/ctEmisor_List.jsp";
 	
 	public ctEmisorCtrl() {
 		super();
@@ -32,12 +33,42 @@ public class ctEmisorCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("entro al doGet");
+		String forward = "";
 		String action = request.getParameter("action");
-		//String cCveCia = request.getParameter("cCveCia");
+		String cCveCia = request.getParameter("cCveCia");
+		System.out.println("Entro al doget");
+		Integer iEmisor = null;
+		System.out.println("No paso del iemisor");
+		if (action.equals("delete")) {
+			
+			try {
+				ctEmisor_dao.remove_ctEmisor(cCveCia, iEmisor);
+				lista = ctEmisor_dao.list_ctEmisor(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctEmisor", lista);
+			forward = LIST_CTEMISOR;
 
-		if (action.equals("list")) {
+		} else if (action.equals("add")) {
+			ctEmisor obj = new ctEmisor();		
+			request.setAttribute("ctEmisor", obj);
+			forward = INSERT_OR_EDIT;
+		} else if (action.equals("update")) {
+			ctEmisor obj = new ctEmisor();
+			try {
+
+				obj = ctEmisor_dao.get_ctEmisor(cCveCia, iEmisor);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("ctEmisor", obj);
+			forward = INSERT_OR_EDIT;
+			
+		}else if (action.equals("list")) {
 			try {
 				lista = ctEmisor_dao.list_ctEmisor(true);
 			} catch (Open4GLException e) {
@@ -46,10 +77,11 @@ public class ctEmisorCtrl extends HttpServlet {
 			}
 
 			request.setAttribute("lista_ctEmisor", lista);
+			forward = LIST_CTEMISOR;
 
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("/ctEmisor_List.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 
 	}
@@ -62,7 +94,7 @@ public class ctEmisorCtrl extends HttpServlet {
 		String cCveCia = request.getParameter("cCveCia");
 		String action = request.getParameter("action");
 
-		if (action.equals("add") || action.equals("edit")) {
+		if (action.equals("add") || action.equals("update")) {
 
 			System.out.println("doPost entro al add o update ");
 			ctEmisor obj = new ctEmisor();
@@ -91,38 +123,33 @@ public class ctEmisorCtrl extends HttpServlet {
 			if (action.equals("add")) {
 
 				try {
-					ctEmisor_dao.add_ctEmisor("SISTEMAS", obj);
+					
+					ctEmisor_dao.add_ctEmisor(cCveCia, obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (action.equals("edit")) {
-					try {
-						ctEmisor_dao.update_ctEmisor("SISTEMAS", obj);
+			}
+			if (action.equals("update")) {
+				try {
+					ctEmisor_dao.update_ctEmisor(cCveCia, obj);
 					} catch (Open4GLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
 				}
-
-			}
-		}
-		
-		
-		try {
-			
-			lista = ctEmisor_dao.list_ctEmisor(true);
-		} catch (Open4GLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		System.out.println("pao por el do post");
-
-		request.setAttribute("lista_ctEmisor", lista);
+				
+			try {
+				lista = ctEmisor_dao.list_ctEmisor(true);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				System.out.println("pao por el do post");
+				}
+				request.setAttribute("lista_ctEmisor", lista);
+				}
 		request.getRequestDispatcher("/ctEmisor_List.jsp").forward(request, response);
-
-		
-	}
+		}
 }
+

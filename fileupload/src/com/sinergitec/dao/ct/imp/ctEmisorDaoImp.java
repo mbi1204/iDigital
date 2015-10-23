@@ -28,6 +28,10 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		List<ctEmisor> Lista = new ArrayList<ctEmisor>();
 
 		Lista.add(obj_ctEmisor);
+		
+		String Fecha = obj_ctEmisor.getDtFechaAlta();
+		
+		System.out.println(Fecha);
 
 		
 		Vector vecTabla1, vecRow1;

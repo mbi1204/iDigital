@@ -148,10 +148,15 @@ public class ctEmisor {
 		Date dat = new java.util.Date();
 		this.setDtFechaCancel(new Timestamp(dat.getTime()));*/
 		
+		System.out.println("Conversion"+this.getDtFechaAlta());
+		System.out.println("Conversion"+this.getDtFechaCancel());
 		
-		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta() + "00:00:00.000000" );
-		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel() + "00:00:00.000000");
-		
+		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta() + " 00:00:00.000000" );
+		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel() + " 00:00:00.000000");
+		Timestamp prueba = Timestamp.valueOf("2015/01/23"+" 00:00:00.000000");
+		System.out.println(dtFechaAlta);
+		System.out.println(dtFechaCancel);
+		System.out.println(prueba);
 
 		vector.add(this.getiEmisor());
 		vector.add(this.getcCveCia());
