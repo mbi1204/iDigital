@@ -99,18 +99,14 @@ public class ctCompaniaCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
 		
-		System.out.println("entro al do post");
-		System.out.println("activo? cntrl" + request.getParameter("lActivo"));
+		
+		System.out.println("activo? doPost->" + request.getParameter("lActivo"));
 		
 		String action = request.getParameter("action");		
 
 		if (action.equals("add") || action.equals("update")) {
 
 			ctCompania obj = new ctCompania();
-			
-			
-			//System.out.println("activo?" + request.getParameter("lActivo"));
-
 			obj.setcCveCia(request.getParameter("cCveCia"));
 			obj.setcRazonS(request.getParameter("cRazonS"));
 			obj.setcRFC(request.getParameter("cRFC"));
@@ -125,8 +121,8 @@ public class ctCompaniaCtrl extends HttpServlet {
 			obj.setcTelefono(request.getParameter("cTelefono"));
 			obj.setcEmail(request.getParameter("cEmail"));
 			obj.setcContacto(request.getParameter("cContacto"));
-			obj.setcPais(request.getParameter("cPais"));
-			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
+			obj.setcPais(request.getParameter("cPais"));			
+			obj.setlActivo( (action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 
 			if (action.equals("add")) {
 

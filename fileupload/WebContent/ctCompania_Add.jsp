@@ -29,7 +29,6 @@
 
 				<%
 					if (action.equals("update")) {
-						System.out.println("ento al update");
 				%>
 
 				<td><input id="cCveCia" name="cCveCia" type="text"
@@ -144,24 +143,27 @@
 				<td><input id="cPais" name="cPais" type="text"
 					placeholder="Pais" value="<c:out value="${ctCompania.cPais}" />"></td>
 			<tr>
-			<tr>
 
+				<%
+					if (action.equals("update")) {
+				%>
+			
+			<tr>
+				<td><label for="lActivo">Activo?</label></td>
 				<c:choose>
 					<c:when test="${ctCompania.lActivo==true}">
-                Activo? <input type="checkbox" name="lActivo"
-							id="lActivo" checked />
-
+						<input type="checkbox" name="lActivo" checked />
 					</c:when>
 					<c:otherwise>
-                Activo? <input type="checkbox" name="lActivo"
-							id="lActivo" />
+						<input type="checkbox" name="lActivo" />
 					</c:otherwise>
 				</c:choose>
-
-
 			</tr>
 
-			</tr>
+			<%
+				}
+			%>
+
 
 		</table>
 	</fieldset>
