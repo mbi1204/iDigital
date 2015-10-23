@@ -11,9 +11,12 @@
 <title>Catalogo de compañias</title>
 
 
-<link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"	media="screen" />
-<link href="css/font-awesome-4.0.3/css/font-awesome.css"	rel="stylesheet" type="text/css" media="screen" />
-<link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet"	type="text/css" media="screen" />
+<link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<link href="css/font-awesome-4.0.3/css/font-awesome.css"
+	rel="stylesheet" type="text/css" media="screen" />
+<link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet"
+	type="text/css" media="screen" />
 
 
 </head>
@@ -22,9 +25,9 @@
 	<div style="width: 95%; margin: 0 auto;">
 
 		<div id="ctCompania_Dialog" style="display: none;">
-		
-		 <%@ include file="ctCompania_Add.jsp"%>
-		
+
+			<%@ include file="ctCompania_Add.jsp"%>
+
 		</div>
 
 		<h1>Lista Compañias</h1>
@@ -77,7 +80,7 @@
 						<td><c:out value="${ctCompania.cEmail}" /></td>
 						<td><c:out value="${ctCompania.cContacto}" /></td>
 						<td><c:out value="${ctCompania.cPais}" /></td>
-						<td><c:out value="${ctCompania.lActivo}" /></td>
+						<td><c:out value="${ctCompania.lActivo ? 'SI':'NO'}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
 									onclick="update_ctCompania('${ctCompania.cCveCia}');">
@@ -87,7 +90,8 @@
 
 								<a class="pure-button pure-button-primary"
 									onclick="return confirm('¿Desea Eliminar la Compañia?');"
-									href="ctCompaniaCtrl?action=delete&cCveCia=${ctCompania.cCveCia}"> <i class="fa fa-times"></i>Eliminar
+									href="ctCompaniaCtrl?action=delete&cCveCia=${ctCompania.cCveCia}">
+									<i class="fa fa-times"></i>Eliminar
 								</a>
 
 							</nobr></td>
@@ -99,14 +103,14 @@
 
 		</table>
 	</div>
- 
- <script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
- <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
- <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
- <script type="text/javascript" src="js/view/ctCompania.js"></script>
+
+	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
+	<script type="text/javascript" src="js/view/ctCompania.js"></script>
 
 
- 
+
 
 
 </body>

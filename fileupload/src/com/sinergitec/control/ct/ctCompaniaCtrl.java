@@ -99,8 +99,7 @@ public class ctCompaniaCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
 		
-		
-		System.out.println("activo? doPost->" + request.getParameter("lActivo"));
+		System.out.println("Bolean  -->" + Boolean.parseBoolean(request.getParameter("lActivo")));
 		
 		String action = request.getParameter("action");		
 
@@ -134,8 +133,7 @@ public class ctCompaniaCtrl extends HttpServlet {
 				}
 
 			} else if (action.equals("update")) {
-
-				System.out.println("ento ctrl update");
+				
 				try {
 					ctCompania_dao.update_ctCompania("SISTEMAS", obj);
 				} catch (Open4GLException e) {

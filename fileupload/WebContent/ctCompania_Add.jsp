@@ -142,22 +142,22 @@
 				<td><label for="cPais">Pais</label></td>
 				<td><input id="cPais" name="cPais" type="text"
 					placeholder="Pais" value="<c:out value="${ctCompania.cPais}" />"></td>
-			<tr>
+			</tr>
 
-				<%
-					if (action.equals("update")) {
-				%>
-			
+			<%
+				if (action.equals("update")) {
+			%>
+
 			<tr>
 				<td><label for="lActivo">Activo?</label></td>
-				<c:choose>
-					<c:when test="${ctCompania.lActivo==true}">
-						<input type="checkbox" name="lActivo" checked />
-					</c:when>
-					<c:otherwise>
-						<input type="checkbox" name="lActivo" />
-					</c:otherwise>
-				</c:choose>
+				<td><input type="radio" name="lActivo" value="true"
+					${ctCompania.lActivo ? 'checked':''}> SI</td>
+					
+				<td><input type="radio" name="lActivo" value="false"
+					${not ctCompania.lActivo ? 'checked':''}> NO</td>
+
+
+
 			</tr>
 
 			<%
