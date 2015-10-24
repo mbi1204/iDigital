@@ -49,19 +49,19 @@
 						<td><c:out value="${ctPrograma.iPrograma}" /></td>
 						<td><c:out value="${ctPrograma.iMenu}" /></td>
 						<td><c:out value="${ctPrograma.cPrograma}" /></td>
-						<td><c:out value="${ctPrograma.lActivo}" /></td>
+						<td><c:out value="${ctPrograma.lActivo ? 'SI':'NO'}" /></td>
 						<td><c:out value="${ctPrograma.cNombre}" /></td>
 						
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
-									onclick="edit_ctCompania(${book.id});">
+									onclick="update_ctPrograma('${ctPrograma.iMenu}','${ctPrograma.iPrograma}');">
 
 									<i class="fa fa-pencil"></i> Editar
 								</button>
 
 								<a class="pure-button pure-button-primary"
 									onclick="return confirm('Are you sure you want to delete this book?');"
-									href="delete/${book.id}"> <i class="fa fa-times"></i>Eliminar
+									href="ctProgramaCtrl?action=delete&iMenu=${ctPrograma.iMenu}&iPrograma=${ctPrograma.iPrograma}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 
 							</nobr></td>

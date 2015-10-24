@@ -35,10 +35,14 @@ public class ctMenuCtrl extends HttpServlet {
 		String action = request.getParameter("action");
 		Integer iMenu = null;
 		/*Misma situacion que el emisor*/
-		if(action.equals("list") || action.equals("add")){
+		/*if(action.equals("list") || action.equals("add")){
 			iMenu = null;
 		}
 		else{
+			iMenu = Integer.parseInt(request.getParameter("iMenu"));
+		}*/
+		
+		if(action.equals("delete") || action.equals("update")){
 			iMenu = Integer.parseInt(request.getParameter("iMenu"));
 		}
 		
@@ -96,7 +100,7 @@ public class ctMenuCtrl extends HttpServlet {
 		System.out.println("accion  " + action);
 		System.out.println("menu " + iMenu);
 
-		if (action.equals("add") || action.equals("edit")) {
+		if (action.equals("add") || action.equals("update")) {
 			ctMenu obj = new ctMenu();
 
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));

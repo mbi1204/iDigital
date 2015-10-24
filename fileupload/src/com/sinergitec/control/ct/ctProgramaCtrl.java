@@ -20,6 +20,8 @@ public class ctProgramaCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctProgramaDao ctPrograma_dao;
 	private List<ctPrograma> lista = new ArrayList<ctPrograma>();
+	private static String INSERT_OR_EDIT = "/ctPrograma_Add.jsp";
+	private static String LIST_CTPROGRAMA = "/ctPrograma_List.jsp";
 	
 	public ctProgramaCtrl() {
 		super();
@@ -29,47 +31,88 @@ public class ctProgramaCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("entro al doGet");
+		String forward = "";
 		String action = request.getParameter("action");
-		//String cCveCia = request.getParameter("cCveCia");
+		Integer iPrograma = null;
+		Integer iMenu = null;
+		/*Misma situacion que el emisor*/
+		/*if(action.equals("list") || action.equals("add")){
+			iPrograma = null;
+		}
+		else{
+			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
+			iMenu = Integer.parseInt(request.getParameter("iMenu"));
+		}*/
+		if(action.equals("update") || action.equals("delete")){
+			iMenu = Integer.parseInt(request.getParameter("iMenu"));
+			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
+		}
+		
+		if (action.equals("delete")) {
+			
+			try {
+				ctPrograma_dao.remove_ctPrograma("SISIMB", iMenu, iPrograma);
+				lista = ctPrograma_dao.list_ctPrograma(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctPrograma", lista);
+			forward = LIST_CTPROGRAMA;
 
-		if (action.equals("list")) {
+		} else if (action.equals("add")) {
+			ctPrograma obj = new ctPrograma();		
+			request.setAttribute("ctPrograma", obj);
+			forward = INSERT_OR_EDIT;
+		} else if (action.equals("update")) {
+			ctPrograma obj = new ctPrograma();
+			try {
+
+				obj = ctPrograma_dao.get_ctPrograma("SISIMB", iMenu, iPrograma);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("ctPrograma", obj);
+			forward = INSERT_OR_EDIT;
+
+		} else if (action.equals("list")) {
 			try {
 				lista = ctPrograma_dao.list_ctPrograma(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 			request.setAttribute("lista_ctPrograma", lista);
-
+			forward = LIST_CTPROGRAMA;
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("/ctPrograma_List.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
 
-		String cCveCia = request.getParameter("cCveCia");
+		Integer iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
+		Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
 		String action = request.getParameter("action");
 
-		if (action.equals("add") || action.equals("edit")) {
+		System.out.println("accion  " + action);
+		System.out.println("menu " + iMenu);
+		System.out.println("programa " + iPrograma);
 
-			System.out.println("doPost entro al add o update ");
+		if (action.equals("add") || action.equals("update")) {
 			ctPrograma obj = new ctPrograma();
 
 			obj.setiPrograma(Integer.parseInt(request.getParameter("iPrograma")));
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
 			obj.setcPrograma(request.getParameter("cPrograma"));
-			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
+			obj.setlActivo( (action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 			obj.setcNombre(request.getParameter("cNombre"));
-
+			
 			if (action.equals("add")) {
 
 				try {
@@ -78,33 +121,24 @@ public class ctProgramaCtrl extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (action.equals("edit")) {
-					try {
-						ctPrograma_dao.update_ctPrograma("SISTEMAS", obj);
-					} catch (Open4GLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
+			} else if (action.equals("update")) {
+				try {
+					ctPrograma_dao.update_ctPrograma("SISTEMAS", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 
 			}
-		}
-		
-
-		
-		try {
-			lista = ctPrograma_dao.list_ctPrograma(true);
-		} catch (Open4GLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		System.out.println("pao por el do post");
-
-		request.setAttribute("lista_ctPrograma", lista);
-		request.getRequestDispatcher("/ctPrograma_List.jsp").forward(request, response);
-
-		
+			
+			try {
+				lista = ctPrograma_dao.list_ctPrograma(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctPrograma", lista);
+		} 
+		 request.getRequestDispatcher("/ctPrograma_List.jsp").forward(request, response);	 
 	}
 }
