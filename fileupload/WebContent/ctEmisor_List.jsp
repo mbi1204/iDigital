@@ -77,7 +77,7 @@
 						<td><c:out value="${ctEmisor.cCP}" /></td>
 						<td><c:out value="${ctEmisor.dtFechaAlta}" /></td>
 						<td><c:out value="${ctEmisor.dtFechaCancel}" /></td>
-						<td><c:out value="${ctEmisor.lActivo}" /></td>
+						<td><c:out value="${ctEmisor.lActivo ? 'SI':'NO'}" /></td>
 						<td><c:out value="${ctEmisor.cAlias}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"

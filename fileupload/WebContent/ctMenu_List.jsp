@@ -47,18 +47,17 @@
 
 						<td><c:out value="${ctMenu.iMenu}" /></td>
 						<td><c:out value="${ctMenu.cMenu}" /></td>
-						<td><c:out value="${ctMenu.lActivo}" /></td>
+						<td><c:out value="${ctMenu.lActivo ? 'SI':'NO'}" /></td>
 						
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
-									onclick="edit_ctCompania(${book.id});">
-
+									onclick="update_ctMenu('${ctMenu.iMenu}');">
 									<i class="fa fa-pencil"></i> Editar
 								</button>
 
 								<a class="pure-button pure-button-primary"
 									onclick="return confirm('Are you sure you want to delete this book?');"
-									href="delete/${book.id}"> <i class="fa fa-times"></i>Eliminar
+									href="ctMenuCtrl?action=delete&iMenu=${ctMenu.iMenu}"></i>Eliminar
 								</a>
 
 							</nobr></td>

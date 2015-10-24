@@ -36,8 +36,11 @@ public class ctEmisorCtrl extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		String cCveCia = request.getParameter("cCveCia");
-		Integer iEmisor = null; //Aqui no lleva valor el iEmisor
-		if(action.equals("list")){
+		Integer iEmisor = null;
+		/*Aqui tuve que realizar este cambio puesto que iEmisor es el que se utiliza
+		 * para identificar el registro, por lo cual solo leo el parametro de iEmisor
+		 * cuando se envia por la url y en la lista pues no leo nada :S*/
+		if(action.equals("list") || action.equals("add")){
 			iEmisor = null; //Aqui no lleva valor el iEmisor
 		}
 		else{
@@ -124,7 +127,7 @@ public class ctEmisorCtrl extends HttpServlet {
 			obj.setcCP(request.getParameter("cCP"));
 			obj.setDtFechaAlta(request.getParameter("dtFechaAlta"));
 			obj.setDtFechaCancel(request.getParameter("dtFechaCancel"));
-			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
+			obj.setlActivo( (action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 			obj.setcAlias(request.getParameter("cAlias"));
 
 			if (action.equals("add")) {
