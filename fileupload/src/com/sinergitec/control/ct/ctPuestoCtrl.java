@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctPuestoDao;
 import com.sinergitec.dao.ct.imp.ctPuestoDaoImp;
-import com.sinergitec.model.ct.ctPrograma;
 import com.sinergitec.model.ct.ctPuesto;
 
 public class ctPuestoCtrl extends HttpServlet {
@@ -21,6 +20,8 @@ public class ctPuestoCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctPuestoDao ctPuesto_dao;
 	private List<ctPuesto> lista = new ArrayList<ctPuesto>();
+	private static String INSERT_OR_EDIT = "/ctPuesto_Add.jsp";
+	private static String LIST_CTPROGRAMA = "/ctPuesto_List.jsp";
 	
 	public ctPuestoCtrl() {
 		super();
@@ -30,81 +31,99 @@ public class ctPuestoCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("entro al doGet");
+		String forward = "";
 		String action = request.getParameter("action");
-		//String cCveCia = request.getParameter("cCveCia");
+		Integer iPuesto = null;
+		
+		/*Misma situacion que el emisor*/
+		if(action.equals("update") || action.equals("delete")){
+			iPuesto = Integer.parseInt(request.getParameter("iPuesto"));
+			System.out.println(iPuesto);
+		}
+		
+		if (action.equals("delete")) {
+			
+			try {
+				ctPuesto_dao.remove_ctPuesto("SISIMB", iPuesto);
+				lista = ctPuesto_dao.list_ctPuesto(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctPuesto", lista);
+			forward = LIST_CTPROGRAMA;
 
-		if (action.equals("list")) {
+		} else if (action.equals("add")) {
+			ctPuesto obj = new ctPuesto();		
+			request.setAttribute("ctPuesto", obj);
+			forward = INSERT_OR_EDIT;
+		} else if (action.equals("update")) {
+			ctPuesto obj = new ctPuesto();
+			try {
+
+				obj = ctPuesto_dao.get_ctPuesto("SISIMB", iPuesto);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("ctPuesto", obj);
+			forward = INSERT_OR_EDIT;
+
+		} else if (action.equals("list")) {
 			try {
 				lista = ctPuesto_dao.list_ctPuesto(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 			request.setAttribute("lista_ctPuesto", lista);
-
+			forward = LIST_CTPROGRAMA;
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("/ctPuesto_List.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
-
-		String cCveCia = request.getParameter("cCveCia");
+		
 		String action = request.getParameter("action");
 
-		if (action.equals("add") || action.equals("edit")) {
-
-			System.out.println("doPost entro al add o update ");
+		if (action.equals("add") || action.equals("update")) {
 			ctPuesto obj = new ctPuesto();
-
 			obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
 			obj.setcPuesto(request.getParameter("cPuesto"));
-			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
-
+			obj.setlActivo((action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
+			
 			if (action.equals("add")) {
-
+				
 				try {
 					ctPuesto_dao.add_ctPuesto("SISTEMAS", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (action.equals("edit")) {
-					try {
-						ctPuesto_dao.update_ctPuesto("SISTEMAS", obj);
-					} catch (Open4GLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
+			} else if (action.equals("update")) {
+				try {
+					ctPuesto_dao.update_ctPuesto("SISTEMAS", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 
 			}
-		}
-		
-
-		
-		try {
-			lista = ctPuesto_dao.list_ctPuesto(true);
-		} catch (Open4GLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		System.out.println("pao por el do post");
-
-		request.setAttribute("lista_ctPuesto", lista);
-		request.getRequestDispatcher("/ctPuesto_List.jsp").forward(request, response);
-
-		
+			
+			try {
+				lista = ctPuesto_dao.list_ctPuesto(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctPuesto", lista);
+		} 
+		 request.getRequestDispatcher("/ctPuesto_List.jsp").forward(request, response);	 
 	}
 	
 }

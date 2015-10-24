@@ -27,7 +27,8 @@
 					if (action.equals("update")) {
 				%>
 
-				<td><input id="iPrograma" name="iPrograma" type="text" maxlength="15"
+				<td><input id="iPrograma" name="iPrograma" type="text" maxlength="15" 
+				value="<c:out value="${ctPrograma.iPrograma}" />"
 					placeholder="Clave del programa" readonly="readonly"></td>
 
 				<%

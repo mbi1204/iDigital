@@ -45,18 +45,18 @@
 
 						<td><c:out value="${ctPuesto.iPuesto}" /></td>
 						<td><c:out value="${ctPuesto.cPuesto}" /></td>
-						<td><c:out value="${ctPuesto.lActivo}" /></td>
+						<td><c:out value="${ctPuesto.lActivo ? 'SI':'NO'}" /></td>
 						
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
-									onclick="edit_ctCompania(${book.id});">
+									onclick="update_ctPuesto('${ctPuesto.iPuesto}');">
 
 									<i class="fa fa-pencil"></i> Editar
 								</button>
 
 								<a class="pure-button pure-button-primary"
 									onclick="return confirm('Are you sure you want to delete this book?');"
-									href="delete/${book.id}"> <i class="fa fa-times"></i>Eliminar
+									href="ctPuestoCtrl?action=delete&iPuesto=${ctPuesto.iPuesto}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 
 							</nobr></td>

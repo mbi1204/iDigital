@@ -46,6 +46,8 @@ public class ctProgramaCtrl extends HttpServlet {
 		if(action.equals("update") || action.equals("delete")){
 			iMenu = Integer.parseInt(request.getParameter("iMenu"));
 			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
+			System.out.println(iMenu);
+			System.out.println(iPrograma);
 		}
 		
 		if (action.equals("delete")) {
@@ -95,26 +97,19 @@ public class ctProgramaCtrl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		Integer iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
-		Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
+		
 		String action = request.getParameter("action");
-
-		System.out.println("accion  " + action);
-		System.out.println("menu " + iMenu);
-		System.out.println("programa " + iPrograma);
 
 		if (action.equals("add") || action.equals("update")) {
 			ctPrograma obj = new ctPrograma();
-
 			obj.setiPrograma(Integer.parseInt(request.getParameter("iPrograma")));
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
 			obj.setcPrograma(request.getParameter("cPrograma"));
-			obj.setlActivo( (action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
+			obj.setlActivo((action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 			obj.setcNombre(request.getParameter("cNombre"));
 			
 			if (action.equals("add")) {
-
+				
 				try {
 					ctPrograma_dao.add_ctPrograma("SISTEMAS", obj);
 				} catch (Open4GLException e) {
