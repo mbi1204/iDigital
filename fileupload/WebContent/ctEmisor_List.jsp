@@ -40,17 +40,17 @@
 					<th width="20">RFC</th>
 					<th width="20">CURP</th>
 					<th width="20">Calle</th>
-					<th width="6">Num Ext</th>
 					<th width="6">Num Int</th>
+					<th width="6">Num Ext</th>
 					<th width="20">Municipio o Delegación</th>
-					<th width="8">CP</th>
-					<th width="14">Estado</th>
-					<th width="10">Pais</th>
 					<th width="20">Email</th>
+					<th width="10">Pais</th>
+					<th width="14">Estado</th>
+					<th width="8">CP</th>
 					<th width="20">Alta</th>
 					<th width="20">Baja</th>
-					<th width="20">Alias</th>
 					<th width="10">Activa?</th>
+					<th width="20">Alias</th>
 					<!-- <th width="12%"></th> -->
 
 
@@ -68,15 +68,17 @@
 						<td><c:out value="${ctEmisor.cRFC}" /></td>
 						<td><c:out value="${ctEmisor.cCURP}" /></td>
 						<td><c:out value="${ctEmisor.cCalle}" /></td>
-						<td><c:out value="${ctEmisor.cNumeroExterior}" /></td>
 						<td><c:out value="${ctEmisor.cNumeroInterior}" /></td>
-						<td><c:out value="${ctEmisor.cEstado}" /></td>
-						<td><c:out value="${ctEmisor.cPais}" /></td>
+						<td><c:out value="${ctEmisor.cNumeroExterior}" /></td>
+						<td><c:out value="${ctEmisor.cMpioDelg}" /></td>
 						<td><c:out value="${ctEmisor.cEmail}" /></td>
+						<td><c:out value="${ctEmisor.cPais}" /></td>
+						<td><c:out value="${ctEmisor.cEstado}" /></td>
+						<td><c:out value="${ctEmisor.cCP}" /></td>
 						<td><c:out value="${ctEmisor.dtFechaAlta}" /></td>
 						<td><c:out value="${ctEmisor.dtFechaCancel}" /></td>
-						<td><c:out value="${ctEmisor.cAlias}" /></td>
 						<td><c:out value="${ctEmisor.lActivo}" /></td>
+						<td><c:out value="${ctEmisor.cAlias}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
 									onclick="update_ctEmisor(${ctEmisor.iEmisor});">

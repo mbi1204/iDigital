@@ -36,13 +36,20 @@ public class ctEmisorCtrl extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		String cCveCia = request.getParameter("cCveCia");
-		System.out.println("Entro al doget");
-		Integer iEmisor = null;
-		System.out.println("No paso del iemisor");
+		Integer iEmisor = null; //Aqui no lleva valor el iEmisor
+		if(action.equals("list")){
+			iEmisor = null; //Aqui no lleva valor el iEmisor
+		}
+		else{
+			iEmisor = Integer.parseInt(request.getParameter("iEmisor"));
+		}
+		
+		
 		if (action.equals("delete")) {
-			
+			//iEmisor = Integer.parseInt(request.getParameter("iEmisor"));
+			System.out.println(iEmisor);
 			try {
-				ctEmisor_dao.remove_ctEmisor(cCveCia, iEmisor);
+				ctEmisor_dao.remove_ctEmisor("SISIMB", iEmisor);
 				lista = ctEmisor_dao.list_ctEmisor(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
@@ -59,7 +66,7 @@ public class ctEmisorCtrl extends HttpServlet {
 			ctEmisor obj = new ctEmisor();
 			try {
 
-				obj = ctEmisor_dao.get_ctEmisor(cCveCia, iEmisor);
+				obj = ctEmisor_dao.get_ctEmisor("SISIMB", iEmisor);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -124,7 +131,7 @@ public class ctEmisorCtrl extends HttpServlet {
 
 				try {
 					
-					ctEmisor_dao.add_ctEmisor(cCveCia, obj);
+					ctEmisor_dao.add_ctEmisor("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -132,7 +139,7 @@ public class ctEmisorCtrl extends HttpServlet {
 			}
 			if (action.equals("update")) {
 				try {
-					ctEmisor_dao.update_ctEmisor(cCveCia, obj);
+					ctEmisor_dao.update_ctEmisor("SISIMB", obj);
 					} catch (Open4GLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -145,7 +152,7 @@ public class ctEmisorCtrl extends HttpServlet {
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				System.out.println("pao por el do post");
+				
 				}
 				request.setAttribute("lista_ctEmisor", lista);
 				}

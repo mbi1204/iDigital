@@ -52,20 +52,20 @@ method="post" action="${actionUrl}" >
 			<tr>
 			<td><label for="cCveCia">Clave Compañia</label></td>
 			<td><input id="cCveCia" name="cCveCia" type="text"
-					maxlength="15" value="" placeholder="Clave de la compañia"></td>
+					maxlength="15" value="${ctEmisor.cCveCia}" placeholder="Clave de la compañia"></td>
 			</tr>
 
 			<tr>
-				<td><label for="cRazonS">Razon Social</label></td>
-				<td><input id="cRazonS" name="cRazonS" type="text"
+				<td><label for="cRazonSocial">Razon Social</label></td>
+				<td><input id="cRazonSocial" name="cRazonSocial" type="text"
 					placeholder="Razon Social"
-					value="<c:out value="${ctEmisor.cRFC}" />"></td>
+					value="<c:out value="${ctEmisor.cRazonSocial}" />"></td>
 			</tr>
 
 			<tr>
 				<td><label for="cRFC">RFC</label></td>
 				<td><input id="cRFC" name="cRFC" type="text" placeholder="RFC"
-					value="<c:out value="${ctEmisor.cRazonSocial}" />"></td>
+					value="<c:out value="${ctEmisor.cRFC}" />"></td>
 			</tr>
 
 			<tr>
@@ -76,17 +76,10 @@ method="post" action="${actionUrl}" >
 			</tr>
 
 			<tr>
-				<td><label for="cCalle">Caller</label></td>
+				<td><label for="cCalle">Calle</label></td>
 				<td><input id="cCalle" name="cCalle" type="text"
 					value="<c:out value="${ctEmisor.cCalle}" />"
 					placeholder="Num Exterior"></td>
-			</tr>
-			
-			<tr>
-				<td><label for="cNumeroInterior">Numero Interior</label></td>
-				<td><input id="cNumeroInterior" name="cNumeroInterior" type="text"
-					value="<c:out value="${ctEmisor.cNumeroInterior}" />"
-					placeholder="Num Interior"></td>
 			</tr>
 			
 			<tr>
@@ -94,6 +87,13 @@ method="post" action="${actionUrl}" >
 				<td><input id="cNumeroExterior" name="cNumeroExterior" type="text"
 					placeholder="Colonia"
 					value="<c:out value="${ctEmisor.cNumeroExterior}" />"></td>
+			</tr>
+			
+			<tr>
+				<td><label for="cNumeroInterior">Numero Interior</label></td>
+				<td><input id="cNumeroInterior" name="cNumeroInterior" type="text"
+					value="<c:out value="${ctEmisor.cNumeroInterior}" />"
+					placeholder="Num Interior"></td>
 			</tr>
 
 			<tr>
@@ -132,7 +132,7 @@ method="post" action="${actionUrl}" >
 
 			<tr>
 				<td><label for="dtFechaAlta">Fecha alta</label></td>
-				<td><input id="dtFechaAlta" name="dtFechaAlta" type="date"
+				<td><input id="dtFechaAlta" name="dtFechaAlta" type="text"
 					placeholder="Fecha de alta"
 					value="<c:out value="${ctEmisor.dtFechaAlta}" />"></td>
 			</tr>
@@ -140,16 +140,8 @@ method="post" action="${actionUrl}" >
 
 			<tr>
 				<td><label for="dtFechaCancel">Fecha baja</label></td>
-				<td><input id="dtFechaCancel" name="dtFechaCancel" type="date"
+				<td><input id="dtFechaCancel" name="dtFechaCancel" type="text"
 					placeholder="Fecha de baja" value="<c:out value="${ctEmisor.dtFechaCancel}" />"></td>
-			</tr>
-
-
-			<tr>
-				<td><label for="cAlias">Alias</label></td>
-				<td><input id="cAlias" name="cAlias" type="text"
-					placeholder="Contacto"
-					value="<c:out value="${ctEmisor.cAlias}" />"></td>
 			</tr>
 
 			<tr>
@@ -166,18 +158,18 @@ method="post" action="${actionUrl}" >
 				<td><input type="radio" name="lActivo" value="false"
 					${not ctCompania.lActivo ? 'checked':''}> NO</td>
 
-
-
 			</tr>
 
 			<%
 				}
 			%>
 
-
-			</tr>
-
-			
+			<tr>
+				<td><label for="cAlias">Alias</label></td>
+				<td><input id="cAlias" name="cAlias" type="text"
+					placeholder="Alias"
+					value="<c:out value="${ctEmisor.cAlias}" />"></td>
+			</tr>			
 
 		</table>
 

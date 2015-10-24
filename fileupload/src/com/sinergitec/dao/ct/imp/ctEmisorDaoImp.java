@@ -100,7 +100,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		}
 	}
 	
-	public void remove_ctEmisor(String cCveCia, int iEmisor) throws Open4GLException, IOException{
+	public void remove_ctEmisor(String cUsuario, int iEmisor) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
@@ -110,7 +110,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 
 		try {
 			
-			app.as_ctEmisor_Borra(cCveCia, iEmisor , ps_Resultado, ps_Texto);
+			app.as_ctEmisor_Borra(cUsuario, iEmisor , ps_Resultado, ps_Texto);
 					
 			System.err.println(ps_Texto.getValue());
 			
@@ -179,7 +179,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		return Lista;
 	}
 	
-	public ctEmisor get_ctEmisor(String cCveCia,int iEmisor) throws Open4GLException, IOException{
+	public ctEmisor get_ctEmisor(String cUsuario,int iEmisor) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
@@ -190,8 +190,8 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		ctEmisor obj = new ctEmisor();
 		
 		try {
-			
-			app.as_ctEmisor_get(cCveCia, iEmisor, tt_ctEmisor, ps_Resultado, ps_Texto);
+			System.out.println("ocupo el get emisor");
+			app.as_ctEmisor_get(cUsuario, iEmisor, tt_ctEmisor, ps_Resultado, ps_Texto);
 			
 			ResultSet rs_tt_ctEmisor = tt_ctEmisor.getResultSetValue();
 			
@@ -204,15 +204,15 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 				obj.setcRFC(rs_tt_ctEmisor.getString("cRFC"));
 				obj.setcCURP(rs_tt_ctEmisor.getString("cCURP"));
 				obj.setcCalle(rs_tt_ctEmisor.getString("cCalle"));
-				obj.setcNumeroExterior(rs_tt_ctEmisor.getString("cNumeroExterior"));
 				obj.setcNumeroInterior(rs_tt_ctEmisor.getString("cNumeroInterior"));
+				obj.setcNumeroExterior(rs_tt_ctEmisor.getString("cNumeroExterior"));
 				obj.setcMpioDelg(rs_tt_ctEmisor.getString("cMpioDelg"));
 				obj.setcEmail(rs_tt_ctEmisor.getString("cEmail"));
 				obj.setcPais(rs_tt_ctEmisor.getString("cPais"));
 				obj.setcEstado(rs_tt_ctEmisor.getString("cEstado"));
 				obj.setcCP(rs_tt_ctEmisor.getString("cCP"));
 				obj.setDtFechaAlta(rs_tt_ctEmisor.getString("dtFechaAlta"));
-				obj.setDtFechaAlta(rs_tt_ctEmisor.getString("dtFechaCancela"));
+				obj.setDtFechaCancel(rs_tt_ctEmisor.getString("dtFechaCancel"));
 				obj.setlActivo(rs_tt_ctEmisor.getBoolean("lActivo"));
 				obj.setcAlias(rs_tt_ctEmisor.getString("cAlias"));
 				obj.setId(rs_tt_ctEmisor.getBytes("id"));

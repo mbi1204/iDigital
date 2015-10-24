@@ -7,9 +7,9 @@ function add_ctEmisor() {
 }
 
 
-function update_ctEmisor(cCveCia) {
+function update_ctEmisor(iEmisor) {
 
-	$.get("ctEmisorCtrl?action=update&cCveCia=" + cCveCia, function(result) {
+	$.get("ctEmisorCtrl?action=update&iEmisor=" + iEmisor, function(result) {
 		$("#ctEmisor_Dialog").html(result);
 		$('#ctEmisor_Dialog').dialog("option", "title", 'Editar Emisor');
 		$("#ctEmisor_Dialog").dialog('open');
