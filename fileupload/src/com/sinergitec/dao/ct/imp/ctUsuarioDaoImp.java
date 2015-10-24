@@ -95,7 +95,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		}
 	}
 	
-	public void remove_ctUsuario(String cUsuario) throws Open4GLException, IOException{
+	public void remove_ctUsuario(String cUsuario, String cUsuario_m) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
@@ -106,7 +106,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		try {
 			
 			
-			//app.as_ctUsuario_Borra(pe_CveUsuario, ipcUsuario, ps_Resultado, ps_Texto);
+			app.as_ctUsuario_Borra(cUsuario, cUsuario_m, ps_Resultado, ps_Texto);
 					
 			System.err.println(ps_Texto.getValue());
 			
@@ -143,7 +143,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setcNombre(rs_tt_ctUsuario.getString("cNombre"));
 				obj.setcPassword(rs_tt_ctUsuario.getString("cPassword"));
 				obj.setlActivo(rs_tt_ctUsuario.getBoolean("lActivo"));
-				obj.setDtFechaAlta(rs_tt_ctUsuario.getTimestamp("dtFechaAlta"));
+				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta"));
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));				
 				
@@ -187,7 +187,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setcNombre(rs_tt_ctUsuario.getString("cNombre"));
 				obj.setcPassword(rs_tt_ctUsuario.getString("cPassword"));
 				obj.setlActivo(rs_tt_ctUsuario.getBoolean("lActivo"));
-				obj.setDtFechaAlta(rs_tt_ctUsuario.getTimestamp("dtFechaAlta"));
+				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta"));
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));
 

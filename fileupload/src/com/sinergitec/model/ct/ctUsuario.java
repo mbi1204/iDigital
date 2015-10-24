@@ -1,7 +1,6 @@
 package com.sinergitec.model.ct;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Vector;
 
 public class ctUsuario {
@@ -10,7 +9,7 @@ public class ctUsuario {
 	private String 	cNombre;
 	private String 	cPassword;
 	private Boolean lActivo;
-	private Timestamp dtFechaAlta;
+	private String dtFechaAlta;
 	private Integer iPuesto;
 	byte[] id;
 	
@@ -39,10 +38,10 @@ public class ctUsuario {
 	public void setlActivo(Boolean lActivo) {
 		this.lActivo = lActivo;
 	}
-	public Timestamp getDtFechaAlta() {
+	public String getDtFechaAlta() {
 		return dtFechaAlta;
 	}
-	public void setDtFechaAlta(Timestamp dtFechaAlta) {
+	public void setDtFechaAlta(String dtFechaAlta) {
 		this.dtFechaAlta = dtFechaAlta;
 	}
 	public Integer getiPuesto() {
@@ -63,14 +62,14 @@ public class ctUsuario {
 		
 		Vector vector = new Vector();
 		
-		Date date = new java.util.Date();
-		this.setDtFechaAlta(new Timestamp(date.getTime()));
+		Timestamp date = Timestamp.valueOf(this.getDtFechaAlta()+" 00:00:00.000000");
+		
 
 		vector.add(this.getcUsuario());
 		vector.add(this.getcNombre());
 		vector.add(this.getcPassword());
 		vector.add(this.getlActivo());
-		vector.add(this.getDtFechaAlta());
+		vector.add(date);
 		vector.add(this.getiPuesto());
 		vector.add(this.getId());
 

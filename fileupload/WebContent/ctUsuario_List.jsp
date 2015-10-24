@@ -48,20 +48,20 @@
 						<td><c:out value="${ctUsuario.cUsuario}" /></td>
 						<td><c:out value="${ctUsuario.cNombre}" /></td>
 						<td><c:out value="${ctUsuario.cPassword}" /></td>
-						<td><c:out value="${ctUsuario.lActivo}" /></td>
+						<td><c:out value="${ctUsuario.lActivo ? 'SI':'NO'}" /></td>
 						<td><c:out value="${ctUsuario.dtFechaAlta}" /></td>
 						<td><c:out value="${ctUsuario.iPuesto}" /></td>
 						
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
-									onclick="edit_ctCompania(${book.id});">
+									onclick="update_ctUsuario('${ctUsuario.cUsuario}');">
 
 									<i class="fa fa-pencil"></i> Editar
 								</button>
 
 								<a class="pure-button pure-button-primary"
 									onclick="return confirm('Are you sure you want to delete this book?');"
-									href="delete/${book.id}"> <i class="fa fa-times"></i>Eliminar
+									href="ctUsuarioCtrl?action=delete&cUsuario=${ctUsuario.cUsuario}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 
 							</nobr></td>
