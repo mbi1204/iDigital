@@ -40,7 +40,7 @@ public class ctUsuarioCtrl extends HttpServlet {
 		if (action.equals("delete")) {
 			
 			try {
-				ctUsuario_dao.remove_ctUsuario("SISIMB", cUsuario);
+				ctUsuario_dao.remove_ctUsuario("SISTEMAS", cUsuario);
 				lista = ctUsuario_dao.list_ctUsuario(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
@@ -57,7 +57,7 @@ public class ctUsuarioCtrl extends HttpServlet {
 			ctUsuario obj = new ctUsuario();
 			try {
 
-				obj = ctUsuario_dao.get_ctUsuario("SISIMB", cUsuario);
+				obj = ctUsuario_dao.get_ctUsuario("SISTEMAS", cUsuario);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

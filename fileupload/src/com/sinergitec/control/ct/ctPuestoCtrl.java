@@ -44,7 +44,7 @@ public class ctPuestoCtrl extends HttpServlet {
 		if (action.equals("delete")) {
 			
 			try {
-				ctPuesto_dao.remove_ctPuesto("SISIMB", iPuesto);
+				ctPuesto_dao.remove_ctPuesto("SISTEMAS", iPuesto);
 				lista = ctPuesto_dao.list_ctPuesto(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
@@ -61,7 +61,7 @@ public class ctPuestoCtrl extends HttpServlet {
 			ctPuesto obj = new ctPuesto();
 			try {
 
-				obj = ctPuesto_dao.get_ctPuesto("SISIMB", iPuesto);
+				obj = ctPuesto_dao.get_ctPuesto("SISTEMAS", iPuesto);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

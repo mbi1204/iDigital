@@ -35,12 +35,6 @@ public class ctMenuCtrl extends HttpServlet {
 		String action = request.getParameter("action");
 		Integer iMenu = null;
 		/*Misma situacion que el emisor*/
-		/*if(action.equals("list") || action.equals("add")){
-			iMenu = null;
-		}
-		else{
-			iMenu = Integer.parseInt(request.getParameter("iMenu"));
-		}*/
 		
 		if(action.equals("delete") || action.equals("update")){
 			iMenu = Integer.parseInt(request.getParameter("iMenu"));
@@ -49,7 +43,7 @@ public class ctMenuCtrl extends HttpServlet {
 		if (action.equals("delete")) {
 			
 			try {
-				ctMenu_dao.remove_ctMenu("SISIMB", iMenu);
+				ctMenu_dao.remove_ctMenu("SISTEMAS", iMenu);
 				lista = ctMenu_dao.list_ctMenu(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
@@ -66,7 +60,7 @@ public class ctMenuCtrl extends HttpServlet {
 			ctMenu obj = new ctMenu();
 			try {
 
-				obj = ctMenu_dao.get_ctMenu("SISIMB", iMenu);
+				obj = ctMenu_dao.get_ctMenu("SISTEMAS", iMenu);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
