@@ -82,6 +82,7 @@ public class ctMenuDaoImp implements ctMenuDao {
 
 		try {
 			app.as_ctMenu_Actualiza(cUsuario, menuModificados, ps_Resultado, ps_Texto);
+			System.out.println(ps_Texto.getValue());
 
 		} finally {
 			app._release();
