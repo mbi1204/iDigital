@@ -37,7 +37,7 @@
 						System.out.println("ento al otro caso");
 				%>
 				<td><input id="iPrograma" name="iPrograma" type="text" maxlength="15"
-					placeholder="Clave del programa"></td>
+					placeholder="Clave del programa" ></td>
 				<%
 					}
 				%>
@@ -47,7 +47,8 @@
 			<tr>
 				<td><label for="iMenu">ID Menu</label></td>
 				<td><input id="iMenu" name="iMenu" type="text" placeholder="Clave del menu"
-				value="<c:out value="${ctPrograma.iMenu}" />">
+				value="<c:out value="${ctPrograma.iMenu}" />"
+				placeholder="Clave del Menu" readonly="readonly">
 				</td>
 			</tr>
 
@@ -57,6 +58,14 @@
 				value="<c:out value="${ctPrograma.cPrograma}" />"></td>
 			</tr>
 
+			
+
+			<tr>
+				<td><label for="cNombre">Nombre</label></td>
+				<td><input id="cNombre" name="cNombre" type="text"
+					placeholder="Nombre" value="<c:out value="${ctPrograma.cNombre}" />"></td>
+			</tr>
+			
 			<%
 				if (action.equals("update")) {
 			%>
@@ -75,12 +84,6 @@
 			<%
 				}
 			%>
-
-			<tr>
-				<td><label for="cNombre">Nombre</label></td>
-				<td><input id="cNombre" name="cNombre" type="text"
-					placeholder="Nombre" value="<c:out value="${ctPrograma.cNombre}" />"></td>
-			</tr>
 
 
 		</table>

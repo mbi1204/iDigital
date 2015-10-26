@@ -12,7 +12,9 @@ import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
 import com.sinergitec.appserver.myDigital;
+import com.sinergitec.dao.ct.ctPuestoDao;
 import com.sinergitec.dao.ct.ctUsuarioDao;
+import com.sinergitec.model.ct.ctPuesto;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
@@ -122,6 +124,11 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		
 		StringHolder opcError = new StringHolder();
 		BooleanHolder oplError = new BooleanHolder();
+		
+		
+		List<ctPuesto> List_ctPuesto = new ArrayList<ctPuesto>();
+		//List_ctPuesto = ctPuestoDaoImp.list_ctPuesto(true);
+		
 				
 		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
 		
@@ -145,7 +152,19 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setlActivo(rs_tt_ctUsuario.getBoolean("lActivo"));
 				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta"));
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
-				obj.setId(rs_tt_ctUsuario.getBytes("id"));				
+				obj.setId(rs_tt_ctUsuario.getBytes("id"));
+				
+					for(ctPuesto obj_ctPuesto : List_ctPuesto){
+					
+					if(obj_ctPuesto.getiPuesto().equals(obj.getiPuesto())){
+						
+						ctPuesto obj_nctPuesto = new ctPuesto();
+						obj_nctPuesto.setiPuesto(obj_ctPuesto.getiPuesto());
+						obj_nctPuesto.setcPuesto(obj_ctPuesto.getcPuesto());
+						//obj.setPuesto(obj_nctPuesto);
+
+						}
+				}
 				
 		
 			

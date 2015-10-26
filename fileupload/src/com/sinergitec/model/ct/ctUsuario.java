@@ -1,6 +1,9 @@
 package com.sinergitec.model.ct;
 
+
+
 import java.sql.Timestamp;
+
 import java.util.Vector;
 
 public class ctUsuario {
@@ -61,6 +64,9 @@ public class ctUsuario {
 	public Vector getVectorDatos() {
 		
 		Vector vector = new Vector();
+		
+		//Date date = Date.valueOf(this.getDtFechaAlta());
+
 		
 		Timestamp date = Timestamp.valueOf(this.getDtFechaAlta()+" 00:00:00.000000");
 		

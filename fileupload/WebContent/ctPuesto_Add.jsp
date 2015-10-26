@@ -29,7 +29,7 @@
 
 				<td><input id="iPuesto" name="iPuesto" type="text"
 					maxlength="15" value="<c:out value="${ctPuesto.iPuesto}" />"
-					placeholder="Clave del programa" readonly="readonly"></td>
+					placeholder="Clave del programa" readonly="true"></td>
 
 				<%
 							} else {

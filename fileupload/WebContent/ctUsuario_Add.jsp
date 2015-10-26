@@ -51,10 +51,25 @@
 
 			<tr>
 				<td><label for="cPassword">Password</label></td>
-				<td><input id="cPassword" name="cPassword" type="text"
+				<td><input id="cPassword" name="cPassword" type="password"
 					placeholder="Password" value="<c:out value="${ctUsuario.cPassword}" />"></td>
 			</tr>
 
+			
+
+			<tr>
+				<td><label for="dtFechaAlta">Fecha de Alta</label></td>
+				<td><input id="dtFechaAlta" name="dtFechaAlta" type="date" 
+					 value="<c:out value="${ctUsuario.dtFechaAlta}" />" placeholder="Fecha de Alta"></td>
+			</tr>
+
+
+			<tr>
+				<td><label for="iPuesto">Puesto</label></td>
+				<td><input id="iPuesto" name="iPuesto" type="text"
+					placeholder="Puesto" value="<c:out value="${ctUsuario.iPuesto}" />"></td>
+			</tr>
+			
 			<%
 				if (action.equals("update")) {
 			%>
@@ -73,19 +88,6 @@
 			<%
 				}
 			%>
-
-			<tr>
-				<td><label for="dtFechaAlta">Fecha de Alta</label></td>
-				<td><input id="dtFechaAlta" name="dtFechaAlta" type="text"
-					 value="<c:out value="${ctUsuario.dtFechaAlta}" />" placeholder="Fecha de Alta"></td>
-			</tr>
-
-
-			<tr>
-				<td><label for="iPuesto">Puesto</label></td>
-				<td><input id="iPuesto" name="iPuesto" type="text"
-					placeholder="Puesto" value="<c:out value="${ctUsuario.iPuesto}" />"></td>
-			</tr>
 
 
 		</table>
