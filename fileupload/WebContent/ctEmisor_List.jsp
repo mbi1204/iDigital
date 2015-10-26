@@ -87,7 +87,7 @@
 								</button>
 
 								<a class="pure-button pure-button-primary"
-									onclick="return confirm('¿Desea Eliminar el Emisor?');"
+									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
 									href="ctEmisorCtrl?action=delete&iEmisor=${ctEmisor.iEmisor}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 

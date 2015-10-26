@@ -55,7 +55,7 @@
 								</button>
 
 								<a class="pure-button pure-button-primary"
-									onclick="return confirm('Are you sure you want to delete this book?');"
+									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
 									href="ctPuestoCtrl?action=delete&iPuesto=${ctPuesto.iPuesto}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 

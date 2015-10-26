@@ -60,7 +60,7 @@
 								</button>
 
 								<a class="pure-button pure-button-primary"
-									onclick="return confirm('Are you sure you want to delete this book?');"
+									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
 									href="ctProgramaCtrl?action=delete&iMenu=${ctPrograma.iMenu}&iPrograma=${ctPrograma.iPrograma}"> <i class="fa fa-times"></i>Eliminar
 								</a>
 
