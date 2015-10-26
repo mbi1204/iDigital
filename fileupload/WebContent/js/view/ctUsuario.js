@@ -33,10 +33,10 @@ $(document).ready(function() {
 		resizable : false,
 		width : 440,
 		buttons : {
-			"Save" : function() {
+			"Guardar" : function() {
 				$('#ctUsuario_Form').submit();
 			},
-			"Cancel" : function() {
+			"Cancelar" : function() {
 				$(this).dialog('close');
 			}
 		},

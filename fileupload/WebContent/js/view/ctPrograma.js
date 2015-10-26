@@ -36,10 +36,10 @@ $(document).ready(function() {
 		resizable : false,
 		width : 440,
 		buttons : {
-			"Save" : function() {
+			"Guardar" : function() {
 				$('#ctPrograma_Form').submit();
 			},
-			"Cancel" : function() {
+			"Cancelar" : function() {
 				$(this).dialog('close');
 			}
 		},

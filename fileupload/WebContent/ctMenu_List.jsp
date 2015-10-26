@@ -56,7 +56,7 @@
 								</button>
 
 								<a class="pure-button pure-button-primary"
-									onclick="return confirm('Are you sure you want to delete this book?');"
+									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
 									href="ctMenuCtrl?action=delete&iMenu=${ctMenu.iMenu}"></i>Eliminar
 								</a>
 
