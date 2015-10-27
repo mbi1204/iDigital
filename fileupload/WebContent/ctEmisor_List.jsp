@@ -48,9 +48,10 @@
 					<th width="14">Estado</th>
 					<th width="8">CP</th>
 					<th width="20">Alta</th>
-					<th width="20">Baja</th>
-					<th width="10">Activa?</th>
+					
+					
 					<th width="20">Alias</th>
+					<th width="10">Activa?</th>
 					<!-- <th width="12%"></th> -->
 
 
@@ -76,9 +77,10 @@
 						<td><c:out value="${ctEmisor.cEstado}" /></td>
 						<td><c:out value="${ctEmisor.cCP}" /></td>
 						<td><c:out value="${ctEmisor.dtFechaAlta}" /></td>
-						<td><c:out value="${ctEmisor.dtFechaCancel}" /></td>
-						<td><c:out value="${ctEmisor.lActivo ? 'SI':'NO'}" /></td>
+						
+						
 						<td><c:out value="${ctEmisor.cAlias}" /></td>
+						<td><c:out value="${ctEmisor.lActivo ? 'SI':'NO'}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
 									onclick="update_ctEmisor(${ctEmisor.iEmisor});">
