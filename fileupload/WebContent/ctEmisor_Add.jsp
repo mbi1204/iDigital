@@ -145,6 +145,13 @@ method="post" action="${actionUrl}" >
 			</tr>
 
 			<tr>
+				<td><label for="cAlias">Alias</label></td>
+				<td><input id="cAlias" name="cAlias" type="text"
+					placeholder="Alias"
+					value="<c:out value="${ctEmisor.cAlias}" />"></td>
+			</tr>
+			
+			<tr>
 
 				<%
 				if (action.equals("update")) {
@@ -162,14 +169,7 @@ method="post" action="${actionUrl}" >
 
 			<%
 				}
-			%>
-
-			<tr>
-				<td><label for="cAlias">Alias</label></td>
-				<td><input id="cAlias" name="cAlias" type="text"
-					placeholder="Alias"
-					value="<c:out value="${ctEmisor.cAlias}" />"></td>
-			</tr>			
+			%>			
 
 		</table>
 

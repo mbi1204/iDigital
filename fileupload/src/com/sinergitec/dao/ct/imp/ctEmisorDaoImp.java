@@ -156,7 +156,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 				obj.setcPais(rs_tt_ctEmisor.getString("cPais"));
 				obj.setcEstado(rs_tt_ctEmisor.getString("cEstado"));
 				obj.setcCP(rs_tt_ctEmisor.getString("cCP"));
-				obj.setDtFechaAlta(rs_tt_ctEmisor.getString("dtFechaAlta"));
+				obj.setDtFechaAlta(rs_tt_ctEmisor.getString("dtFechaAlta").substring(0, 10));
 				obj.setDtFechaCancel(rs_tt_ctEmisor.getString("dtFechaCancel"));
 				obj.setlActivo(rs_tt_ctEmisor.getBoolean("lActivo"));
 				obj.setcAlias(rs_tt_ctEmisor.getString("cAlias"));
