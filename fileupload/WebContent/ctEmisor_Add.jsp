@@ -130,7 +130,7 @@ method="post" action="${actionUrl}" >
 					value="<c:out value="${ctEmisor.cCP}" />"></td>
 			</tr>
 
-			<tr>
+			<!--<tr>
 				<td><label for="dtFechaAlta">Fecha alta</label></td>
 				<td><input id="dtFechaAlta" name="dtFechaAlta" type="text"
 					placeholder="Fecha de alta"
@@ -142,7 +142,7 @@ method="post" action="${actionUrl}" >
 				<td><label for="dtFechaCancel">Fecha baja</label></td>
 				<td><input id="dtFechaCancel" name="dtFechaCancel" type="text"
 					placeholder="Fecha de baja" value="<c:out value="${ctEmisor.dtFechaCancel}" />"></td>
-			</tr>
+			</tr> -->
 
 			<tr>
 				<td><label for="cAlias">Alias</label></td>
@@ -150,26 +150,27 @@ method="post" action="${actionUrl}" >
 					placeholder="Alias"
 					value="<c:out value="${ctEmisor.cAlias}" />"></td>
 			</tr>
-			
-			<tr>
 
-				<%
+
+			<%
 				if (action.equals("update")) {
 			%>
 
 			<tr>
 				<td><label for="lActivo">Activo?</label></td>
 				<td><input type="radio" name="lActivo" value="true"
-					${ctCompania.lActivo ? 'checked':''}> SI</td>
+					${ctEmisor.lActivo ? 'checked':''}> SI</td>
 					
 				<td><input type="radio" name="lActivo" value="false"
-					${not ctCompania.lActivo ? 'checked':''}> NO</td>
+					${not ctEmisor.lActivo ? 'checked':''}> NO</td>
+
+
 
 			</tr>
 
 			<%
 				}
-			%>			
+			%>	
 
 		</table>
 

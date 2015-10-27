@@ -35,7 +35,7 @@
 			<thead>
 				<tr>
 					<th width="20">ID Emisor</th>
-					<th width="20">cCveCia</th>
+					<th width="20">Compañia</th>
 					<th width="30">Razon Social</th>
 					<th width="20">RFC</th>
 					<th width="20">CURP</th>
@@ -51,7 +51,7 @@
 					
 					
 					<th width="20">Alias</th>
-					<th width="10">Activa?</th>
+					<th width="10">Activo?</th>
 					<!-- <th width="12%"></th> -->
 
 

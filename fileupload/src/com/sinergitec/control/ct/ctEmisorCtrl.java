@@ -1,7 +1,9 @@
 package com.sinergitec.control.ct;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -52,7 +54,7 @@ public class ctEmisorCtrl extends HttpServlet {
 			//iEmisor = Integer.parseInt(request.getParameter("iEmisor"));
 			System.out.println(iEmisor);
 			try {
-				ctEmisor_dao.remove_ctEmisor("SISIMB", iEmisor);
+				ctEmisor_dao.remove_ctEmisor("SISTEMAS", iEmisor);
 				lista = ctEmisor_dao.list_ctEmisor(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
@@ -69,7 +71,7 @@ public class ctEmisorCtrl extends HttpServlet {
 			ctEmisor obj = new ctEmisor();
 			try {
 
-				obj = ctEmisor_dao.get_ctEmisor("SISIMB", iEmisor);
+				obj = ctEmisor_dao.get_ctEmisor("SISTEMAS", iEmisor);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -109,6 +111,11 @@ public class ctEmisorCtrl extends HttpServlet {
 			System.out.println("doPost entro al add o update ");
 			ctEmisor obj = new ctEmisor();
 			
+			Date now = new Date(System.currentTimeMillis());
+			SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat hour = new SimpleDateFormat("HH:mm:ss.ssssss");
+			System.out.println(date.format(now)+" "+hour.format(now));
+			
 			System.out.println(request.getParameter("iEmisor"));
 
 			
@@ -133,8 +140,9 @@ public class ctEmisorCtrl extends HttpServlet {
 			if (action.equals("add")) {
 
 				try {
+					obj.setDtFechaAlta(date.format(now)+" "+hour.format(now));
 					
-					ctEmisor_dao.add_ctEmisor("SISIMB", obj);
+					ctEmisor_dao.add_ctEmisor("SISTEMAS", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -142,7 +150,8 @@ public class ctEmisorCtrl extends HttpServlet {
 			}
 			if (action.equals("update")) {
 				try {
-					ctEmisor_dao.update_ctEmisor("SISIMB", obj);
+					obj.setDtFechaCancel(date.format(now)+" "+hour.format(now));
+					ctEmisor_dao.update_ctEmisor("SISTEMAS", obj);
 					} catch (Open4GLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

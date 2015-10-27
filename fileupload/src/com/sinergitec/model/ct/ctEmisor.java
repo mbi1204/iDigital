@@ -1,6 +1,8 @@
 package com.sinergitec.model.ct;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 public class ctEmisor {
@@ -140,12 +142,11 @@ public class ctEmisor {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Vector getVectorDatos() {
 		Vector vector = new Vector();
-		
-		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta() + " 00:00:00.000000");
-		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel() + " 00:00:00.000000");
+
+		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta());
+		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel());
 		System.out.println(dtFechaAlta);
 		System.out.println(dtFechaCancel);
-		
 
 		vector.add(this.getiEmisor());
 		vector.add(this.getcCveCia());
