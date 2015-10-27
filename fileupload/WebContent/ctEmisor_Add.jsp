@@ -51,9 +51,25 @@ method="post" action="${actionUrl}" >
 			
 			<tr>
 			<td><label for="cCveCia">Clave Compañia</label></td>
+				<%
+				System.out.println("Entro a la vista");
+					if (action.equals("update")) {
+						System.out.println("ento al update");
+				%>
 			<td><input id="cCveCia" name="cCveCia" type="text"
+					maxlength="15" value="${ctEmisor.cCveCia}" placeholder="Clave de la compañia" readonly="readonly"></td>
+			
+			<%
+					} else {
+
+						System.out.println(" compañia ento al otro caso");
+				%>
+					<td><input id="cCveCia" name="cCveCia" type="text"
 					maxlength="15" value="${ctEmisor.cCveCia}" placeholder="Clave de la compañia"></td>
-			</tr>
+					</tr>
+				<%
+					}
+				%>
 
 			<tr>
 				<td><label for="cRazonSocial">Razon Social</label></td>

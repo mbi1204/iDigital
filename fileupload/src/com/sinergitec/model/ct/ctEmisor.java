@@ -143,6 +143,7 @@ public class ctEmisor {
 	public Vector getVectorDatos() {
 		Vector vector = new Vector();
 
+		System.out.println("Hasta aqui llega");
 		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta());
 		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel());
 		System.out.println(dtFechaAlta);
