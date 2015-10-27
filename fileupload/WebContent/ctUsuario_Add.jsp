@@ -60,7 +60,8 @@
 			<tr>
 				<td><label for="dtFechaAlta">Fecha de Alta</label></td>
 				<td><input id="dtFechaAlta" name="dtFechaAlta" type="date" 
-					 value="<c:out value="${ctUsuario.dtFechaAlta}" />" placeholder="Fecha de Alta"></td>
+					 value="<c:out value="${ctUsuario.dtFechaAlta}" />" placeholder="Fecha de Alta" 
+					 ></td>
 			</tr>
 
 

@@ -14,6 +14,7 @@ import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
 import com.sinergitec.model.ct.ctUsuario;
+import com.sun.jmx.snmp.Timestamp;
 
 public class ctUsuarioCtrl extends HttpServlet {
 
@@ -95,7 +96,6 @@ public class ctUsuarioCtrl extends HttpServlet {
 			obj.setlActivo((action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 			obj.setDtFechaAlta(request.getParameter("dtFechaAlta"));
 			obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
-			
 			
 			if (action.equals("add")) {
 				

@@ -154,7 +154,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));
 				
-					for(ctPuesto obj_ctPuesto : List_ctPuesto){
+					/*for(ctPuesto obj_ctPuesto : List_ctPuesto){
 					
 					if(obj_ctPuesto.getiPuesto().equals(obj.getiPuesto())){
 						
@@ -164,7 +164,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 						//obj.setPuesto(obj_nctPuesto);
 
 						}
-				}
+				}*/
 				
 		
 			
@@ -206,7 +206,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setcNombre(rs_tt_ctUsuario.getString("cNombre"));
 				obj.setcPassword(rs_tt_ctUsuario.getString("cPassword"));
 				obj.setlActivo(rs_tt_ctUsuario.getBoolean("lActivo"));
-				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta"));
+				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta").substring(0, 10));
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));
 

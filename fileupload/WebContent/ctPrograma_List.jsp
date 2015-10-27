@@ -35,8 +35,8 @@
 					<th width="20">ID Programa</th>
 					<th width="30">ID Menu</th>
 					<th width="20">Programa</th>
-					<th width="30">Estatus</th>
 					<th width="20">Nombre</th>
+					<th width="30">Estatus</th>
 
 				</tr>
 			</thead>
@@ -49,8 +49,8 @@
 						<td><c:out value="${ctPrograma.iPrograma}" /></td>
 						<td><c:out value="${ctPrograma.iMenu}" /></td>
 						<td><c:out value="${ctPrograma.cPrograma}" /></td>
-						<td><c:out value="${ctPrograma.lActivo ? 'SI':'NO'}" /></td>
 						<td><c:out value="${ctPrograma.cNombre}" /></td>
+						<td><c:out value="${ctPrograma.lActivo ? 'SI':'NO'}" /></td>
 						
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
