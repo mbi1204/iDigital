@@ -146,7 +146,7 @@ method="post" action="${actionUrl}" >
 					value="<c:out value="${ctEmisor.cCP}" />"></td>
 			</tr>
 
-			<!--<tr>
+			<!--  <tr>
 				<td><label for="dtFechaAlta">Fecha alta</label></td>
 				<td><input id="dtFechaAlta" name="dtFechaAlta" type="text"
 					placeholder="Fecha de alta"

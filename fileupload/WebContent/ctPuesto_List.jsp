@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ctMenu</title>
+<title>ctPuesto</title>
 <link href="css/pure-0.4.2.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="css/font-awesome-4.0.3/css/font-awesome.css"

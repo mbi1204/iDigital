@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+
 import com.progress.open4gl.BooleanHolder;
 import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
 import com.sinergitec.appserver.myDigital;
+import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctEmisorDao;
+import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.model.ct.ctEmisor;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
@@ -20,6 +23,9 @@ import com.sinergitec.mydigital.util.VectorResultSet;
 
 
 public class ctEmisorDaoImp implements ctEmisorDao {
+	
+	
+	private ctCompaniaDao ctCompaniaDao;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctEmisor(String cUsuario, ctEmisor obj_ctEmisor) throws Open4GLException, IOException{
@@ -130,6 +136,7 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 				
 		List<ctEmisor> Lista = new ArrayList<ctEmisor>();
 		
+		
 		Connection conexion = DBConexion.getConnection();
 		myDigital app = new myDigital(conexion);
 		
@@ -163,8 +170,6 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 				obj.setcAlias(rs_tt_ctEmisor.getString("cAlias"));
 				obj.setId(rs_tt_ctEmisor.getBytes("id"));				
 				
-		
-			
 				Lista.add(obj);
 			}
 			
@@ -190,6 +195,9 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 		myDigital app = new myDigital(conexion);
 		ctEmisor obj = new ctEmisor();
 		
+		//List<ctCompania> List_ctCompania = new ArrayList<ctCompania>();
+		//List_ctCompania = ctCompaniaDao.list_ctCompania(true);
+		
 		try {
 			System.out.println("ocupo el get emisor");
 			app.as_ctEmisor_get(cUsuario, iEmisor, tt_ctEmisor, ps_Resultado, ps_Texto);
@@ -212,14 +220,23 @@ public class ctEmisorDaoImp implements ctEmisorDao {
 				obj.setcPais(rs_tt_ctEmisor.getString("cPais"));
 				obj.setcEstado(rs_tt_ctEmisor.getString("cEstado"));
 				obj.setcCP(rs_tt_ctEmisor.getString("cCP"));
-				obj.setDtFechaAlta(rs_tt_ctEmisor.getString("dtFechaAlta").substring(0, 10));
+				obj.setDtFechaAlta(rs_tt_ctEmisor.getString("dtFechaAlta"));
 				obj.setDtFechaCancel(rs_tt_ctEmisor.getString("dtFechaCancel"));
 				obj.setlActivo(rs_tt_ctEmisor.getBoolean("lActivo"));
 				obj.setcAlias(rs_tt_ctEmisor.getString("cAlias"));
 				obj.setId(rs_tt_ctEmisor.getBytes("id"));
-
-
-			}
+				
+				/*for(ctCompania obj_ctCompania : List_ctCompania){
+					
+					
+					if(obj_ctCompania.getcCveCia().equals(obj.getcCveCia())){
+						
+						ctCompania obj_nctCompania = new ctCompania();
+						obj_nctCompania.setcCveCia(obj_ctCompania.getcCveCia());
+						obj.setCompania(obj_nctCompania);
+						}
+					}*/
+				}
 			
 		} catch (Exception ex) {
 			System.err.println(ex);
