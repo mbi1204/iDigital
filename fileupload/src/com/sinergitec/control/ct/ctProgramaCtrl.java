@@ -104,7 +104,7 @@ public class ctProgramaCtrl extends HttpServlet {
 
 		if (action.equals("add") || action.equals("update")) {
 			ctPrograma obj = new ctPrograma();
-			obj.setiPrograma(Integer.parseInt(request.getParameter("iPrograma")));
+			
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
 			obj.setcPrograma(request.getParameter("cPrograma"));
 			obj.setlActivo((action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
@@ -113,14 +113,15 @@ public class ctProgramaCtrl extends HttpServlet {
 			if (action.equals("add")) {
 				
 				try {
-					ctPrograma_dao.add_ctPrograma("SISTEMAS", obj);
+					ctPrograma_dao.add_ctPrograma("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if (action.equals("update")) {
 				try {
-					ctPrograma_dao.update_ctPrograma("SISTEMAS", obj);
+					obj.setiPrograma(Integer.parseInt(request.getParameter("iPrograma")));
+					ctPrograma_dao.update_ctPrograma("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

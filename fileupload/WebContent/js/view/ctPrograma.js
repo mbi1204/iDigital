@@ -1,16 +1,11 @@
-/**
- * 
- */
-
 function add_ctPrograma() {
-
-	$.get("ctProgramaCtrl?action=add", function(result) {
+		$.get("ctProgramaCtrl?action=add", function(result) {
 		$("#ctPrograma_Dialog").html(result);
 		$('#ctPrograma_Dialog').dialog("option", "title", 'Agregar Programa');
 		$("#ctPrograma_Dialog").dialog('open');
 	});
-
 }
+
 
 function update_ctPrograma(iMenu,iPrograma) {
 
@@ -22,7 +17,9 @@ function update_ctPrograma(iMenu,iPrograma) {
 
 }
 
+function resetDialog(form) {
 
+}
 
 $(document).ready(function() {
 

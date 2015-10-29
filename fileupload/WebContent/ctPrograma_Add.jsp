@@ -22,12 +22,12 @@
 		<table>
 
 			<tr>
-				<td><label for="iPrograma">ID Programa</label></td>
+				
 				<%
 					if (action.equals("update")) {
 				%>
-				
-	
+
+				<td><label for="iPrograma">ID Programa</label></td>
 				<td><input id="iPrograma" name="iPrograma" type="text" maxlength="15" 
 				value="<c:out value="${ctPrograma.iPrograma}" />"
 					placeholder="Clave del programa" readonly="readonly"></td>
@@ -37,8 +37,8 @@
 
 						System.out.println("ento al otro caso");
 				%>
-				<td><input id="iPrograma" name="iPrograma" type="text" maxlength="15"
-					placeholder="Clave del programa" ></td>
+				<!--  <td><input id="iPrograma" name="iPrograma" type="text" maxlength="15"
+					placeholder="Clave del programa" ></td> -->
 				<%
 					}
 				%>
@@ -46,10 +46,10 @@
 			</tr>
 
 			<tr>
-				<td><label for="iMenu">ID Menu</label></td>
+				<td><label for="iMenu">Menu</label></td>
 				<td><input id="iMenu" name="iMenu" type="text" placeholder="Clave del menu"
 				value="<c:out value="${ctPrograma.iMenu}" />"
-				placeholder="Clave del Menu" readonly="readonly">
+				placeholder="Clave del Menu">
 				</td>
 			</tr>
 

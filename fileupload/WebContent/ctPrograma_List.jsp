@@ -33,7 +33,7 @@
 			<thead>
 				<tr>
 					<th width="20">ID Programa</th>
-					<th width="30">ID Menu</th>
+					<th width="30">Menu</th>
 					<th width="20">Programa</th>
 					<th width="20">Nombre</th>
 					<th width="30">Estatus</th>
