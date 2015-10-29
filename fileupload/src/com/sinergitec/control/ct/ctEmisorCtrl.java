@@ -132,16 +132,14 @@ public class ctEmisorCtrl extends HttpServlet {
 			obj.setcPais(request.getParameter("cPais"));
 			obj.setcEstado(request.getParameter("cEstado"));
 			obj.setcCP(request.getParameter("cCP"));
-			/*obj.setDtFechaAlta(request.getParameter("dtFechaAlta"));
-			obj.setDtFechaCancel(request.getParameter("dtFechaCancel"));*/
+			obj.setDtFechaAlta(request.getParameter("dtFechaAlta"));
+			obj.setDtFechaCancel(request.getParameter("dtFechaCancel"));
 			obj.setlActivo( (action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 			obj.setcAlias(request.getParameter("cAlias"));
 
 			if (action.equals("add")) {
 
 				try {
-					obj.setDtFechaAlta(date.format(now)+" "+hour.format(now));
-					obj.setDtFechaCancel("0001-01-01 00:00:00.000000");
 					System.out.println("Esta es la fecha"+obj.getDtFechaAlta());
 					ctEmisor_dao.add_ctEmisor("SISTEMAS", obj);
 				} catch (Open4GLException e) {
@@ -151,6 +149,7 @@ public class ctEmisorCtrl extends HttpServlet {
 			}
 			if (action.equals("update")) {
 				try {
+					System.out.println("Pasa por aqui");
 					obj.setDtFechaCancel("0001-01-01 00:00:00.000000");
 					ctEmisor_dao.update_ctEmisor("SISTEMAS", obj);
 					} catch (Open4GLException e) {

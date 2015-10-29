@@ -88,30 +88,30 @@ public class ctMenuCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
 		String action = request.getParameter("action");
 
 		System.out.println("accion  " + action);
-		System.out.println("menu " + iMenu);
 
 		if (action.equals("add") || action.equals("update")) {
 			ctMenu obj = new ctMenu();
 
-			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
+			//obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
 			obj.setcMenu(request.getParameter("cMenu"));
 			obj.setlActivo( (action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 
 			if (action.equals("add")) {
 
 				try {
-					ctMenu_dao.add_ctMenu("SISTEMAS", obj);
+					ctMenu_dao.add_ctMenu("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if (action.equals("update")) {
 				try {
-					ctMenu_dao.update_ctMenu("SISTEMAS", obj);
+					obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
+					System.out.println("Estoy apunto de enviar el objeto "+obj.getiMenu());
+					ctMenu_dao.update_ctMenu("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

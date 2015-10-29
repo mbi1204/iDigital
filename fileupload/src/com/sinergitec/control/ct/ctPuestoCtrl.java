@@ -44,7 +44,7 @@ public class ctPuestoCtrl extends HttpServlet {
 		if (action.equals("delete")) {
 			
 			try {
-				ctPuesto_dao.remove_ctPuesto("SISTEMAS", iPuesto);
+				ctPuesto_dao.remove_ctPuesto("SISIMB", iPuesto);
 				lista = ctPuesto_dao.list_ctPuesto(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
@@ -61,7 +61,7 @@ public class ctPuestoCtrl extends HttpServlet {
 			ctPuesto obj = new ctPuesto();
 			try {
 
-				obj = ctPuesto_dao.get_ctPuesto("SISTEMAS", iPuesto);
+				obj = ctPuesto_dao.get_ctPuesto("SISIMB", iPuesto);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -93,21 +93,23 @@ public class ctPuestoCtrl extends HttpServlet {
 
 		if (action.equals("add") || action.equals("update")) {
 			ctPuesto obj = new ctPuesto();
-			obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
+			
+			//obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
 			obj.setcPuesto(request.getParameter("cPuesto"));
 			obj.setlActivo((action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
 			
 			if (action.equals("add")) {
 				
 				try {
-					ctPuesto_dao.add_ctPuesto("SISTEMAS", obj);
+					ctPuesto_dao.add_ctPuesto("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if (action.equals("update")) {
 				try {
-					ctPuesto_dao.update_ctPuesto("SISTEMAS", obj);
+					obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
+					ctPuesto_dao.update_ctPuesto("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

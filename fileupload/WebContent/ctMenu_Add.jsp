@@ -21,12 +21,11 @@
 		<legend></legend>
 		<table>
 
-			<tr>
-				<td><label for="iMenu">ID Menu</label></td>
+			  <tr>
 				<%
 					if (action.equals("update")) {
 				%>
-
+				<td><label for="iMenu">ID Menu</label></td>
 				<td><input id="iMenu" name="iMenu" type="text" maxlength="15"
 					value="<c:out value="${ctMenu.iMenu}" />"
 					placeholder="Clave del menu" readonly="readonly"></td>
@@ -36,9 +35,9 @@
 
 						System.out.println("ento al otro caso");
 				%>
-				<td><input id="iMenu" name="iMenu" type="text" maxlength="15"
+				<!--  <td><input id="iMenu" name="iMenu" type="text" maxlength="15"
 					value="<c:out value="${ctMenu.iMenu}" />"
-					placeholder="Clave del menu"></td>
+					placeholder="Clave del menu"></td>-->
 				<%
 					}
 				%>

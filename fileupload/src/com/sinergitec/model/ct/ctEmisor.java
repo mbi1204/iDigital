@@ -1,8 +1,5 @@
 package com.sinergitec.model.ct;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Vector;
 
 public class ctEmisor {
@@ -25,6 +22,7 @@ public class ctEmisor {
 	private Boolean lActivo;
 	private String cAlias;
 	byte[] id;
+	private ctCompania compania;
 	
 	
 	public Integer getiEmisor() {
@@ -137,17 +135,18 @@ public class ctEmisor {
 	public void setId(byte[] id) {
 		this.id = id;
 	}
+	public ctCompania getCompania() {
+		return compania;
+	}
+	public void setCompania(ctCompania compania) {
+		this.compania = compania;
+	}
 	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Vector getVectorDatos() {
 		Vector vector = new Vector();
 
-		System.out.println("Hasta aqui llega");
-		Timestamp dtFechaAlta = Timestamp.valueOf(this.getDtFechaAlta());
-		Timestamp dtFechaCancel = Timestamp.valueOf(this.getDtFechaCancel());
-		System.out.println(dtFechaAlta);
-		System.out.println(dtFechaCancel);
 
 		vector.add(this.getiEmisor());
 		vector.add(this.getcCveCia());
@@ -162,8 +161,8 @@ public class ctEmisor {
 		vector.add(this.getcPais());
 		vector.add(this.getcEstado());
 		vector.add(this.getcCP());
-		vector.add(dtFechaAlta);
-		vector.add(dtFechaCancel);
+		vector.add(this.getDtFechaAlta());
+		vector.add(this.getDtFechaCancel());
 		vector.add(this.getlActivo());
 		vector.add(this.getcAlias());
 		vector.add(this.getId());

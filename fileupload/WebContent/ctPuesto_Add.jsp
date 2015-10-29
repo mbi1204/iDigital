@@ -21,27 +21,27 @@
 				<legend></legend>
 		<table>
 
-			<tr>
-				<td><label for="iPuesto">Id Puesto</label></td>
+			 <tr>
 				<%
 							if (action.equals("update")) {
 						%>
-
-				<td><input id="iPuesto" name="iPuesto" type="text"
+				 <td><label for="iPuesto">Id Puesto</label></td>		
+				 <td><input id="iPuesto" name="iPuesto" type="text"
 					maxlength="15" value="<c:out value="${ctPuesto.iPuesto}" />"
-					placeholder="Clave del programa" readonly="true"></td>
+					placeholder="Clave del programa" readonly="true"></td> 
 
 				<%
 							} else {
 
 								System.out.println("ento al otro caso");
 						%>
+				<!-- <td><label for="iPuesto">Id Puesto</label></td>		
 				<td><input id="iPuesto" name="iPuesto" type="text"
-					maxlength="15" placeholder="ID Puesto"></td>
+					maxlength="15" placeholder="ID Puesto"></td> -->
 				<%
 									}
 						%>
-			</tr>
+			</tr> 
 
 			<tr>
 				<td><label for="cPuesto">Puesto</label></td>
