@@ -42,10 +42,12 @@ public class ctProgramaCtrl extends HttpServlet {
 		else{
 			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
 			iMenu = Integer.parseInt(request.getParameter("iMenu"));
-		}*/
+		}
+		*/
 		if(action.equals("update") || action.equals("delete")){
 			iMenu = Integer.parseInt(request.getParameter("iMenu"));
 			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
+			System.out.println("Encontrado");
 			System.out.println(iMenu);
 			System.out.println(iPrograma);
 		}
