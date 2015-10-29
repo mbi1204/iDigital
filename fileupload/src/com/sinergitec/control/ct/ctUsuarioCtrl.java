@@ -89,7 +89,9 @@ public class ctUsuarioCtrl extends HttpServlet {
 		String action = request.getParameter("action");
 
 		if (action.equals("add") || action.equals("update")) {
+			
 			ctUsuario obj = new ctUsuario();
+			
 			obj.setcUsuario(request.getParameter("cUsuario"));
 			obj.setcNombre(request.getParameter("cNombre"));
 			obj.setcPassword(request.getParameter("cPassword"));

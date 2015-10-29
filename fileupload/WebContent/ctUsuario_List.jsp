@@ -32,7 +32,6 @@
 				<tr>
 					<th width="20">Usuario</th>
 					<th width="30">Nombre</th>
-					<th width="20">Password</th>
 					<th width="20">Alta</th>
 					<th width="20">Puesto</th>
 					<th width="30">Estatus</th>
@@ -47,7 +46,6 @@
 
 						<td><c:out value="${ctUsuario.cUsuario}" /></td>
 						<td><c:out value="${ctUsuario.cNombre}" /></td>
-						<td><c:out value="${ctUsuario.cPassword}" /></td>
 						<td><c:out value="${ctUsuario.dtFechaAlta}" /></td>
 						<td><c:out value="${ctUsuario.iPuesto}" /></td>
 						<td><c:out value="${ctUsuario.lActivo ? 'SI':'NO'}" /></td>

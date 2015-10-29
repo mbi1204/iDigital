@@ -21,6 +21,8 @@ import com.sinergitec.mydigital.util.VectorResultSet;
 
 public class ctUsuarioDaoImp implements ctUsuarioDao{
 	
+	private ctPuestoDao DaoPuesto;
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctUsuario(String cUsuario, ctUsuario obj_ctUsuario) throws Open4GLException, IOException{
 		
@@ -125,9 +127,10 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		StringHolder opcError = new StringHolder();
 		BooleanHolder oplError = new BooleanHolder();
 		
+		/*List<ctPuesto> Lista_ctPuesto = new ArrayList<ctPuesto>();
+		Lista_ctPuesto = DaoPuesto.list_ctPuesto(true);*/
 		
-		List<ctPuesto> List_ctPuesto = new ArrayList<ctPuesto>();
-		//List_ctPuesto = ctPuestoDaoImp.list_ctPuesto(true);
+		
 		
 				
 		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
@@ -154,14 +157,15 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));
 				
-					/*for(ctPuesto obj_ctPuesto : List_ctPuesto){
+					/*for(ctPuesto obj_ctPuesto : Lista_ctPuesto){
 					
 					if(obj_ctPuesto.getiPuesto().equals(obj.getiPuesto())){
 						
 						ctPuesto obj_nctPuesto = new ctPuesto();
+						
 						obj_nctPuesto.setiPuesto(obj_ctPuesto.getiPuesto());
 						obj_nctPuesto.setcPuesto(obj_ctPuesto.getcPuesto());
-						//obj.setPuesto(obj_nctPuesto);
+						obj.setPuesto(obj_nctPuesto);
 
 						}
 				}*/

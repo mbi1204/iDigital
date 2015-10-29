@@ -15,6 +15,8 @@
 	}
 %>
 
+	
+
 <form id="ctUsuario_Form" class="pure-form pure-form-aligned" method="post" action="${actionUrl}" >
 
 	<fieldset>
@@ -57,20 +59,27 @@
 
 			
 
-			<tr>
+			<!-- <tr>
 				<td><label for="dtFechaAlta">Fecha de Alta</label></td>
 				<td><input id="dtFechaAlta" name="dtFechaAlta" type="date" 
 					 value="<c:out value="${ctUsuario.dtFechaAlta}" />" placeholder="Fecha de Alta" 
-					 ></td>
+					></td>
 			</tr>
+			 -->
+			
 
-
-			<tr>
+			 <tr>
 				<td><label for="iPuesto">Puesto</label></td>
 				<td><input id="iPuesto" name="iPuesto" type="text"
 					placeholder="Puesto" value="<c:out value="${ctUsuario.iPuesto}" />"></td>
 			</tr>
 			
+			
+			<!-- <tr>
+				<td><label for="iPuesto">Puesto</label></td>
+				<td><select id="iPuesto" items="${lista_ctPuesto}" itemValue="iPuesto" itemLabel="cPuesto" /></td>
+			</tr>
+				 -->
 			<%
 				if (action.equals("update")) {
 			%>

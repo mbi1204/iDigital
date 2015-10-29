@@ -2,12 +2,8 @@ package com.sinergitec.model.ct;
 
 
 
-
-
-
-import java.sql.Timestamp;
-
 import java.util.Vector;
+
 
 public class ctUsuario {
 	
@@ -17,8 +13,15 @@ public class ctUsuario {
 	private Boolean lActivo;
 	private String dtFechaAlta;
 	private Integer iPuesto;
+	//private ctPuesto puesto;
 	byte[] id;
 	
+	/*public ctPuesto getPuesto() {
+		return puesto;
+	}
+	public void setPuesto(ctPuesto puesto) {
+		this.puesto = puesto;
+	}*/
 	
 	public String getcUsuario() {
 		return cUsuario;
@@ -68,22 +71,12 @@ public class ctUsuario {
 		
 		Vector vector = new Vector();
 		
-		
-		/*Date fechaActual = new Date();
-		DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-		
-		Timestamp dat = Timestamp.valueOf(formatoFecha.format(dtFechaAlta));*/
-
-
-	
-		Timestamp date = Timestamp.valueOf(this.getDtFechaAlta()+" 00:00:00.000000");
-		
 
 		vector.add(this.getcUsuario());
 		vector.add(this.getcNombre());
 		vector.add(this.getcPassword());
 		vector.add(this.getlActivo());
-		vector.add(date);
+		vector.add(this.getDtFechaAlta());
 		vector.add(this.getiPuesto());
 		vector.add(this.getId());
 
