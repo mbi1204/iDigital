@@ -23,14 +23,14 @@ method="post" action="${actionUrl}" >
 		<table>
 
 			<tr>
-				<td><label for="iEmisor">Clave</label></td>
+				
 
 				<%
 				System.out.println("Entro a la vista");
 					if (action.equals("update")) {
 						System.out.println("ento al update");
 				%>
-
+				<td><label for="iEmisor">Clave</label></td>
 				<td><input id="iEmisor" name="iEmisor" type="text"
 					maxlength="15" value="<c:out value="${ctEmisor.iEmisor}" />"
 					placeholder="Clave del Emisor" readonly="readonly"></td>
@@ -40,9 +40,9 @@ method="post" action="${actionUrl}" >
 
 						System.out.println("ento al otro caso");
 				%>
-				<td><input id="iEmisor" name="iEmisor" type="text"
+				<!--  <td><input id="iEmisor" name="iEmisor" type="text"
 					maxlength="15" value="<c:out value="${ctEmisor.iEmisor}" />"
-					placeholder="Clave del Emisor"></td>
+					placeholder="Clave del Emisor"></td> -->
 				<%
 					}
 				%>

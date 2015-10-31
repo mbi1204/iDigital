@@ -111,15 +111,15 @@ public class ctEmisorCtrl extends HttpServlet {
 			System.out.println("doPost entro al add o update ");
 			ctEmisor obj = new ctEmisor();
 			
-			Date now = new Date(System.currentTimeMillis());
+			/*Date now = new Date(System.currentTimeMillis());
 			SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat hour = new SimpleDateFormat("HH:mm:ss.ssssss");
 			System.out.println(date.format(now)+" "+hour.format(now));
 			
-			System.out.println(request.getParameter("iEmisor"));
+			System.out.println(request.getParameter("iEmisor"));*/
 
 			
-			obj.setiEmisor(Integer.parseInt(request.getParameter("iEmisor")));
+			//obj.setiEmisor(Integer.parseInt(request.getParameter("iEmisor")));
 			obj.setcCveCia(request.getParameter("cCveCia"));
 			obj.setcRazonSocial(request.getParameter("cRazonSocial"));
 			obj.setcRFC(request.getParameter("cRFC"));
