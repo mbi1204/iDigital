@@ -47,7 +47,7 @@
 					<tr>
 
 						<td><c:out value="${ctPrograma.iPrograma}" /></td>
-						<td><c:out value="${ctPrograma.iMenu}" /></td>
+						<td><c:out value="${ctPrograma.menu.cMenu}" /></td>
 						<td><c:out value="${ctPrograma.cPrograma}" /></td>
 						<td><c:out value="${ctPrograma.cNombre}" /></td>
 						<td><c:out value="${ctPrograma.lActivo ? 'SI':'NO'}" /></td>

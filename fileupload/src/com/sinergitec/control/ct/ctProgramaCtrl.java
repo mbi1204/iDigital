@@ -11,21 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.progress.open4gl.Open4GLException;
+import com.sinergitec.dao.ct.ctMenuDao;
 import com.sinergitec.dao.ct.ctProgramaDao;
+import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.ct.imp.ctProgramaDaoImp;
+import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctPrograma;
 
 public class ctProgramaCtrl extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private ctProgramaDao ctPrograma_dao;
+	private ctMenuDao ctMenu_dao;
 	private List<ctPrograma> lista = new ArrayList<ctPrograma>();
+	private List<ctMenu> lista_menu = new ArrayList<ctMenu>();
 	private static String INSERT_OR_EDIT = "/ctPrograma_Add.jsp";
 	private static String LIST_CTPROGRAMA = "/ctPrograma_List.jsp";
 	
 	public ctProgramaCtrl() {
 		super();
 		ctPrograma_dao = new ctProgramaDaoImp();
+		ctMenu_dao = new ctMenuDaoImp();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,6 +41,7 @@ public class ctProgramaCtrl extends HttpServlet {
 		String action = request.getParameter("action");
 		Integer iPrograma = null;
 		Integer iMenu = null;
+		System.out.println("Paso por aqui controlador");
 		/*Misma situacion que el emisor*/
 		/*if(action.equals("list") || action.equals("add")){
 			iPrograma = null;
@@ -65,7 +72,14 @@ public class ctProgramaCtrl extends HttpServlet {
 			forward = LIST_CTPROGRAMA;
 
 		} else if (action.equals("add")) {
-			ctPrograma obj = new ctPrograma();		
+			ctPrograma obj = new ctPrograma();
+			try {
+				lista_menu = ctMenu_dao.list_ctMenu(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_ctMenu", lista_menu);
 			request.setAttribute("ctPrograma", obj);
 			forward = INSERT_OR_EDIT;
 		} else if (action.equals("update")) {

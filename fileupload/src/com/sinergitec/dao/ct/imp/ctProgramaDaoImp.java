@@ -13,11 +13,15 @@ import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
 import com.sinergitec.appserver.myDigital;
 import com.sinergitec.dao.ct.ctProgramaDao;
+import com.sinergitec.dao.ct.ctMenuDao;
+import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctPrograma;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
 
 public class ctProgramaDaoImp implements ctProgramaDao{
+	
+	private ctMenuDao ctMenudao;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_ctPrograma(String cUsuario, ctPrograma obj_ctPrograma) throws Open4GLException, IOException{
@@ -117,10 +121,14 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 	
 	public List<ctPrograma> list_ctPrograma(boolean bTodos) throws Open4GLException, IOException{
 		
+		ctMenudao = new ctMenuDaoImp();
+		
 				
 		StringHolder opcError = new StringHolder();
 		BooleanHolder oplError = new BooleanHolder();
 		List<ctPrograma> Lista = new ArrayList<ctPrograma>();
+		List<ctMenu> lista_Menu = new ArrayList<ctMenu>();
+		lista_Menu = ctMenudao.list_ctMenu(true);
 		ResultSetHolder tt_ctPrograma = new ResultSetHolder();
 		
 		Connection conexion = DBConexion.getConnection();
@@ -134,6 +142,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 			
 			while (rs_tt_ctPrograma.next()) {
 				
+				System.out.println("Paso por aqui Dao");
 				ctPrograma obj = new ctPrograma();				
 			
 				
@@ -144,6 +153,15 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 				obj.setcNombre(rs_tt_ctPrograma.getString("cNombre"));
 				obj.setId(rs_tt_ctPrograma.getBytes("id"));				
 				
+				for (ctMenu obj_ctMenu : lista_Menu) {
+					if (obj_ctMenu.getiMenu().equals(obj.getiMenu())) {
+						ctMenu obj_nctMenu = new ctMenu();
+						obj_nctMenu.setiMenu(obj_ctMenu.getiMenu());
+						obj_nctMenu.setcMenu(obj_ctMenu.getcMenu());
+						obj_nctMenu.setlActivo(obj_ctMenu.getlActivo());
+						obj.setMenu(obj_nctMenu);
+					}
+				}
 
 				Lista.add(obj);
 			}

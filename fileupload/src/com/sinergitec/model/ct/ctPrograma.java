@@ -11,6 +11,7 @@ public class ctPrograma {
 	private Boolean lActivo;
 	private String cNombre;
 	byte[] id;
+	private ctMenu menu;
 	
 	
 	public Integer getiPrograma() {
@@ -48,6 +49,12 @@ public class ctPrograma {
 	}
 	public void setId(byte[] id) {
 		this.id = id;
+	}
+	public ctMenu getMenu() {
+		return menu;
+	}
+	public void setMenu(ctMenu menu) {
+		this.menu = menu;
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -47,9 +47,11 @@
 
 			<tr>
 				<td><label for="iMenu">Menu</label></td>
-				<td><input id="iMenu" name="iMenu" type="text" placeholder="Clave del menu"
-				value="<c:out value="${ctPrograma.iMenu}" />"
-				placeholder="Clave del Menu">
+				<td><select id = "iMenu" name = "iMenu">
+					<c:forEach items="${lista_ctMenu}" var="ctMenu">
+            		<option value="${ctMenu.iMenu}">${ctMenu.cMenu}</option>
+            		</c:forEach>
+        			</select>
 				</td>
 			</tr>
 
