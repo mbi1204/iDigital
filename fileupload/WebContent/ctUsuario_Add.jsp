@@ -70,16 +70,14 @@
 
 			 <tr>
 				<td><label for="iPuesto">Puesto</label></td>
-				<td><input id="iPuesto" name="iPuesto" type="text"
-					placeholder="Puesto" value="<c:out value="${ctUsuario.iPuesto}" />"></td>
+				<td><select id = "iPuesto" name = "iPuesto">
+					<c:forEach items="${lista_Puesto}" var="ctPuesto">
+            		<option value="${ctPuesto.iPuesto}">${ctPuesto.cPuesto}</option>
+            		</c:forEach>
+        			</select>
+				</td>
 			</tr>
-			
-			
-			<!-- <tr>
-				<td><label for="iPuesto">Puesto</label></td>
-				<td><select id="iPuesto" items="${lista_ctPuesto}" itemValue="iPuesto" itemLabel="cPuesto" /></td>
-			</tr>
-				 -->
+
 			<%
 				if (action.equals("update")) {
 			%>

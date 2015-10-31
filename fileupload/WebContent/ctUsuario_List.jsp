@@ -47,7 +47,7 @@
 						<td><c:out value="${ctUsuario.cUsuario}" /></td>
 						<td><c:out value="${ctUsuario.cNombre}" /></td>
 						<td><c:out value="${ctUsuario.dtFechaAlta}" /></td>
-						<td><c:out value="${ctUsuario.iPuesto}" /></td>
+						<td><c:out value="${ctUsuario.puesto.cPuesto}" /></td>
 						<td><c:out value="${ctUsuario.lActivo ? 'SI':'NO'}" /></td>
 						
 						<td><nobr>

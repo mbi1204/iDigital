@@ -91,6 +91,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 		try {
 
 			app.as_ctUsuario_Actualiza(cUsuario, UsuarioModificado, ps_Resultado, ps_Texto);
+			System.err.println(ps_Texto.getValue());
 
 		} finally {
 			// TODO: handle finally clause
@@ -122,17 +123,15 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 	
 	public List<ctUsuario> list_ctUsuario(boolean bTodos) throws Open4GLException, IOException{
 		
+		DaoPuesto = new ctPuestoDaoImp();
+		
 		ResultSetHolder tt_ctUsuario = new ResultSetHolder();
 		
 		StringHolder opcError = new StringHolder();
 		BooleanHolder oplError = new BooleanHolder();
 		
-		/*List<ctPuesto> Lista_ctPuesto = new ArrayList<ctPuesto>();
-		Lista_ctPuesto = DaoPuesto.list_ctPuesto(true);*/
-		
-		
-		
-				
+		List<ctPuesto> Lista_ctPuesto = new ArrayList<ctPuesto>();
+		Lista_ctPuesto = DaoPuesto.list_ctPuesto(true);		
 		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
 		
 		Connection conexion = DBConexion.getConnection();
@@ -157,7 +156,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));
 				
-					/*for(ctPuesto obj_ctPuesto : Lista_ctPuesto){
+					for(ctPuesto obj_ctPuesto : Lista_ctPuesto){
 					
 					if(obj_ctPuesto.getiPuesto().equals(obj.getiPuesto())){
 						
@@ -168,10 +167,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 						obj.setPuesto(obj_nctPuesto);
 
 						}
-				}*/
-				
-		
-			
+				}
 				Lista.add(obj);
 			}
 			

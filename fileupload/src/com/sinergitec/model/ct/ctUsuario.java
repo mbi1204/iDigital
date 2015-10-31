@@ -13,7 +13,7 @@ public class ctUsuario {
 	private Boolean lActivo;
 	private String dtFechaAlta;
 	private Integer iPuesto;
-	//private ctPuesto puesto;
+	private ctPuesto puesto;
 	byte[] id;
 	
 	/*public ctPuesto getPuesto() {
@@ -65,7 +65,12 @@ public class ctUsuario {
 	public void setId(byte[] id) {
 		this.id = id;
 	}
-	
+	public ctPuesto getPuesto() {
+		return puesto;
+	}
+	public void setPuesto(ctPuesto puesto) {
+		this.puesto = puesto;
+	}
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Vector getVectorDatos() {
 		
