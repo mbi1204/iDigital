@@ -85,12 +85,13 @@ public class ctProgramaCtrl extends HttpServlet {
 		} else if (action.equals("update")) {
 			ctPrograma obj = new ctPrograma();
 			try {
-
+				lista_menu = ctMenu_dao.list_ctMenu(true);
 				obj = ctPrograma_dao.get_ctPrograma("SISIMB", iMenu, iPrograma);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.setAttribute("lista_ctMenu", lista_menu);
 			request.setAttribute("ctPrograma", obj);
 			forward = INSERT_OR_EDIT;
 

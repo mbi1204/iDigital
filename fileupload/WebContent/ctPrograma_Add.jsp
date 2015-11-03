@@ -46,7 +46,7 @@
 			</tr>
 
 			<tr>
-				<td><label for="iMenu">Menu</label></td>
+			<td><label for="iMenu">Menu</label></td>				
 				<td><select id = "iMenu" name = "iMenu">
 					<c:forEach items="${lista_ctMenu}" var="ctMenu">
             		<option value="${ctMenu.iMenu}">${ctMenu.cMenu}</option>

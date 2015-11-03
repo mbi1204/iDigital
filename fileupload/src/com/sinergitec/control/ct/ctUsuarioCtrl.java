@@ -70,12 +70,13 @@ public class ctUsuarioCtrl extends HttpServlet {
 		} else if (action.equals("update")) {
 			ctUsuario obj = new ctUsuario();
 			try {
-
+				lista_Puesto = ctPuesto_dao.list_ctPuesto(true);
 				obj = ctUsuario_dao.get_ctUsuario("SISIMB", cUsuario);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.setAttribute("lista_Puesto", lista_Puesto);
 			request.setAttribute("ctUsuario", obj);
 			forward = INSERT_OR_EDIT;
 

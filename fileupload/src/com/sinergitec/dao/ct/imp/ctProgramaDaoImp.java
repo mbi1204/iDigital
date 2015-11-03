@@ -70,6 +70,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void update_ctPrograma(String cUsuario, ctPrograma obj_ctPrograma) throws Open4GLException, IOException{
 		
+		System.out.println("Este valor viene del combo:"+obj_ctPrograma.getiMenu());
 		List<ctPrograma> Lista = new ArrayList<ctPrograma>();
 		Lista.add(obj_ctPrograma);
 
@@ -91,6 +92,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 		try {
 
 			app.as_ctPrograma_Actualiza(cUsuario, ProgramModificados, ps_Resultado, ps_Texto);
+			System.out.println(ps_Texto.getValue());
 
 		} finally {
 			// TODO: handle finally clause
@@ -182,6 +184,8 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
+		List<ctMenu> lista_Menu = new ArrayList<ctMenu>();
+		lista_Menu = ctMenudao.list_ctMenu(true);
 
 		ResultSetHolder tt_ctPrograma = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
@@ -191,7 +195,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 		try {
 			
 			app.as_ctPrograma_get(cUsuario, iMenu, iPrograma, tt_ctPrograma, ps_Resultado, ps_Texto);
-			
+			System.out.println(ps_Texto.getValue());
 			ResultSet rs_tt_ctPrograma = tt_ctPrograma.getResultSetValue();
 			
 
@@ -203,8 +207,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 				obj.setlActivo(rs_tt_ctPrograma.getBoolean("lActivo"));
 				obj.setcNombre(rs_tt_ctPrograma.getString("cNombre"));
 				obj.setId(rs_tt_ctPrograma.getBytes("id"));
-
-
+				
 			}
 			
 		} catch (Exception ex) {
