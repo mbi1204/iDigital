@@ -79,4 +79,14 @@
     <servlet-name>ctUsuarioCtrl</servlet-name>
     <url-pattern>/ctUsuarioCtrl</url-pattern>
   </servlet-mapping>
+  <servlet>
+  <description></description>
+    <display-name>sgAccesoCtrl</display-name>
+    <servlet-name>sgAccesoCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.sg.sgAccesoCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sgAccesoCtrl</servlet-name>
+    <url-pattern>/sgAccesoCtrl</url-pattern>
+  </servlet-mapping>
 </web-app>

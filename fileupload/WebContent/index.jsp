@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mocosoft</title>
+<title>My Digital</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
 
     <fieldset>
 
-      <form action="bancaenlinea/login" method="post" >
+      <form action="sgAccesoCtrl?action=login" method="post" >
       
       	
       	<input name="cUsuario" type="text" required value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value=''">
