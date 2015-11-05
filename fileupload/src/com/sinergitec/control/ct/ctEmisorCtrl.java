@@ -150,7 +150,6 @@ public class ctEmisorCtrl extends HttpServlet {
 			if (action.equals("update")) {
 				try {
 					System.out.println("Pasa por aqui");
-					obj.setDtFechaCancel("0001-01-01 00:00:00.000000");
 					ctEmisor_dao.update_ctEmisor("SISTEMAS", obj);
 					} catch (Open4GLException e) {
 						// TODO Auto-generated catch block

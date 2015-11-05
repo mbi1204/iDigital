@@ -206,7 +206,7 @@ public class ctUsuarioDaoImp implements ctUsuarioDao{
 				obj.setcNombre(rs_tt_ctUsuario.getString("cNombre"));
 				obj.setcPassword(rs_tt_ctUsuario.getString("cPassword"));
 				obj.setlActivo(rs_tt_ctUsuario.getBoolean("lActivo"));
-				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta").substring(0, 10));
+				obj.setDtFechaAlta(rs_tt_ctUsuario.getString("dtFechaAlta"));
 				obj.setiPuesto(rs_tt_ctUsuario.getInt("iPuesto"));
 				obj.setId(rs_tt_ctUsuario.getBytes("id"));
 

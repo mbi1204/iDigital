@@ -92,7 +92,7 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 		try {
 
 			app.as_ctPrograma_Actualiza(cUsuario, ProgramModificados, ps_Resultado, ps_Texto);
-			System.out.println(ps_Texto.getValue());
+			System.out.println("Esto es un fallo: "+ps_Texto.getValue());
 
 		} finally {
 			// TODO: handle finally clause
@@ -207,6 +207,16 @@ public class ctProgramaDaoImp implements ctProgramaDao{
 				obj.setlActivo(rs_tt_ctPrograma.getBoolean("lActivo"));
 				obj.setcNombre(rs_tt_ctPrograma.getString("cNombre"));
 				obj.setId(rs_tt_ctPrograma.getBytes("id"));
+				
+				for (ctMenu obj_ctMenu : lista_Menu) {
+					if (obj_ctMenu.getiMenu().equals(obj.getiMenu())) {
+						ctMenu obj_nctMenu = new ctMenu();
+						obj_nctMenu.setiMenu(obj_ctMenu.getiMenu());
+						obj_nctMenu.setcMenu(obj_ctMenu.getcMenu());
+						obj_nctMenu.setlActivo(obj_ctMenu.getlActivo());
+						obj.setMenu(obj_nctMenu);
+					}
+				}
 				
 			}
 			

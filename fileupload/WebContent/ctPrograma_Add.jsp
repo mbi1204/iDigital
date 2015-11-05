@@ -46,13 +46,30 @@
 			</tr>
 
 			<tr>
-			<td><label for="iMenu">Menu</label></td>				
-				<td><select id = "iMenu" name = "iMenu">
+			<td><label for="iMenu">Menu</label></td>
+			<%
+					if (action.equals("update")) {
+				%>				
+				<td><select id = "iMenu" name = "iMenu"  >
 					<c:forEach items="${lista_ctMenu}" var="ctMenu">
-            		<option value="${ctMenu.iMenu}">${ctMenu.cMenu}</option>
+            		<option value="${ctMenu.iMenu}" ${ctPrograma.iMenu == ctMenu.iMenu ? 'selected':''}  >${ctMenu.cMenu}</option>
             		</c:forEach>
         			</select>
 				</td>
+				<%
+					} else {
+
+						System.out.println("ento al otro caso");
+				%>
+				<td><select id = "iMenu" name = "iMenu"  >
+					<c:forEach items="${lista_ctMenu}" var="ctMenu">
+            		<option value="${ctMenu.iMenu}" ${ctPrograma.iMenu == ctMenu.iMenu ? 'selected':''}  >${ctMenu.cMenu}</option>
+            		</c:forEach>
+        			</select>
+				</td>
+				<%
+					}
+				%>
 			</tr>
 
 			<tr>

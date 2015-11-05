@@ -110,7 +110,7 @@ public class ctUsuarioCtrl extends HttpServlet {
 			obj.setcNombre(request.getParameter("cNombre"));
 			obj.setcPassword(request.getParameter("cPassword"));
 			obj.setlActivo((action.equals("add")) ? true : Boolean.parseBoolean(request.getParameter("lActivo")));
-			obj.setDtFechaAlta(request.getParameter("dtFechaAlta"));
+			//obj.setDtFechaAlta(request.getParameter("dtFechaAlta"));
 			obj.setiPuesto(Integer.parseInt(request.getParameter("iPuesto")));
 			
 			if (action.equals("add")) {
