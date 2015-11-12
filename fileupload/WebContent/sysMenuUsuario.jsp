@@ -22,5 +22,7 @@
 
 <a href = "ctUsuarioCtrl?action=list" >Usuario</a>
 
+<a href = "syConfigUsuCtrl?action=inicial" >Configuracion de Usuarios</a>
+
 </body>
 </html>

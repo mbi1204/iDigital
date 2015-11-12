@@ -29,7 +29,7 @@
     <servlet-name>ctCompaniaCtrl</servlet-name>
     <url-pattern>/ctCompaniaCtrl</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>ctMenuCtrl</display-name>
     <servlet-name>ctMenuCtrl</servlet-name>
@@ -50,7 +50,7 @@
     <url-pattern>/ctPuestoCtrl</url-pattern>
   </servlet-mapping>
   <servlet>
-  <description></description>
+    <description></description>
     <display-name>ctEmisorCtrl</display-name>
     <servlet-name>ctEmisorCtrl</servlet-name>
     <servlet-class>com.sinergitec.control.ct.ctEmisorCtrl</servlet-class>
@@ -60,7 +60,7 @@
     <url-pattern>/ctEmisorCtrl</url-pattern>
   </servlet-mapping>
   <servlet>
-  <description></description>
+    <description></description>
     <display-name>ctProgramaCtrl</display-name>
     <servlet-name>ctProgramaCtrl</servlet-name>
     <servlet-class>com.sinergitec.control.ct.ctProgramaCtrl</servlet-class>
@@ -70,7 +70,7 @@
     <url-pattern>/ctProgramaCtrl</url-pattern>
   </servlet-mapping>
   <servlet>
-  <description></description>
+    <description></description>
     <display-name>ctUsuarioCtrl</display-name>
     <servlet-name>ctUsuarioCtrl</servlet-name>
     <servlet-class>com.sinergitec.control.ct.ctUsuarioCtrl</servlet-class>
@@ -79,4 +79,19 @@
     <servlet-name>ctUsuarioCtrl</servlet-name>
     <url-pattern>/ctUsuarioCtrl</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>syConfigUsuCtrl</display-name>
+    <servlet-name>syConfigUsuCtrl</servlet-name>
+    <servlet-class>com.sinergitec.control.sy.syConfigUsuCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>syConfigUsuCtrl</servlet-name>
+    <url-pattern>/syConfigUsuCtrl</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
 </web-app>

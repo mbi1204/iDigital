@@ -37,7 +37,7 @@
 			<i class="fa fa-plus"></i> Agregar Compañia
 		</button>
 
-		<table class="pure-table pure-table-bordered pure-table-striped">
+		<table >
 			<thead>
 				<tr>
 					<th width="20">Compañia</th>
@@ -61,7 +61,7 @@
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody bor>
 
 				<c:forEach items="${lista_ctCompania}" var="ctCompania">
 					<tr>
