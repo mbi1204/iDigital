@@ -168,6 +168,7 @@ public class ctCompaniaDaoImp implements ctCompaniaDao {
 				obj.setId(rs_tt_ctCompania.getBytes("id"));
 
 				Lista.add(obj);
+				
 
 			}
 		} catch (Exception ex) {
