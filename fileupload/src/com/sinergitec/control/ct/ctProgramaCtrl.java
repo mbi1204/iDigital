@@ -41,16 +41,7 @@ public class ctProgramaCtrl extends HttpServlet {
 		String action = request.getParameter("action");
 		Integer iPrograma = null;
 		Integer iMenu = null;
-		System.out.println("Paso por aqui controlador");
-		/*Misma situacion que el emisor*/
-		/*if(action.equals("list") || action.equals("add")){
-			iPrograma = null;
-		}
-		else{
-			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));
-			iMenu = Integer.parseInt(request.getParameter("iMenu"));
-		}
-		*/
+		
 		if(action.equals("update") || action.equals("delete")){
 			iMenu = Integer.parseInt(request.getParameter("iMenu"));
 			iPrograma = Integer.parseInt(request.getParameter("iPrograma"));

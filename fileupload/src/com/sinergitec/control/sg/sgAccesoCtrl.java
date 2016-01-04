@@ -25,24 +25,39 @@ public class sgAccesoCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		System.out.println("entro doGet");
+		
 	}
 	
 	/*Do post*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException { 
+		
+		String vcResultado = null;		
 		String action = request.getParameter("action");
-		if(action.equals("login")){
-			System.out.println("Esta llegando hasta aqui");
+		
+		if(action.equals("login")){		
 			ctUsuario obj = new ctUsuario();
 			obj.setcUsuario(request.getParameter("cUsuario"));
 			obj.setcPassword(request.getParameter("cPassword"));
 			
 			try {
-				sgAcceso_dao.acceso_sgAcceso(obj);
+				vcResultado = sgAcceso_dao.acceso_sgAcceso(obj);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}			
+		}	
+		
+		if (vcResultado == null ){
+			request.setAttribute("vcResultado", vcResultado);
+			request.getRequestDispatcher("/sysMenuUsuario.jsp").forward(request, response);					
+		}else {
+			request.getRequestDispatcher("/index.jsp").forward(request, response);				
 		}
+			 
+		
+		
+		
 	}
 }

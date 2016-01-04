@@ -37,7 +37,7 @@
 			<i class="fa fa-plus"></i> Agregar Compañia
 		</button>
 
-		<table >
+		<table class="pure-table pure-table-bordered pure-table-striped">
 			<thead>
 				<tr>
 					<th width="20">Compañia</th>

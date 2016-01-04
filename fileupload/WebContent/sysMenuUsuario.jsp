@@ -24,5 +24,8 @@
 
 <a href = "syConfigUsuCtrl?action=inicial" >Configuracion de Usuarios</a>
 
+
+<h1>${vcResultado}</h1>
+
 </body>
 </html>

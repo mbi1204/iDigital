@@ -7,8 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>My Digital</title>
 <link rel="stylesheet" href="css/login.css">
+<script type="text/javascript">
+function carga(){
+	vcResultado = "${vcResultado}";
+	
+	if (   vcResultado != "" ||  vcResultado != '' ){
+		alert(vcResultado);		
+	}
+	cUsuario.value  = "";
+	cPassword.value = "";
+	cUsuario.focus();
+	
+}
+</script>
 </head>
-<body>
+<body onload="carga()">
 
 <div class="container">
 
@@ -18,20 +31,13 @@
 
     <fieldset>
 
-      <form action="sgAccesoCtrl?action=login" method="post" >
-      
-      	
+     <form action="sgAccesoCtrl?action=login" method="post" >      	
       	<input name="cUsuario" type="text" required value="Usuario" onBlur="if(this.value=='')this.value='Usuario'" onFocus="if(this.value=='Usuario')this.value=''">
       	<input name="cPassword" type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value=''">
         
-        <input type="submit" value="Ingresar">
-        
+        <input type="submit" value="Ingresar" >     
 
-        <footer class="clearfix">
-
-          <p><span class="info">?</span><a href="http://localhost:8080/cachorros/">Registrate aquí</a></p>
-
-        </footer>
+      
 
       </form>
 

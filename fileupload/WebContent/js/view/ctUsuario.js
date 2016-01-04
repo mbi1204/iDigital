@@ -1,7 +1,7 @@
 
 function add_ctUsuario() {
 
-	$.get("syConfigUsuCtrl?action=list_Usu", function(result) {
+	$.get("ctUsuarioCtrl?action=add", function(result) {
 		$("#ctUsuario_Dialog").html(result);
 		$('#ctUsuario_Dialog').dialog("option", "title", 'Agregar Usuario');
 		$("#ctUsuario_Dialog").dialog('open');

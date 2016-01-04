@@ -4,7 +4,7 @@
 
 
 
-<form id="AddUsuComp_Form" class="pure-form pure-form-aligned"
+<%-- <form id="AddUsuComp_Form" class="pure-form pure-form-aligned"
 	method="post" action="${actionUrl}">
 
 	<fieldset>
@@ -39,4 +39,4 @@
 
 	</fieldset>
 
-</form>
+</form> --%>

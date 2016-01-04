@@ -8,9 +8,11 @@ function add_ctPrograma() {
 
 
 function update_ctPrograma(iMenu,iPrograma) {
+	
+	
 
 	$.get("ctProgramaCtrl?action=update&iMenu=" + iMenu+"&iPrograma="+iPrograma, function(result) {
-		$("#ctPrograma_Dialog").html(result);
+		$("#ctPrograma_Dialog").html(result);		
 		$('#ctPrograma_Dialog').dialog("option", "title", 'Editar Programa');
 		$("#ctPrograma_Dialog").dialog('open');
 	});

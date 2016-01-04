@@ -58,6 +58,8 @@ td {
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
 	</select>
+	
+	<h1>Usuarios por compañia</h1>
 
 
 	<button class="pure-button pure-button-primary"

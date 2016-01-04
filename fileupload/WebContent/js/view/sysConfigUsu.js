@@ -2,11 +2,11 @@
 function add_ctUsuario() {
 	
 	
-	$.get("syConfigUsuCtrl?action=list_Usu", function(result) {
+	/*$.get("syConfigUsuCtrl?action=list_Usu", function(result) {
 		$("#addUsuComp_Dialog").html(result);
 		$('#addUsuComp_Dialog').dialog("option", "title", 'Agregar Usuario');
 		$('#addUsuComp_Dialog').dialog('open');
-	});
+	});*/
 	
 }
 
@@ -17,7 +17,7 @@ function resetDialog(form) {
 
 $(document).ready(function() {
 
-	$('#addUsuComp_Dialog').dialog({
+	/*$('#addUsuComp_Dialog').dialog({
 
 		autoOpen : false,
 		position : 'center',
@@ -43,7 +43,7 @@ $(document).ready(function() {
 	$('#table_ctUsuario').on('dblclick','tr',function() {
 		alert ("entro al doble");
 		
-	});
+	});*/
 
 });
 

@@ -11,7 +11,7 @@ import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
-import com.sinergitec.appserver.myDigital;
+import mydigital.sinergitec.appserver.myDigital;
 import com.sinergitec.dao.ct.ctMenuDao;
 import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.mydigital.util.DBConexion;

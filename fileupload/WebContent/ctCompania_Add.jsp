@@ -51,7 +51,7 @@
 			<tr>
 				<td><label for="cRazonS">Razon Social</label></td>
 				<td><input id="cRazonS" name="cRazonS" type="text"
-					placeholder="Razon Social"
+					placeholder="Razon Social" size="60"
 					value="<c:out value="${ctCompania.cRazonS}" />"></td>
 			</tr>
 
@@ -63,7 +63,7 @@
 
 			<tr>
 				<td><label for="cCalle">Calle</label></td>
-				<td><input id="cCalle" name="cCalle" type="text"
+				<td><input id="cCalle" name="cCalle" type="text" size="60"
 					placeholder="Calle" value="<c:out value="${ctCompania.cCalle}" />">
 				</td>
 			</tr>
@@ -125,14 +125,14 @@
 
 			<tr>
 				<td><label for="cEmail">Email</label></td>
-				<td><input id="cEmail" name="cEmail" type="text"
+				<td><input id="cEmail" name="cEmail" type="text" size="40"
 					placeholder="E Mail" value="<c:out value="${ctCompania.cEmail}" />"></td>
 			</tr>
 
 
 			<tr>
 				<td><label for="cContacto">Contacto</label></td>
-				<td><input id="cContacto" name="cContacto" type="text"
+				<td><input id="cContacto" name="cContacto" type="text" size="40"
 					placeholder="Contacto"
 					value="<c:out value="${ctCompania.cContacto}" />"></td>
 			</tr>

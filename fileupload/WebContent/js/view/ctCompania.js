@@ -34,7 +34,7 @@ $(document).ready(function() {
 		position : 'center',
 		modal : true,
 		resizable : false,
-		width : 440,
+		width : 800,
 		buttons : {
 			"Save" : function() {
 				$('#ctCompania_Form').submit();

@@ -12,7 +12,7 @@ import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
-import com.sinergitec.appserver.myDigital;
+import mydigital.sinergitec.appserver.myDigital;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctEmisorDao;
 import com.sinergitec.model.ct.ctCompania;

@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
+
+System.out.println("entro al ctUsuario ADD");
+
 	String action = request.getParameter("action");
 
 	if (action.equalsIgnoreCase("update")) {
@@ -26,6 +29,10 @@
 			<tr>
 				<td><label for="cUsuario">Usuario</label></td>
 				<%
+				
+				
+				
+				
 					if (action.equals("update")) {
 				%>
 
