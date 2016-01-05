@@ -86,16 +86,20 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 				
 				obj.setcCveCia(rs_tt_sysUsuCompania.getString("cCveCia"));
 				obj.setcUsuario(rs_tt_sysUsuCompania.getString("cUsuario"));
-				obj.setcCveCia(rs_tt_sysUsuCompania.getString("cUsuario"));
+				obj.setlActivo(rs_tt_sysUsuCompania.getBoolean("lActivo"));
+				obj.setId(rs_tt_sysUsuCompania.getBytes("id"));
+				Lista.add(obj);
 			}
+			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally{
-			
+			app._release();
+			DBConexion.closeConnection(conexion);
 		}
 		
-		return null;
+		return Lista;
 	}
 	
 	
