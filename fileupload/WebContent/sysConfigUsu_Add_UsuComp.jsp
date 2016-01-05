@@ -1,14 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url var="actionUrl" value="ctCompaniaCtrl?action=update" />
+<%
 
+System.out.println("entro al ctUsuario ADD");
 
+	String action = request.getParameter("action");
+
+	if (action.equalsIgnoreCase("update")) {
+%>
+<c:url var="actionUrl" value="syConfigUsuCtrl?action=update" />
+<%
+	} else {
+%>
+<c:url var="actionUrl" value="syConfigUsuCtrl?action=add" />
+
+<%
+	}
+%>
 
 <form id="AddUsuComp_Form" class="pure-form pure-form-aligned"
 	method="post" action="${actionUrl}">
 
 	<fieldset>
 		<legend></legend>
+		
+		<label for="cCompania">Compañia</label>
+
+			<select id = "cCveCia" name="cCompania">
+				<c:forEach items="${list_ctCompania}" var="ctCompania">
+					<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
+				</c:forEach>
+			</select>
 
 		<table id="table_ctUsuario" >
 			<thead >
@@ -24,17 +46,15 @@
 
 				<c:forEach items="${list_Usuario}" var="ctUsuario">
 					<tr>
-
 						<td><c:out value="${ctUsuario.cUsuario}" /></td>
 						<td><c:out value="${ctUsuario.cNombre}" /></td>
 						<td><c:out value="${ctUsuario.iPuesto}" /></td>
-
-
+						<td><input type="checkbox" name="id" value="true"></td>
 					</tr>
 				</c:forEach>
+				
 			</tbody>
 		</table>
-
 
 	</fieldset>
 

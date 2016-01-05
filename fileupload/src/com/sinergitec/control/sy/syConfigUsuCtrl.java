@@ -82,11 +82,15 @@ public class syConfigUsuCtrl extends HttpServlet {
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
 			try {
 				list_Usuario = ctUsuario_Dao.list_ctUsuario(true);
+				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("list_Usuario", list_Usuario);
+			request.setAttribute("list_ctCompania", list_Compania);
+			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			forward = ADDUSER;			
 		}
 		
@@ -103,7 +107,33 @@ public class syConfigUsuCtrl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		String action = request.getParameter("action");		
+
+		if (action.equals("add") || action.equals("update")) {
+			
+			sysUsuCompania obj = new sysUsuCompania();
+			obj.setcCveCia(request.getParameter("cCveCia"));
+			obj.setcUsuario(request.getParameter("cUsuario"));
+			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
+			
+			if(action.equals("add")){
+				try {
+					syUsuCompania_Dao.add_sysUsuCompaniaDao("SISTEMAS", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if(action.equals("update")){
+				/*try {
+				syUsuCompania_Dao.update_sysUsuCompaniaDao("SISTEMAS", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
+			}
+			
+		}
 	}
 
 }
