@@ -72,18 +72,18 @@ td {
 				<tr>
 					<th width="20">Usuario</th>
 					<th width="50">Nombre</th>
-
+					<th width="20">Estatus</th>
 				</tr>
 			</thead>
 
 			<tbody>
 
-				<c:forEach items="${lista_syUsuCompania}" var="syUsuCompania">
+				<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 					<tr>
 
 						<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 						<td><c:out value="${syUsuCompania.cUsuario}" /></td>
-						
+						<td><c:out value="${syUsuCompania.lActivo}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
 									onclick="update_ctMenu('${ctMenu.iMenu}');">

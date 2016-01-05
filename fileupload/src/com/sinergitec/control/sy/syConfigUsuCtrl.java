@@ -15,8 +15,11 @@ import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
+import com.sinergitec.dao.sy.syUsuCompaniaDao;
+import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
 import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.model.ct.ctUsuario;
+import com.sinergitec.model.sg.sysUsuCompania;
 
 /**
  * Servlet implementation class syConfigUsu
@@ -25,8 +28,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_Dao;
 	private ctUsuarioDao  ctUsuario_Dao;
+	private syUsuCompaniaDao syUsuCompania_Dao;
 	private List<ctCompania> list_Compania = new ArrayList<ctCompania>();
 	private List<ctUsuario>  list_Usuario = new ArrayList<ctUsuario>();
+	private List<sysUsuCompania> list_UsuCompania = new ArrayList<sysUsuCompania>();
 	
 	private static String PRINCIPAL = "/sysConfigUsu.jsp";
 	private static String ADDUSER   = "/sysConfigUsu_Add_UsuComp.jsp";
@@ -39,6 +44,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 		super();
 		ctCompania_Dao = new ctCompaniaDaoImp();
 		ctUsuario_Dao  = new ctUsuarioDaoImp();
+		syUsuCompania_Dao = new syUsuCompaniaDaoImp();
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -61,6 +68,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 
 			try {
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -68,6 +76,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			
 			request.setAttribute("list_ctCompania", list_Compania);
+			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			forward = PRINCIPAL;
 
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
