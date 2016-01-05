@@ -66,6 +66,43 @@ td {
 		onclick="add_ctUsuario()">
 		<i class="fa fa-plus"></i> Agregar Usuario
 	</button>
+	
+	<table class="pure-table pure-table-bordered pure-table-striped">
+			<thead>
+				<tr>
+					<th width="20">Usuario</th>
+					<th width="50">Nombre</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<c:forEach items="${lista_syUsuCompania}" var="syUsuCompania">
+					<tr>
+
+						<td><c:out value="${syUsuCompania.cCveCia}" /></td>
+						<td><c:out value="${syUsuCompania.cUsuario}" /></td>
+						
+						<td><nobr>
+								<button class="pure-button pure-button-primary"
+									onclick="update_ctMenu('${ctMenu.iMenu}');">
+									<i class="fa fa-pencil"></i> Editar
+								</button>
+
+								<a class="pure-button pure-button-primary"
+									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
+									href="ctMenuCtrl?action=delete&iMenu=${ctMenu.iMenu}"></i>Eliminar
+								</a>
+
+							</nobr></td>
+
+					</tr>
+				</c:forEach>
+			</tbody>
+
+
+		</table>
 
 
 </body>

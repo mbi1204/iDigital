@@ -4,7 +4,7 @@
 
 
 
-<%-- <form id="AddUsuComp_Form" class="pure-form pure-form-aligned"
+<form id="AddUsuComp_Form" class="pure-form pure-form-aligned"
 	method="post" action="${actionUrl}">
 
 	<fieldset>
@@ -13,11 +13,10 @@
 		<table id="table_ctUsuario" >
 			<thead >
 				<tr>
-					<th width="20">Usuario</th>
-					<th width="50">Nombre</th>
-					<th width="20">Puesto</th>
-					
-
+					<th width="25">Usuario</th>
+					<th width="55">Nombre</th>
+					<th width="25">Puesto</th>
+					<th width="25">Activar</th>
 				</tr>
 			</thead>
 
@@ -39,4 +38,4 @@
 
 	</fieldset>
 
-</form> --%>
+</form>
