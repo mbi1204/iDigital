@@ -64,8 +64,24 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		
 	}
 	
-	public void remove_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania){
+	public void remove_sysUsuCompaniaDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException{
 		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+
+		Connection conexion = DBConexion.getConnection();
+		myDigital app = new myDigital(conexion);
+		
+		try {
+
+			//(cUsuario, cCveCia, cUsuario2, ps_Resultado, ps_Texto);
+
+			System.err.println(ps_Texto.getValue());
+
+		} finally {
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
 	}
 	
 	public List<sysUsuCompania> list_sysUsuCompania(boolean bTodos) throws Open4GLException, IOException{

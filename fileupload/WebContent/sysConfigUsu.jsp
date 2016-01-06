@@ -93,7 +93,7 @@ td {
 
 								<a class="pure-button pure-button-primary"
 									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
-									href="ctMenuCtrl?action=delete&iMenu=${ctMenu.iMenu}"></i>Eliminar
+									href="syConfigUsuCtrl?action=delete&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
 								</a>
 							</nobr></td>
 

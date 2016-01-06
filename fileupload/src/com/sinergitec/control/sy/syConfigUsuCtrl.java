@@ -58,7 +58,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-
+		String sUsuario;
 		String sAction;
 
 		sAction = request.getParameter("action");
@@ -90,11 +90,25 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_Usuario", list_Usuario);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			forward = ADDUSER;			
+		}else if (sAction.equalsIgnoreCase("delete")){
+			/*Por el momento se borra unicamente con el cUsuario 
+			 * esto no debe de ser se debe de borrar con cUsuario y cCveCia*/
+			System.out.println("Cachorros estoy dentro del delete");
+			sUsuario = request.getParameter("cUsuario");
+			System.out.println(sUsuario);
+			try {
+				syUsuCompania_Dao.remove_sysUsuCompaniaDao("SISIMB", "SINERGIT", "sUsuario");
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				request.setAttribute("list_syUsuCompania", list_UsuCompania);
+				forward = PRINCIPAL;
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
-
 		view.forward(request, response);
 	}
 
