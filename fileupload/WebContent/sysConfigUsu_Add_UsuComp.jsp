@@ -6,7 +6,7 @@ System.out.println("entro al ctUsuario ADD");
 
 	String action = request.getParameter("action");
 	//System.out.print(session.getAttribute("value"));
-	//System.out.print(request.getParameter("cCompania"));
+	System.out.println("Este es el parametro: "+request.getParameter("cCompania"));
 
 	if (action.equalsIgnoreCase("update")) {
 %>
@@ -40,10 +40,23 @@ System.out.println("entro al ctUsuario ADD");
 			
 				<c:forEach items="${list_Usuario}" var="ctUsuario">
 					<tr>
-						<td><c:out value="${ctUsuario.cUsuario}" /></td>
-						<td><c:out value="${ctUsuario.cNombre}" /></td>
-						<td><c:out value="${ctUsuario.iPuesto}" /></td>
-						<td><input type="checkbox" name="id" value="true"></td>
+					<% System.out.println("Entra al primer for"); %>
+					<c:if test = "${ ctUsuario.lActivo == true }">
+					<% System.out.println("Estan activos"); %>
+						<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
+						<% System.out.println("Entra al segundo for"); %>
+							<c:if test = "${syUsuCompania.cCveCia ne 'SINERGIT'}">
+							<% System.out.println("Entra al primer if"); %>
+								<c:if test = "${syUsuCompania.cUsuario eq ctUsuario.cUsuario}" >
+								<% System.out.println("Entra al segundo if"); %>
+									<td><c:out value="${ctUsuario.cUsuario}" /></td>
+									<td><c:out value="${ctUsuario.cNombre}" /></td>
+									<td><c:out value="${ctUsuario.iPuesto}" /></td>
+									<td><input type="checkbox" name="id" value="true"></td>
+								</c:if>
+							</c:if>
+						</c:forEach>
+						</c:if>
 					</tr>
 				</c:forEach>
 				

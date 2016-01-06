@@ -53,25 +53,19 @@ td {
 	<label for="cCompania">Compañia</label>
 	
 	
-	<select  name="cCompania">
+	<select id = "cCompania" name = "cCompania">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
-		<%
-			session.setAttribute("value", request.getParameter("cCompania"));
-		%>
 	</select>
 	
-	
-	
-	
 	<h1>Usuarios por compañia</h1>
-
-
+	
 	<button class="pure-button pure-button-primary"
 		onclick="add_ctUsuario()">
 		<i class="fa fa-plus"></i> Agregar Usuario
 	</button>
+	
 	
 	
 	<table class="pure-table pure-table-bordered pure-table-striped">
@@ -87,7 +81,7 @@ td {
 
 				<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 					<tr>
-
+					
 						<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 						<td><c:out value="${syUsuCompania.cUsuario}" /></td>
 						<td><c:out value="${syUsuCompania.lActivo}" /></td>
