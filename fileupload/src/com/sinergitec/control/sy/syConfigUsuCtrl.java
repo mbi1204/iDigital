@@ -134,6 +134,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 			obj.setcUsuario(request.getParameter("cUsuario"));
 			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
 			
+			/*obj.setcCveCia("SINERGIT");
+			obj.setcUsuario("EMA");
+			obj.setlActivo(true);*/
+			
 			if(action.equals("add")){
 				try {
 					syUsuCompania_Dao.add_sysUsuCompaniaDao("SISIMB", obj);
