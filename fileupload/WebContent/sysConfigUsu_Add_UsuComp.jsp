@@ -5,7 +5,7 @@
 System.out.println("entro al ctUsuario ADD");
 
 	String action = request.getParameter("action");
-	System.out.print(session.getAttribute("cCompania"));
+	//System.out.print(session.getAttribute("value"));
 	//System.out.print(request.getParameter("cCompania"));
 
 	if (action.equalsIgnoreCase("update")) {

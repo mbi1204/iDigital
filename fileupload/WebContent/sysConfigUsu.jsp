@@ -53,11 +53,13 @@ td {
 	<label for="cCompania">Compañia</label>
 	
 	
-	<select id="cCompania" name="cCompania">
+	<select  name="cCompania">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
-		
+		<%
+			session.setAttribute("value", request.getParameter("cCompania"));
+		%>
 	</select>
 	
 	
