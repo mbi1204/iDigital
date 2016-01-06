@@ -50,6 +50,7 @@ td {
 	</div>
 
 	<h1>Configuracion de Usuarios</h1>
+	
 	<label for="cCompania">Compañia</label>
 	
 	
