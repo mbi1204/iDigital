@@ -97,14 +97,18 @@ public class syConfigUsuCtrl extends HttpServlet {
 			sUsuario = request.getParameter("cUsuario");
 			System.out.println(sUsuario);
 			try {
-				syUsuCompania_Dao.remove_sysUsuCompaniaDao("SISIMB", "SINERGIT", "sUsuario");
+				syUsuCompania_Dao.remove_sysUsuCompaniaDao("SISIMB", "SINERGIT", sUsuario);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
-				request.setAttribute("list_syUsuCompania", list_UsuCompania);
-				forward = PRINCIPAL;
+				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			request.setAttribute("list_ctCompania", list_Compania);
+			forward = PRINCIPAL;
 		}
 		
 

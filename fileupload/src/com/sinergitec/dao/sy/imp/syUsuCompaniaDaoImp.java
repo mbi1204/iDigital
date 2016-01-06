@@ -74,7 +74,7 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		
 		try {
 
-			//(cUsuario, cCveCia, cUsuario2, ps_Resultado, ps_Texto);
+			app.as_sysUsuCompania_Borra(cUsuario, cCveCia, cUsuario2, ps_Resultado, ps_Texto);
 
 			System.err.println(ps_Texto.getValue());
 
