@@ -51,13 +51,17 @@ td {
 
 	<h1>Configuracion de Usuarios</h1>
 	<label for="cCompania">Compañia</label>
-
-	<select name="cCompania">
-
+	
+	
+	<select id="cCompania" name="cCompania">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
+		
 	</select>
+	
+	
+	
 	
 	<h1>Usuarios por compañia</h1>
 
@@ -66,6 +70,7 @@ td {
 		onclick="add_ctUsuario()">
 		<i class="fa fa-plus"></i> Agregar Usuario
 	</button>
+	
 	
 	<table class="pure-table pure-table-bordered pure-table-striped">
 			<thead>

@@ -82,14 +82,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
 			try {
 				list_Usuario = ctUsuario_Dao.list_ctUsuario(true);
-				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("list_Usuario", list_Usuario);
-			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			forward = ADDUSER;			
 		}

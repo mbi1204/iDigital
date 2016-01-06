@@ -5,6 +5,8 @@
 System.out.println("entro al ctUsuario ADD");
 
 	String action = request.getParameter("action");
+	System.out.print(session.getAttribute("cCompania"));
+	//System.out.print(request.getParameter("cCompania"));
 
 	if (action.equalsIgnoreCase("update")) {
 %>
@@ -23,14 +25,6 @@ System.out.println("entro al ctUsuario ADD");
 
 	<fieldset>
 		<legend></legend>
-		
-		<label for="cCompania">Compañia</label>
-
-			<select id = "cCveCia" name="cCompania">
-				<c:forEach items="${list_ctCompania}" var="ctCompania">
-					<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
-				</c:forEach>
-			</select>
 
 		<table id="table_ctUsuario" >
 			<thead >
@@ -43,7 +37,7 @@ System.out.println("entro al ctUsuario ADD");
 			</thead>
 
 			<tbody>
-
+			
 				<c:forEach items="${list_Usuario}" var="ctUsuario">
 					<tr>
 						<td><c:out value="${ctUsuario.cUsuario}" /></td>
