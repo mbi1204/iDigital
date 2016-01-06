@@ -111,13 +111,14 @@ public class syConfigUsuCtrl extends HttpServlet {
 		if (action.equals("add") || action.equals("update")) {
 			
 			sysUsuCompania obj = new sysUsuCompania();
+			
 			obj.setcCveCia(request.getParameter("cCveCia"));
 			obj.setcUsuario(request.getParameter("cUsuario"));
 			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
 			
 			if(action.equals("add")){
 				try {
-					syUsuCompania_Dao.add_sysUsuCompaniaDao("SISTEMAS", obj);
+					syUsuCompania_Dao.add_sysUsuCompaniaDao("SISIMB", obj);
 				} catch (Open4GLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

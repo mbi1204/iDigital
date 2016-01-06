@@ -11,7 +11,10 @@ import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
+import com.sinergitec.dao.ct.ctUsuarioDao;
+import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
+import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
@@ -19,6 +22,8 @@ import com.sinergitec.mydigital.util.VectorResultSet;
 import mydigital.sinergitec.appserver.myDigital;
 
 public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
+	
+	private ctUsuarioDao ctUsuarioDao;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void add_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania) throws Open4GLException, IOException{
@@ -65,10 +70,14 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 	
 	public List<sysUsuCompania> list_sysUsuCompania(boolean bTodos) throws Open4GLException, IOException{
 		
+		ctUsuarioDao = new ctUsuarioDaoImp();
+		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
 		
 		List<sysUsuCompania> Lista = new ArrayList<sysUsuCompania>();
+		List<ctUsuario> ListaUsu = new ArrayList<ctUsuario>();
+		ListaUsu = ctUsuarioDao.list_ctUsuario(true);
 		
 		ResultSetHolder tt_sysUsuCompania = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
@@ -88,6 +97,15 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 				obj.setcUsuario(rs_tt_sysUsuCompania.getString("cUsuario"));
 				obj.setlActivo(rs_tt_sysUsuCompania.getBoolean("lActivo"));
 				obj.setId(rs_tt_sysUsuCompania.getBytes("id"));
+				
+				for(ctUsuario obj_Usuario : ListaUsu){
+					if(obj_Usuario.getcUsuario().equals(obj.getcUsuario())){
+						ctUsuario obj_nUsuario = new ctUsuario();
+						obj_nUsuario.setcNombre(obj_Usuario.getcNombre());
+						obj.setCtUsu(obj_nUsuario);
+					}
+				}
+				
 				Lista.add(obj);
 			}
 			

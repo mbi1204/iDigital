@@ -2,11 +2,14 @@ package com.sinergitec.model.sg;
 
 import java.util.Vector;
 
+import com.sinergitec.model.ct.ctUsuario;
+
 public class sysUsuCompania {
 	 String cCveCia;
      String cUsuario;
      Boolean lActivo;
      byte[] Id;
+     ctUsuario ctUsu;
      
 	public String getcCveCia() {
 		return cCveCia;
@@ -32,7 +35,13 @@ public class sysUsuCompania {
 	public void setId(byte[] id) {
 		Id = id;
 	}
-     
+	public ctUsuario getCtUsu() {
+		return ctUsu;
+	}
+	public void setCtUsu(ctUsuario ctUsu) {
+		this.ctUsu = ctUsu;
+	}
+	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Vector getVectorDatos() {

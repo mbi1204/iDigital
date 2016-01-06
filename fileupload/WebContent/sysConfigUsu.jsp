@@ -82,8 +82,8 @@ td {
 				<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 					<tr>
 					
-						<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 						<td><c:out value="${syUsuCompania.cUsuario}" /></td>
+						<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
 						<td><c:out value="${syUsuCompania.lActivo}" /></td>
 						<td><nobr>
 								<button class="pure-button pure-button-primary"
@@ -95,16 +95,12 @@ td {
 									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
 									href="ctMenuCtrl?action=delete&iMenu=${ctMenu.iMenu}"></i>Eliminar
 								</a>
-
 							</nobr></td>
 
 					</tr>
 				</c:forEach>
 			</tbody>
-
-
 		</table>
-
 
 </body>
 </html>
