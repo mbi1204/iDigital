@@ -13,7 +13,7 @@
 	rel="stylesheet" type="text/css" media="screen" />
 <link href="css/jquery-ui-1.10.4.custom.css" rel="stylesheet"
 	type="text/css" media="screen" />
-	
+
 
 <style type="text/css">
 th {
@@ -29,8 +29,8 @@ td {
 .selected {
 	background-color: orange;
 }
-</style>	
-	
+</style>
+
 
 <script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
@@ -50,59 +50,68 @@ td {
 	</div>
 
 	<h1>Configuracion de Usuarios</h1>
-	 
-	 
+
+
 	<label for="cCompania">Compañia</label>
-	
-	
-	<select id = "cCompania" name = "cCompania">
+
+
+	<select id="cCompania" name="cCompania" onchange="myFunction()">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
 	</select>
-	
+	<p id="demo"></p>
+	<script>
+
+		function myFunction() {
+			var x = document.getElementById("cCompania").value;
+			document.getElementById("demo").innerHTML = "You selected: " + x;
+		}
+	</script>
+
+
 	<h1>Usuarios por compañia</h1>
-	
+
 	<button class="pure-button pure-button-primary"
 		onclick="add_ctUsuario()">
 		<i class="fa fa-plus"></i> Agregar Usuario
 	</button>
-	
-	
-	
+
+
+
 	<table class="pure-table pure-table-bordered pure-table-striped">
-			<thead>
+		<thead>
+			<tr>
+				<th width="20">Usuario</th>
+				<th width="50">Nombre</th>
+				<th width="20">Estatus</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 				<tr>
-					<th width="20">Usuario</th>
-					<th width="50">Nombre</th>
-					<th width="20">Estatus</th>
+
+					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
+					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
+					<td><c:out value="${syUsuCompania.lActivo}" /></td>
+					<td><nobr>
+							<button class="pure-button pure-button-primary"
+								onclick="update_ctMenu('${ctMenu.iMenu}');">
+								<i class="fa fa-pencil"></i> Editar
+							</button>
+
+							<a class="pure-button pure-button-primary"
+								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
+								href="syConfigUsuCtrl?action=delete&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
+							</a>
+						</nobr></td>
+
 				</tr>
-			</thead>
-
-			<tbody>
-
-				<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
-					<tr>
-					
-						<td><c:out value="${syUsuCompania.cUsuario}" /></td>
-						<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
-						<td><c:out value="${syUsuCompania.lActivo}" /></td>
-						<td><nobr>
-								<button class="pure-button pure-button-primary"
-									onclick="update_ctMenu('${ctMenu.iMenu}');">
-									<i class="fa fa-pencil"></i> Editar
-								</button>
-
-								<a class="pure-button pure-button-primary"
-									onclick="return confirm('¿De verdad quieres eliminar este registro?');"
-									href="syConfigUsuCtrl?action=delete&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
-								</a>
-							</nobr></td>
-
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+			</c:forEach>
+		</tbody>
+	</table>
 
 </body>
 </html>
