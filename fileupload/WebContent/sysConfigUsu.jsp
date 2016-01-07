@@ -62,7 +62,6 @@ td {
 	</select>
 	<p id="demo"></p>
 	<script>
-
 		function myFunction() {
 			var x = document.getElementById("cCompania").value;
 			document.getElementById("demo").innerHTML = "You selected: " + x;
