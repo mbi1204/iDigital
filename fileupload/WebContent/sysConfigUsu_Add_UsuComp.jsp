@@ -38,7 +38,8 @@ System.out.println("entro al ctUsuario ADD");
 						<td><c:out value="${ctUsuario.cUsuario}" /></td>
 						<td><c:out value="${ctUsuario.cNombre}" /></td>
 						<td><c:out value="${ctUsuario.puesto.cPuesto}" /></td>
-						<td><input type="checkbox" name="id" value="true"></td>
+						<td><input type="checkbox" name="id" value="true"
+						${ctUsuario.lActivo ? 'checked':''}></td>
 					</tr>
 				</c:forEach>
 				

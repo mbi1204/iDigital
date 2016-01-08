@@ -62,6 +62,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 		String sCompania;
 		String sAction;
 		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
+		ctUsuario obj_nuevo = new ctUsuario();
+		
 
 		sAction = request.getParameter("action");
 		
@@ -88,26 +90,22 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				
 				for (ctUsuario usuario : list_Usuario) {
-					ctUsuario obj = new ctUsuario();
-					if(usuario.getlActivo() == true){
 						for (sysUsuCompania usuCompany : list_UsuCompania) {
-							if (!usuCompany.getcCveCia().equals(sCompania)){
-								if(usuCompany.getcUsuario().equals(usuario.getcUsuario())){
-									obj.setcUsuario(usuario.getcUsuario());
-									obj.setcNombre(usuario.getcNombre());
-									obj.setcPassword(usuario.getcPassword());
-									obj.setlActivo(usuario.getlActivo());
-									obj.setDtFechaAlta(usuario.getDtFechaAlta());
-									obj.setiPuesto(usuario.getiPuesto());
-									obj.setPuesto(usuario.getPuesto());
-									obj.setId(usuario.getId());
+							if (!usuCompany.getcCveCia().equalsIgnoreCase(sCompania)){
+								if(usuario.getlActivo().equals(true)){
+									obj_nuevo.setcUsuario(usuario.getcUsuario());
+									obj_nuevo.setcNombre(usuario.getcNombre());
+									obj_nuevo.setcPassword(usuario.getcPassword());
+									obj_nuevo.setlActivo(usuario.getlActivo());
+									obj_nuevo.setDtFechaAlta(usuario.getDtFechaAlta());
+									obj_nuevo.setiPuesto(usuario.getiPuesto());
+									obj_nuevo.setPuesto(usuario.getPuesto());
+									obj_nuevo.setId(usuario.getId());
+									}
+								Lista.add(obj_nuevo);
 								}
 							}
 						}
-					}
-					Lista.add(obj);
-				}
-				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
