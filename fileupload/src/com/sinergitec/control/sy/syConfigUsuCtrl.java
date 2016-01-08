@@ -61,8 +61,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 		String sUsuario;
 		String sCompania;
 		String sAction;
-		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
-		ctUsuario obj_nuevo = new ctUsuario();
+		
+		
 		
 
 		sAction = request.getParameter("action");
@@ -84,33 +84,68 @@ public class syConfigUsuCtrl extends HttpServlet {
 			forward = PRINCIPAL;
 
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
-			sCompania = request.getParameter("cCveCia");
+			
+			/*Este opcion permite cargar la lista de usuarios que no estan
+			 * en una determinada compania, es decir filtra a los usuarios*/
+			
+			
+			sCompania = request.getParameter("cCveCia");// Esta variable rescata a la compañia
+			
+			List<ctUsuario> Lista_nueva = new ArrayList<ctUsuario>();
+			// Lista para almacenar a los usuarios filtrados
+			
 			try {
-				list_Usuario = ctUsuario_Dao.list_ctUsuario(true);
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				
-				for (ctUsuario usuario : list_Usuario) {
-						for (sysUsuCompania usuCompany : list_UsuCompania) {
-							if (!usuCompany.getcCveCia().equalsIgnoreCase(sCompania)){
-								if(usuario.getlActivo().equals(true)){
-									obj_nuevo.setcUsuario(usuario.getcUsuario());
-									obj_nuevo.setcNombre(usuario.getcNombre());
-									obj_nuevo.setcPassword(usuario.getcPassword());
-									obj_nuevo.setlActivo(usuario.getlActivo());
-									obj_nuevo.setDtFechaAlta(usuario.getDtFechaAlta());
-									obj_nuevo.setiPuesto(usuario.getiPuesto());
-									obj_nuevo.setPuesto(usuario.getPuesto());
-									obj_nuevo.setId(usuario.getId());
+				//Nos traen los datos de la BD de los usuarios y las compañias
+				list_Usuario = ctUsuario_Dao.list_ctUsuario(true);
+				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				
+				
+				for (ctUsuario usuario_filtro : list_Usuario) {
+					
+					/*Primer for que va a recorrer a todos los usuarios
+					 * este for no termina hasta que todo el codigo dentro de el termine*/
+					
+						for (ctCompania Company : list_Compania) {
+							
+							/*Segundo For que va a recorrer a todas las compañias
+							 * no termina hasta que se completen los if*/
+							
+							//Creacion del objeto usuario
+							ctUsuario obj_nuevo = new ctUsuario();
+							
+							if (!Company.getcCveCia().equalsIgnoreCase(sCompania)){
+								
+								/*Este if tiene por objetivo descartar a los usuarios
+								 * que ya estuviesen inscritos dentro de la empresa
+								 * seleccionada*/
+								
+								if(usuario_filtro.getlActivo().equals(true)){
+									
+									/*Segundo if tiene por objetivo descartar
+									 * a los usuarios no activos*/
+									
+									obj_nuevo.setcUsuario(usuario_filtro.getcUsuario());
+									System.out.println(obj_nuevo.getcUsuario());
+									obj_nuevo.setcNombre(usuario_filtro.getcNombre());
+									System.out.println(obj_nuevo.getcNombre());
+									obj_nuevo.setcPassword(usuario_filtro.getcPassword());
+									obj_nuevo.setlActivo(usuario_filtro.getlActivo());
+									obj_nuevo.setDtFechaAlta(usuario_filtro.getDtFechaAlta());
+									obj_nuevo.setiPuesto(usuario_filtro.getiPuesto());
+									obj_nuevo.setPuesto(usuario_filtro.getPuesto());
+									obj_nuevo.setId(usuario_filtro.getId());
+									Lista_nueva.add(obj_nuevo);
 									}
-								Lista.add(obj_nuevo);
 								}
 							}
 						}
+				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("list_UsuCompania", Lista);
+			request.setAttribute("list_UsuCompania", Lista_nueva);
 			forward = ADDUSER;			
 		}else if (sAction.equalsIgnoreCase("delete")){
 			/*Por el momento se borra unicamente con el cUsuario 
