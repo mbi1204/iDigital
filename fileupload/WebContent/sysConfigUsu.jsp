@@ -55,18 +55,11 @@ td {
 	<label for="cCompania">Compañia</label>
 
 
-	<select id="cCompania" name="cCompania" onchange="myFunction()">
+	<select id="cCompania" name="cCompania">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
 	</select>
-	<p id="demo"></p>
-	<script>
-		function myFunction() {
-			var x = document.getElementById("cCompania").value;
-			document.getElementById("demo").innerHTML = "You selected: " + x;
-		}
-	</script>
 
 
 	<h1>Usuarios por compañia</h1>
@@ -81,6 +74,7 @@ td {
 	<table class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
 			<tr>
+				<th width="20">Compañia</th>
 				<th width="20">Usuario</th>
 				<th width="50">Nombre</th>
 				<th width="20">Estatus</th>
@@ -91,7 +85,7 @@ td {
 
 			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 				<tr>
-
+					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
 					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
 					<td><c:out value="${syUsuCompania.lActivo}" /></td>

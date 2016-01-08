@@ -1,15 +1,15 @@
 
 function add_ctUsuario() {
 	
+	var cCveCia = $('#cCompania').val();
 	
-	$.get("syConfigUsuCtrl?action=list_Usu", function(result) {
+	$.get("syConfigUsuCtrl?action=list_Usu&cCveCia=" + cCveCia, function(result) {
 		$("#addUsuComp_Dialog").html(result);
 		$('#addUsuComp_Dialog').dialog("option", "title", 'Agregar Usuario');
 		$('#addUsuComp_Dialog').dialog('open');
 	});
 	
-}
-
+} 
 
 function resetDialog(form) {
 

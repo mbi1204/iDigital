@@ -59,7 +59,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String sUsuario;
+		String sCompania;
 		String sAction;
+		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
 
 		sAction = request.getParameter("action");
 		
@@ -80,15 +82,37 @@ public class syConfigUsuCtrl extends HttpServlet {
 			forward = PRINCIPAL;
 
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
+			sCompania = request.getParameter("cCveCia");
 			try {
 				list_Usuario = ctUsuario_Dao.list_ctUsuario(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				
+				for (ctUsuario usuario : list_Usuario) {
+					ctUsuario obj = new ctUsuario();
+					if(usuario.getlActivo() == true){
+						for (sysUsuCompania usuCompany : list_UsuCompania) {
+							if (!usuCompany.getcCveCia().equals(sCompania)){
+								if(usuCompany.getcUsuario().equals(usuario.getcUsuario())){
+									obj.setcUsuario(usuario.getcUsuario());
+									obj.setcNombre(usuario.getcNombre());
+									obj.setcPassword(usuario.getcPassword());
+									obj.setlActivo(usuario.getlActivo());
+									obj.setDtFechaAlta(usuario.getDtFechaAlta());
+									obj.setiPuesto(usuario.getiPuesto());
+									obj.setPuesto(usuario.getPuesto());
+									obj.setId(usuario.getId());
+								}
+							}
+						}
+					}
+					Lista.add(obj);
+				}
+				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("list_Usuario", list_Usuario);
-			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			request.setAttribute("list_UsuCompania", Lista);
 			forward = ADDUSER;			
 		}else if (sAction.equalsIgnoreCase("delete")){
 			/*Por el momento se borra unicamente con el cUsuario 
