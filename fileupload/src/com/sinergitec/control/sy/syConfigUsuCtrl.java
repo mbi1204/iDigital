@@ -113,14 +113,19 @@ public class syConfigUsuCtrl extends HttpServlet {
 							
 							//Creacion del objeto usuario
 							ctUsuario obj_nuevo = new ctUsuario();
-							
+							System.out.println(Company.getcCveCia());
+							System.out.println(sCompania);
 							if (!Company.getcCveCia().equalsIgnoreCase(sCompania)){
+								
+								System.out.println("Esta entrando al primer if");
 								
 								/*Este if tiene por objetivo descartar a los usuarios
 								 * que ya estuviesen inscritos dentro de la empresa
 								 * seleccionada*/
 								
 								if(usuario_filtro.getlActivo().equals(true)){
+									
+									System.out.println("Esta entrando al segundo if");
 									
 									/*Segundo if tiene por objetivo descartar
 									 * a los usuarios no activos*/
