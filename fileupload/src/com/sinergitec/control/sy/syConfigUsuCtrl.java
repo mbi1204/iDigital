@@ -88,6 +88,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 			/*Este opcion permite cargar la lista de usuarios que no estan
 			 * en una determinada compania, es decir filtra a los usuarios*/
 			
+			//PD: Seccion aun incompleta, terminar ALEX
+			
 			
 			sCompania = request.getParameter("cCveCia");// Esta variable rescata a la compañia
 			
@@ -99,6 +101,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				//Nos traen los datos de la BD de los usuarios y las compañias
 				list_Usuario = ctUsuario_Dao.list_ctUsuario(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				
 				
 				for (ctUsuario usuario_filtro : list_Usuario) {
