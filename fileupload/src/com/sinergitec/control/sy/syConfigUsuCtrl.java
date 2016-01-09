@@ -149,6 +149,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 											}
 										}
 									}
+								}
+							}
+						}
 				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
