@@ -150,7 +150,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 							}
 						}
 				
-				Lista_completa.
+				//Lista_completa.
 				for (ctUsuario ctUsuario : list_Usuario) {
 					for (ctUsuario soloUsuRegistrados : Lista_nueva) {
 						if(!ctUsuario.getcUsuario().equals(soloUsuRegistrados.getcUsuario())){
