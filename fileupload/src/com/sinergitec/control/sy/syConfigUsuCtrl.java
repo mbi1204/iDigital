@@ -94,6 +94,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			sCompania = request.getParameter("cCveCia");// Esta variable rescata a la compañia
 			
 			List<ctUsuario> Lista_nueva = new ArrayList<ctUsuario>();
+			List<ctUsuario> Lista_completa = new ArrayList<ctUsuario>();
 			// Lista para almacenar a los usuarios filtrados
 			
 			try {
@@ -116,26 +117,26 @@ public class syConfigUsuCtrl extends HttpServlet {
 							
 							for (sysUsuCompania usuCompany : list_UsuCompania) {
 								
+								/*Tercer For va a recorrer a todos los usuarios que ya 
+								 * cuentan con compañia*/
+								
 								if(!usuCompany.getcCveCia().equals(sCompania) &&
 										
 										usuCompany.getcUsuario().equals(usuario_filtro.getcUsuario()) &&
-										
+
 										usuario_filtro.getlActivo().equals(true) && Company.getcCveCia().equals(sCompania)){
 									
-									//Creacion del objeto usuario
-									ctUsuario obj_nuevo = new ctUsuario();
-
-
 									System.out.println("Esta entrando al primer if");
 
 									/*Este if tiene por objetivo descartar a los usuarios
 									 * que ya estuviesen inscritos dentro de la empresa
 									 * seleccionada*/
 
+									//Creacion del objeto usuario
+									ctUsuario obj_nuevo = new ctUsuario();
+
 									obj_nuevo.setcUsuario(usuario_filtro.getcUsuario());
-									System.out.println(obj_nuevo.getcUsuario());
 									obj_nuevo.setcNombre(usuario_filtro.getcNombre());
-									System.out.println(obj_nuevo.getcNombre());
 									obj_nuevo.setcPassword(usuario_filtro.getcPassword());
 									obj_nuevo.setlActivo(usuario_filtro.getlActivo());
 									obj_nuevo.setDtFechaAlta(usuario_filtro.getDtFechaAlta());
@@ -143,10 +144,33 @@ public class syConfigUsuCtrl extends HttpServlet {
 									obj_nuevo.setPuesto(usuario_filtro.getPuesto());
 									obj_nuevo.setId(usuario_filtro.getId());
 									Lista_nueva.add(obj_nuevo);
+									
 									}
 								}
 							}
 						}
+				
+				Lista_completa.
+				for (ctUsuario ctUsuario : list_Usuario) {
+					for (ctUsuario soloUsuRegistrados : Lista_nueva) {
+						if(!ctUsuario.getcUsuario().equals(soloUsuRegistrados.getcUsuario())){
+							ctUsuario obj_nuevo = new ctUsuario();
+
+							obj_nuevo.setcUsuario(ctUsuario.getcUsuario());
+							System.out.println(obj_nuevo.getcUsuario());
+							obj_nuevo.setcNombre(ctUsuario.getcNombre());
+							System.out.println(obj_nuevo.getcNombre());
+							obj_nuevo.setcPassword(ctUsuario.getcPassword());
+							obj_nuevo.setlActivo(ctUsuario.getlActivo());
+							obj_nuevo.setDtFechaAlta(ctUsuario.getDtFechaAlta());
+							obj_nuevo.setiPuesto(ctUsuario.getiPuesto());
+							obj_nuevo.setPuesto(ctUsuario.getPuesto());
+							obj_nuevo.setId(ctUsuario.getId());
+							Lista_nueva.add(obj_nuevo);
+						}
+					}
+				}
+				
 				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
