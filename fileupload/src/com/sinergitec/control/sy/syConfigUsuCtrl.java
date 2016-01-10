@@ -115,39 +115,34 @@ public class syConfigUsuCtrl extends HttpServlet {
 							 * no termina hasta que se completen los if*/
 							
 							for (sysUsuCompania usuCompany : list_UsuCompania) {
-								if(!usuCompany.getcCveCia().equals(sCompania) && !usuCompany.getcUsuario().equals(usuario_filtro.getcNombre())){
+								
+								if(!usuCompany.getcCveCia().equals(sCompania) &&
+										
+										usuCompany.getcUsuario().equals(usuario_filtro.getcUsuario()) &&
+										
+										usuario_filtro.getlActivo().equals(true) && Company.getcCveCia().equals(sCompania)){
+									
 									//Creacion del objeto usuario
 									ctUsuario obj_nuevo = new ctUsuario();
-									System.out.println(Company.getcCveCia());
-									System.out.println(sCompania);
-									if (!Company.getcCveCia().equalsIgnoreCase(sCompania)){
-										
-										System.out.println("Esta entrando al primer if");
-										
-										/*Este if tiene por objetivo descartar a los usuarios
-										 * que ya estuviesen inscritos dentro de la empresa
-										 * seleccionada*/
-										
-										if(usuario_filtro.getlActivo().equals(true)){
-											
-											System.out.println("Esta entrando al segundo if");
-											
-											/*Segundo if tiene por objetivo descartar
-											 * a los usuarios no activos*/
-											
-											obj_nuevo.setcUsuario(usuario_filtro.getcUsuario());
-											System.out.println(obj_nuevo.getcUsuario());
-											obj_nuevo.setcNombre(usuario_filtro.getcNombre());
-											System.out.println(obj_nuevo.getcNombre());
-											obj_nuevo.setcPassword(usuario_filtro.getcPassword());
-											obj_nuevo.setlActivo(usuario_filtro.getlActivo());
-											obj_nuevo.setDtFechaAlta(usuario_filtro.getDtFechaAlta());
-											obj_nuevo.setiPuesto(usuario_filtro.getiPuesto());
-											obj_nuevo.setPuesto(usuario_filtro.getPuesto());
-											obj_nuevo.setId(usuario_filtro.getId());
-											Lista_nueva.add(obj_nuevo);
-											}
-										}
+
+
+									System.out.println("Esta entrando al primer if");
+
+									/*Este if tiene por objetivo descartar a los usuarios
+									 * que ya estuviesen inscritos dentro de la empresa
+									 * seleccionada*/
+
+									obj_nuevo.setcUsuario(usuario_filtro.getcUsuario());
+									System.out.println(obj_nuevo.getcUsuario());
+									obj_nuevo.setcNombre(usuario_filtro.getcNombre());
+									System.out.println(obj_nuevo.getcNombre());
+									obj_nuevo.setcPassword(usuario_filtro.getcPassword());
+									obj_nuevo.setlActivo(usuario_filtro.getlActivo());
+									obj_nuevo.setDtFechaAlta(usuario_filtro.getDtFechaAlta());
+									obj_nuevo.setiPuesto(usuario_filtro.getiPuesto());
+									obj_nuevo.setPuesto(usuario_filtro.getPuesto());
+									obj_nuevo.setId(usuario_filtro.getId());
+									Lista_nueva.add(obj_nuevo);
 									}
 								}
 							}
