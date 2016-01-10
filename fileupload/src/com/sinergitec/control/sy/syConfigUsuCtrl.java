@@ -150,10 +150,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 							}
 						}
 				
-				//Lista_completa.
-				for (ctUsuario ctUsuario : list_Usuario) {
-					for (ctUsuario soloUsuRegistrados : Lista_nueva) {
+				/*for (ctUsuario soloUsuRegistrados : Lista_nueva){
+					for (ctUsuario ctUsuario : list_Usuario){
+						System.out.println("Usuario del catalogo usuario: "+ctUsuario.getcUsuario()+" Usuario de la lista anterior: "+soloUsuRegistrados.getcUsuario());
 						if(!ctUsuario.getcUsuario().equals(soloUsuRegistrados.getcUsuario())){
+							
 							ctUsuario obj_nuevo = new ctUsuario();
 
 							obj_nuevo.setcUsuario(ctUsuario.getcUsuario());
@@ -166,11 +167,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 							obj_nuevo.setiPuesto(ctUsuario.getiPuesto());
 							obj_nuevo.setPuesto(ctUsuario.getPuesto());
 							obj_nuevo.setId(ctUsuario.getId());
-							Lista_nueva.add(obj_nuevo);
+							
+							Lista_completa.add(obj_nuevo);
+							
 						}
 					}
-				}
-				
+				}*/
 				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
