@@ -2,6 +2,8 @@ package com.sinergitec.control.sy;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -88,13 +90,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 			/*Este opcion permite cargar la lista de usuarios que no estan
 			 * en una determinada compania, es decir filtra a los usuarios*/
 			
-			//PD: Seccion aun incompleta, terminar ALEX
-			
-			
 			sCompania = request.getParameter("cCveCia");// Esta variable rescata a la compañia
 			
 			List<ctUsuario> Lista_nueva = new ArrayList<ctUsuario>();
-			List<ctUsuario> Lista_completa = new ArrayList<ctUsuario>();
+			List<String> catUsuarios = new ArrayList<String>();
+			List<String> catUsuEmpresa = new ArrayList<String>();
 			// Lista para almacenar a los usuarios filtrados
 			
 			try {
@@ -110,6 +110,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 					/*Primer for que va a recorrer a todos los usuarios
 					 * este for no termina hasta que todo el codigo dentro de el termine*/
 					
+					//Nos permite almacenar los usuarios en una lista para compararlos
+					catUsuarios.add(usuario_filtro.getcUsuario());
+					
 						for (ctCompania Company : list_Compania) {
 							
 							/*Segundo For que va a recorrer a todas las compañias
@@ -119,6 +122,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 								
 								/*Tercer For va a recorrer a todos los usuarios que ya 
 								 * cuentan con compañia*/
+								
+								//Nos permite almacenar los usuarios en una lista para compararlos
+								catUsuEmpresa.add(usuCompany.getcUsuario());
 								
 								if(!usuCompany.getcCveCia().equals(sCompania) &&
 										
@@ -150,29 +156,44 @@ public class syConfigUsuCtrl extends HttpServlet {
 							}
 						}
 				
-				/*for (ctUsuario soloUsuRegistrados : Lista_nueva){
-					for (ctUsuario ctUsuario : list_Usuario){
-						System.out.println("Usuario del catalogo usuario: "+ctUsuario.getcUsuario()+" Usuario de la lista anterior: "+soloUsuRegistrados.getcUsuario());
-						if(!ctUsuario.getcUsuario().equals(soloUsuRegistrados.getcUsuario())){
+				
+				/*Esta seccion nos permite filtar a los usuarios que no estan con una 
+				 * compañia es decir es la primera vez que los van agregar*/
+				Collection<String> similar = new HashSet<String>( catUsuarios );
+		        Collection<String> different = new HashSet<String>();
+		        different.addAll( catUsuarios );
+		        different.addAll( catUsuEmpresa );
+		        
+		        similar.retainAll( catUsuEmpresa );
+		        different.removeAll( similar );
+		        
+		        
+		        //Recorremos la lista original de usuarios
+		        for (ctUsuario usuario_filtro : list_Usuario) {
+		        	
+		        	//Recorremos la lista con los usuarios que no tienen empresa
+		        	for (String string : different) {
+		        		
+		        		/*Verificamos que sea igual el usuario existente en la base con
+		        		 * el usuario que no tiene empresa*/
+						if(usuario_filtro.getcUsuario().equals(string)){
 							
+							System.out.println("Usuario no existente en sysUsuCompania: "+string);
+							//Creacion del objeto usuario
 							ctUsuario obj_nuevo = new ctUsuario();
 
-							obj_nuevo.setcUsuario(ctUsuario.getcUsuario());
-							System.out.println(obj_nuevo.getcUsuario());
-							obj_nuevo.setcNombre(ctUsuario.getcNombre());
-							System.out.println(obj_nuevo.getcNombre());
-							obj_nuevo.setcPassword(ctUsuario.getcPassword());
-							obj_nuevo.setlActivo(ctUsuario.getlActivo());
-							obj_nuevo.setDtFechaAlta(ctUsuario.getDtFechaAlta());
-							obj_nuevo.setiPuesto(ctUsuario.getiPuesto());
-							obj_nuevo.setPuesto(ctUsuario.getPuesto());
-							obj_nuevo.setId(ctUsuario.getId());
-							
-							Lista_completa.add(obj_nuevo);
-							
+							obj_nuevo.setcUsuario(usuario_filtro.getcUsuario());
+							obj_nuevo.setcNombre(usuario_filtro.getcNombre());
+							obj_nuevo.setcPassword(usuario_filtro.getcPassword());
+							obj_nuevo.setlActivo(usuario_filtro.getlActivo());
+							obj_nuevo.setDtFechaAlta(usuario_filtro.getDtFechaAlta());
+							obj_nuevo.setiPuesto(usuario_filtro.getiPuesto());
+							obj_nuevo.setPuesto(usuario_filtro.getPuesto());
+							obj_nuevo.setId(usuario_filtro.getId());
+							Lista_nueva.add(obj_nuevo);
 						}
 					}
-				}*/
+				}
 				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
