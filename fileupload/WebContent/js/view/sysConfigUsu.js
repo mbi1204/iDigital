@@ -11,6 +11,19 @@ function add_ctUsuario() {
 	
 } 
 
+
+function update_sysUsuCompania(cCveCia,cUsuario) {
+	
+	
+
+	$.get("syConfigUsuCtrl?action=update&cCveCia=" + cCveCia+"&cUsuario="+cUsuario, function(result) {
+		$("#ctPrograma_Dialog").html(result);		
+		$('#ctPrograma_Dialog').dialog("option", "title", 'Editar Usuario');
+		$("#ctPrograma_Dialog").dialog('open');
+	});
+
+}
+
 function resetDialog(form) {
 
 }
