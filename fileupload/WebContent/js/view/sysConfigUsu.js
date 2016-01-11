@@ -16,6 +16,8 @@ function resetDialog(form) {
 }
 
 $(document).ready(function() {
+	
+	
 
 	$('#addUsuComp_Dialog').dialog({
 

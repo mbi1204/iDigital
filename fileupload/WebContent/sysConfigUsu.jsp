@@ -52,7 +52,7 @@ td {
 	<h1>Configuracion de Usuarios</h1>
 
 
-	<label for="cCompania">Compañia</label>
+	<label for="cCompania">Compañia: </label>
 
 
 	<select id="cCompania" name="cCompania">

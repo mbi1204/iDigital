@@ -64,7 +64,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 		String sCompania;
 		String sAction;
 		
-		
+		/*ATENCION SE ENCONTRO UN BUG :S
+		 *El problema: se muestran los usuarios que esten
+		 * en mas de una empresa al mismo tiempo :V*/
 		
 
 		sAction = request.getParameter("action");
@@ -236,27 +238,41 @@ public class syConfigUsuCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String action = request.getParameter("action");		
+		
+		String action = request.getParameter("action");
+		
+		//Recibe la compañia a la que seran ingresado los usuarios
+		String sCompania = request.getParameter("cCveCia");
+		
+		/*Esta arreglo va almacenar los usuarios que
+		 * se van agregar como nuevos a determinada empresa*/
+		String[] operaciones=request.getParameterValues("cUsuarios");
+		
 
 		if (action.equals("add") || action.equals("update")) {
 			
+			//Creacion del objeto usuario-compañia
 			sysUsuCompania obj = new sysUsuCompania();
 			
-			obj.setcCveCia(request.getParameter("cCveCia"));
-			obj.setcUsuario(request.getParameter("cUsuario"));
-			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
-			
-			/*obj.setcCveCia("SINERGIT");
-			obj.setcUsuario("EMA");
-			obj.setlActivo(true);*/
-			
 			if(action.equals("add")){
-				try {
-					syUsuCompania_Dao.add_sysUsuCompaniaDao("SISIMB", obj);
-				} catch (Open4GLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
+				// Este for recorrera el arreglo operaciones
+				for (String string : operaciones) {
+					
+					obj.setcCveCia(sCompania);
+					obj.setcUsuario(string);
+					obj.setlActivo(true);
+					
+					try {
+						syUsuCompania_Dao.add_sysUsuCompaniaDao("SISIMB", obj);
+						} catch (Open4GLException e) {
+							//TODO Auto-generated catch block
+							e.printStackTrace();
+							}
+					}
+				
+				
+				
 			} else if(action.equals("update")){
 				/*try {
 				syUsuCompania_Dao.update_sysUsuCompaniaDao("SISTEMAS", obj);
@@ -266,7 +282,22 @@ public class syConfigUsuCtrl extends HttpServlet {
 				}*/
 			}
 			
+			try {
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				list_Compania = ctCompania_Dao.list_ctCompania(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			request.setAttribute("list_ctCompania", list_Compania);
+			forward = PRINCIPAL;
+			
 		}
+		
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
 	}
 
 }
