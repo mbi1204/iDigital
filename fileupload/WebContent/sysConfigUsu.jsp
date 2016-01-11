@@ -97,7 +97,7 @@ td {
 
 							<a class="pure-button pure-button-primary"
 								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
-								href="syConfigUsuCtrl?action=delete&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
+								href="syConfigUsuCtrl?action=delete&cCveCia=${syUsuCompania.cCveCia}&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
 							</a>
 						</nobr></td>
 

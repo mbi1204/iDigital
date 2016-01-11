@@ -202,13 +202,14 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_UsuCompania", Lista_nueva);
 			forward = ADDUSER;			
 		}else if (sAction.equalsIgnoreCase("delete")){
-			/*Por el momento se borra unicamente con el cUsuario 
-			 * esto no debe de ser se debe de borrar con cUsuario y cCveCia*/
+			/*Por el momento se borra  
+			 * con cCveCia y cUsuario*/
 			System.out.println("Cachorros estoy dentro del delete");
+			sCompania = request.getParameter("cCveCia");
 			sUsuario = request.getParameter("cUsuario");
 			System.out.println(sUsuario);
 			try {
-				syUsuCompania_Dao.remove_sysUsuCompaniaDao("SISIMB", "SINERGIT", sUsuario);
+				syUsuCompania_Dao.remove_sysUsuCompaniaDao("SISIMB", sCompania, sUsuario);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				
