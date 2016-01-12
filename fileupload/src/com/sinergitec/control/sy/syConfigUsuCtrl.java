@@ -318,7 +318,16 @@ public class syConfigUsuCtrl extends HttpServlet {
 				
 				Boolean lEstatus = Boolean.parseBoolean(request.getParameter("lActivo"));
 				for (String string : operaciones) {
+					obj.setcCveCia(sCompania);
+					obj.setcUsuario(string);
+					obj.setlActivo(lEstatus);
 					
+					try {
+						syUsuCompania_Dao.update_sysUsuCompaniaDao("SISIMB", obj);
+					} catch (Open4GLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			}

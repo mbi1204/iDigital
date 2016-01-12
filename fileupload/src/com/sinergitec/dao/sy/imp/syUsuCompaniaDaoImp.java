@@ -64,7 +64,37 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		
 	}
 
-	public void update_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania){
+	public void update_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania) throws Open4GLException, IOException{
+		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+		
+		List<sysUsuCompania> Lista = new ArrayList<sysUsuCompania>();
+		Lista.add(obj_sysUsuCompania);
+		
+		Vector vecTabla1, vecRow1;
+		vecTabla1 = new Vector();
+		
+		Connection conexion = DBConexion.getConnection();
+		myDigital app = new myDigital(conexion);
+		
+		for (sysUsuCompania obj : Lista) {
+			vecRow1 = obj.getVectorDatos();
+			vecTabla1.add(vecRow1);
+		}
+		
+		ResultSet sysUsuCompaniaModificados = new VectorResultSet(vecTabla1);
+		
+		try {
+			app.as_sysUsuCompania_Actualiza(cUsuario, sysUsuCompaniaModificados, ps_Resultado, ps_Texto);
+			System.out.println(ps_Texto.getStringValue());
+		} catch (Exception ex) {
+			// TODO: handle exception
+			System.out.println(ex);
+		} finally{
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
 		
 	}
 	

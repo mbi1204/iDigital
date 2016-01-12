@@ -88,7 +88,7 @@ td {
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
 					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
-					<td><c:out value="${syUsuCompania.lActivo}" /></td>
+					<td><c:out value="${syUsuCompania.lActivo ? 'SI':'NO'}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
 								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">

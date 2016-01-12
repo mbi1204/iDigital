@@ -10,7 +10,7 @@ public interface syUsuCompaniaDao {
 
 	public void add_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania) throws Open4GLException, IOException;
 	
-	public void update_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania);
+	public void update_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania) throws Open4GLException, IOException;
 	
 	public void remove_sysUsuCompaniaDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException;
 	
