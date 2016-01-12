@@ -17,9 +17,9 @@ function update_sysUsuCompania(cCveCia,cUsuario) {
 	
 
 	$.get("syConfigUsuCtrl?action=update&cCveCia=" + cCveCia+"&cUsuario="+cUsuario, function(result) {
-		$("#ctPrograma_Dialog").html(result);		
-		$('#ctPrograma_Dialog').dialog("option", "title", 'Editar Usuario');
-		$("#ctPrograma_Dialog").dialog('open');
+		$("#addUsuComp_Dialog").html(result);		
+		$('#addUsuComp_Dialog').dialog("option", "title", 'Editar Usuario');
+		$("#addUsuComp_Dialog").dialog('open');
 	});
 
 }

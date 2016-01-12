@@ -91,7 +91,7 @@ td {
 					<td><c:out value="${syUsuCompania.lActivo}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
-								onclick="update_ctMenu('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">
+								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">
 								<i class="fa fa-pencil"></i> Editar
 							</button>
 

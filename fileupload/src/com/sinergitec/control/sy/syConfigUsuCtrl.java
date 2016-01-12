@@ -223,6 +223,42 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			request.setAttribute("list_ctCompania", list_Compania);
 			forward = PRINCIPAL;
+		}else if(sAction.equalsIgnoreCase("update")){
+			
+			/*ATENCION METODO NO TERMINADO AUN :V
+			 * Error: Tipo de dato*/
+			
+			sCompania = request.getParameter("cCveCia");
+			sUsuario = request.getParameter("cUsuario");
+			List<sysUsuCompania> lista_Update = new ArrayList<sysUsuCompania>();
+			
+			System.out.println("Este es el valor de la compañia en update: "+sCompania);
+			System.out.println("Este es el valor del usuario en update: "+sUsuario);
+			
+			try {
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				
+				for (sysUsuCompania usuarioRegistrado : list_UsuCompania) {
+					
+					if(usuarioRegistrado.getcCveCia().equals(sCompania) && usuarioRegistrado.getcUsuario().equals(sUsuario)){
+						
+						sysUsuCompania obj = new sysUsuCompania();
+						
+						obj.setcCveCia(usuarioRegistrado.getcCveCia());
+						obj.setcUsuario(usuarioRegistrado.getcUsuario());
+						obj.setCtUsu(usuarioRegistrado.getCtUsu());
+						obj.setlActivo(usuarioRegistrado.getlActivo());
+						obj.setId(usuarioRegistrado.getId());
+						lista_Update.add(obj);
+					}
+				}
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("list_syUsuCompania", lista_Update);
+			forward = ADDUSER;
 		}
 		
 
