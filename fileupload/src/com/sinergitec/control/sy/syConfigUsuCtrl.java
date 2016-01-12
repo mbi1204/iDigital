@@ -230,7 +230,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			sCompania = request.getParameter("cCveCia");
 			sUsuario = request.getParameter("cUsuario");
-			List<sysUsuCompania> lista_Update = new ArrayList<sysUsuCompania>();
+			List<ctUsuario> lista_Update = new ArrayList<ctUsuario>();
 			
 			System.out.println("Este es el valor de la compañia en update: "+sCompania);
 			System.out.println("Este es el valor del usuario en update: "+sUsuario);
@@ -242,11 +242,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 					
 					if(usuarioRegistrado.getcCveCia().equals(sCompania) && usuarioRegistrado.getcUsuario().equals(sUsuario)){
 						
-						sysUsuCompania obj = new sysUsuCompania();
+						ctUsuario obj = new ctUsuario();
 						
-						obj.setcCveCia(usuarioRegistrado.getcCveCia());
+						
 						obj.setcUsuario(usuarioRegistrado.getcUsuario());
-						obj.setCtUsu(usuarioRegistrado.getCtUsu());
+						
 						obj.setlActivo(usuarioRegistrado.getlActivo());
 						obj.setId(usuarioRegistrado.getId());
 						lista_Update.add(obj);
