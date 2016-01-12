@@ -15,4 +15,6 @@ public interface syUsuCompaniaDao {
 	public void remove_sysUsuCompaniaDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException;
 	
 	public List<sysUsuCompania> list_sysUsuCompania(boolean bTodos) throws Open4GLException, IOException;
+	
+	public sysUsuCompania get_sysUsuCompania(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException;
 }

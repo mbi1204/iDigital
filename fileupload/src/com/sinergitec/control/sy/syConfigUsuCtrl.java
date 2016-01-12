@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctCompaniaDao;
+import com.sinergitec.dao.ct.ctPuestoDao;
 import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
+import com.sinergitec.dao.sg.sysUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
 import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
 import com.sinergitec.model.ct.ctCompania;
+import com.sinergitec.model.ct.ctPuesto;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
 
@@ -31,6 +34,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private ctCompaniaDao ctCompania_Dao;
 	private ctUsuarioDao  ctUsuario_Dao;
 	private syUsuCompaniaDao syUsuCompania_Dao;
+	private ctPuestoDao DaoPuesto;
 	private List<ctCompania> list_Compania = new ArrayList<ctCompania>();
 	private List<ctUsuario>  list_Usuario = new ArrayList<ctUsuario>();
 	private List<sysUsuCompania> list_UsuCompania = new ArrayList<sysUsuCompania>();
@@ -230,34 +234,36 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			sCompania = request.getParameter("cCveCia");
 			sUsuario = request.getParameter("cUsuario");
-			List<ctUsuario> lista_Update = new ArrayList<ctUsuario>();
-			
+			List<ctUsuario> lista_ctUsuario = new ArrayList<ctUsuario>();
+			List<sysUsuCompania> lista_sysUsuCompania = new ArrayList<sysUsuCompania>();
+
 			System.out.println("Este es el valor de la compañia en update: "+sCompania);
 			System.out.println("Este es el valor del usuario en update: "+sUsuario);
 			
 			try {
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+								
+				lista_sysUsuCompania.add(syUsuCompania_Dao.get_sysUsuCompania("SISIMB",sCompania, sUsuario));
 				
-				for (sysUsuCompania usuarioRegistrado : list_UsuCompania) {
+				for (sysUsuCompania sysUsuCompania : lista_sysUsuCompania) {
 					
-					if(usuarioRegistrado.getcCveCia().equals(sCompania) && usuarioRegistrado.getcUsuario().equals(sUsuario)){
-						
-						ctUsuario obj = new ctUsuario();
-						
-						
-						obj.setcUsuario(usuarioRegistrado.getcUsuario());
-						
-						obj.setlActivo(usuarioRegistrado.getlActivo());
-						obj.setId(usuarioRegistrado.getId());
-						lista_Update.add(obj);
+					ctUsuario obj = new ctUsuario();
+					
+					obj.setcUsuario(sysUsuCompania.getcUsuario());
+					obj.setcNombre(sysUsuCompania.getCtUsu().getcNombre());
+					obj.setPuesto(sysUsuCompania.getCtUsu().getPuesto());
+					obj.setlActivo(sysUsuCompania.getlActivo());
+					
+					System.out.println("Este es el valor del  puesto: "+obj.getPuesto().getcPuesto());
+					
+					lista_ctUsuario.add(obj);
 					}
 				}
-			} catch (Open4GLException e) {
+			 catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			request.setAttribute("list_syUsuCompania", lista_Update);
+			request.setAttribute("list_UsuCompania", lista_ctUsuario);
 			forward = ADDUSER;
 		}
 		

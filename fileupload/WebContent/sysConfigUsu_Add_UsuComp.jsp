@@ -33,12 +33,15 @@ System.out.println("entro al ctUsuario ADD");
 					<th width="25">Puesto</th>
 					<%
 							if (action.equals("update")) {
-						%>
+					%>
 						<th width="25">Activo</th>
 					<%
+								}else{
+					%>
+					<th width="25">Seleccionar</th>
+					<%
 								}
-						%>
-					<th width="25">Activar</th>
+					%>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,13 +55,13 @@ System.out.println("entro al ctUsuario ADD");
 						%>
 						<td><input type="checkbox" name="id" value="true"
 							${ctUsuario.lActivo ? 'checked':''}></td>
-						<td><input type="checkbox" name="id" value="false"
-							${ctUsuario.lActivo ? 'checked':''}></td>
+						<%
+								} else{
+						%>
+						<td><input type="checkbox" id ="cUsuarios" name="cUsuarios" value="${ctUsuario.cUsuario}"></td>
 						<%
 								}
 						%>
-						<td><input type="checkbox" id ="cUsuarios" name="cUsuarios" value="${ctUsuario.cUsuario}"></td>
-
 					</tr>
 				</c:forEach>
 
