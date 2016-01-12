@@ -34,7 +34,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private ctCompaniaDao ctCompania_Dao;
 	private ctUsuarioDao  ctUsuario_Dao;
 	private syUsuCompaniaDao syUsuCompania_Dao;
-	private ctPuestoDao DaoPuesto;
 	private List<ctCompania> list_Compania = new ArrayList<ctCompania>();
 	private List<ctUsuario>  list_Usuario = new ArrayList<ctUsuario>();
 	private List<sysUsuCompania> list_UsuCompania = new ArrayList<sysUsuCompania>();
@@ -316,12 +315,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 				
 				
 			} else if(action.equals("update")){
-				/*try {
-				syUsuCompania_Dao.update_sysUsuCompaniaDao("SISTEMAS", obj);
-				} catch (Open4GLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
+				
+				Boolean lEstatus = Boolean.parseBoolean(request.getParameter("lActivo"));
+				for (String string : operaciones) {
+					
+				}
+				
 			}
 			
 			try {

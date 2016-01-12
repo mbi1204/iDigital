@@ -77,7 +77,7 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		myDigital app = new myDigital(conexion);
 		
 		try {
-
+			
 			app.as_sysUsuCompania_Borra(cUsuario, cCveCia, cUsuario2, ps_Resultado, ps_Texto);
 
 			System.err.println(ps_Texto.getValue());

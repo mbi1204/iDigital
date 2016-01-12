@@ -8,7 +8,7 @@ System.out.println("entro al ctUsuario ADD");
 	
 	if (action.equalsIgnoreCase("update")) {
 %>
-<c:url var="actionUrl" value="syConfigUsuCtrl?action=update" />
+<c:url var="actionUrl" value="syConfigUsuCtrl?action=update&cCveCia=${param.cCveCia}" />
 <%
 	} else {
 %>
@@ -53,8 +53,13 @@ System.out.println("entro al ctUsuario ADD");
 						<%
 							if (action.equals("update")) {
 						%>
-						<td><input type="checkbox" name="id" value="true"
-							${ctUsuario.lActivo ? 'checked':''}></td>
+						<td><input type="radio" id="lActivo" name="lActivo" value="true"
+							${ctUsuario.lActivo ? 'checked':''}> SI</td>
+		
+						<td><input type="radio" id="lActivo" name="lActivo" value="false"
+							${not ctUsuario.lActivo ? 'checked':''}> NO</td>
+						
+						<td><input type="hidden" id ="cUsuarios" name="cUsuarios" value="${ctUsuario.cUsuario}"></td>
 						<%
 								} else{
 						%>
