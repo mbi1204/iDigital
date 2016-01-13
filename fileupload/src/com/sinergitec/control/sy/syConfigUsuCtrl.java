@@ -79,7 +79,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
-
+			
+			sUsuario = request.getParameter("cUsuario");
+			System.out.println("Este es el usuario se toma del js: "+sUsuario);
+			
 			try {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
@@ -211,6 +214,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_UsuCompania", Lista_nueva);
 			forward = ADDUSER;			
 		}else if(sAction.equalsIgnoreCase("list_Menu")){
+			/*Aqui se va a cargara la lista de los menus*/
 			System.out.println("Estoy dentro del ingreso del menu");
 		}else if (sAction.equalsIgnoreCase("delete")){
 			/*Por el momento se borra  

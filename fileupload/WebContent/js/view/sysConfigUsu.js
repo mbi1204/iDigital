@@ -69,8 +69,10 @@ $(document).ready(function() {
 	$(this).find('td:eq(1)').each(function () {
 		 
 		 //obtenemos el valor de la celda
-		  valor = $(this).html();
-		 alert(valor);
+		 cUsuario = $(this).html();
+		 
+		 
+		 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
 		})
 	});
 

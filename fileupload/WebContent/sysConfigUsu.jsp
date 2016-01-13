@@ -114,10 +114,8 @@ td {
 
 	<section class="seccionToggle">
 		<div class="wrap">
-			<div id="addUsuMenu_Dialog" style="display: none;">
-			
-			
-	</div>
+			<div id="addUsuMenu_Dialog" style="display: none;">			
+		</div>
 
 	<h1>Configuracion Menu de Usuario</h1>
 
@@ -127,8 +125,6 @@ td {
 		onclick="add_ctMenu()">
 		<i class="fa fa-plus"></i> Agregar Menu
 	</button>
-
-
 
 	<table class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
