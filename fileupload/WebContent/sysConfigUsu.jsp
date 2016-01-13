@@ -124,9 +124,9 @@ td {
 
 
 	<select id="cMenu" name="cMenu">
-		<!--<c:forEach items="${list_ctCompania}" var="ctCompania">
+		<%--<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
-		</c:forEach> -->
+		</c:forEach> --%>
 	</select>
 
 
@@ -134,7 +134,7 @@ td {
 
 	<button class="pure-button pure-button-primary"
 		onclick="add_ctUsuario()">
-		<i class="fa fa-plus"></i> Agregar Usuario
+		<i class="fa fa-plus"></i> Agregar Menu
 	</button>
 
 
@@ -142,9 +142,7 @@ td {
 	<table class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
 			<tr>
-				<th width="20">Compañia</th>
-				<th width="20">Usuario</th>
-				<th width="50">Nombre</th>
+				<th width="20">Menu</th>
 				<th width="20">Estatus</th>
 			</tr>
 		</thead>
