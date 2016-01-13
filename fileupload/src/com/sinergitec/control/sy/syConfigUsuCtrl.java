@@ -20,11 +20,14 @@ import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
 import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
+import com.sinergitec.dao.sy.syUsuMenuDao;
 import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
+import com.sinergitec.dao.sy.imp.syUsuMenuDaoImp;
 import com.sinergitec.model.ct.ctCompania;
 import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
+import com.sinergitec.model.sg.sysUsuMenu;
 
 /**
  * Servlet implementation class syConfigUsu
@@ -35,10 +38,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private ctUsuarioDao  ctUsuario_Dao;
 	private syUsuCompaniaDao syUsuCompania_Dao;
 	private ctMenuDao ctMenu_Dao;
+	private syUsuMenuDao syUsuMenu_Dao;
 	private List<ctMenu> list_Menu = new ArrayList<ctMenu>();
 	private List<ctCompania> list_Compania = new ArrayList<ctCompania>();
 	private List<ctUsuario>  list_Usuario = new ArrayList<ctUsuario>();
 	private List<sysUsuCompania> list_UsuCompania = new ArrayList<sysUsuCompania>();
+	private List<sysUsuMenu> list_UsuMenu = new ArrayList<sysUsuMenu>();
 	
 	private static String PRINCIPAL = "/sysConfigUsu.jsp";
 	private static String ADDUSER   = "/sysConfigUsu_Add_UsuComp.jsp";
@@ -53,6 +58,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 		ctMenu_Dao = new ctMenuDaoImp();
 		ctUsuario_Dao  = new ctUsuarioDaoImp();
 		syUsuCompania_Dao = new syUsuCompaniaDaoImp();
+		syUsuMenu_Dao = new syUsuMenuDaoImp();
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -87,11 +93,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);

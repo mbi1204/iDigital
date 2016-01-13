@@ -136,10 +136,11 @@ td {
 
 		<tbody>
 
-			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
+			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
 				<tr>
-					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
-					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
+					<td><c:out value="${syUsuMenu.iMenu}" /></td>
+					<td><c:out value="${syUsuMenu.lActivo}" /></td>
+					<td><c:out value="${syUsuMenu.cObs}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
 								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">

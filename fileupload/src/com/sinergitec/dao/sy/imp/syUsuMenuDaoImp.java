@@ -46,7 +46,7 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 		
 		try {
 			
-			app.as_sysUsuMenu_Carga("",bTodos, tt_sysUsuMenu, ps_Resultado, ps_Texto);
+			app.as_sysUsuMenu_Carga(bTodos, tt_sysUsuMenu, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_sysUsuMenu = tt_sysUsuMenu.getResultSetValue();
 			
 			while(rs_tt_sysUsuMenu.next()){
