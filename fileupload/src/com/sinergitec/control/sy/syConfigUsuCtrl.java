@@ -47,6 +47,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	
 	private static String PRINCIPAL = "/sysConfigUsu.jsp";
 	private static String ADDUSER   = "/sysConfigUsu_Add_UsuComp.jsp";
+	private static String ADDMENU   = "/sysConfigUsu_Add_UsuMenu.jsp";
 	private String forward = "";
 
 	/**
@@ -82,6 +83,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 		
 
 		sAction = request.getParameter("action");
+		System.out.println("Esta es la accion cabezon: "+sAction);
+		
+		List<sysUsuMenu> list_ViewMenu = new ArrayList<sysUsuMenu>();
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
@@ -94,11 +98,26 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
+				
+				
+				
+				for (sysUsuMenu usuMenu : list_UsuMenu) {
+					if(sUsuario.equals(usuMenu.getcUsuario())){
+						sysUsuMenu obj = new sysUsuMenu();
+						obj.setiMenu(usuMenu.getiMenu());
+						obj.setcUsuario(usuMenu.getcUsuario());
+						obj.setMenu(usuMenu.getMenu());
+						obj.setlActivo(usuMenu.getlActivo());
+						list_ViewMenu.add(obj);
+					}
+				}
+				
+				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("list_syUsuMenu", list_UsuMenu);
+			request.setAttribute("list_syUsuMenu", list_ViewMenu);
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
@@ -219,18 +238,32 @@ public class syConfigUsuCtrl extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("list_UsuCompania", Lista_nueva);
-			forward = ADDUSER;			
+			forward = ADDUSER;
+			
 		}else if(sAction.equalsIgnoreCase("list_Menu")){
+			
 			/*Aqui se va a cargara la lista de los menus*/
 			System.out.println("Estoy dentro del ingreso del menu");
+			
+			try {
+				list_Menu = ctMenu_Dao.list_ctMenu(true);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("list_UsuMenu", list_Menu);
+			forward = ADDMENU;
+			
 		}else if (sAction.equalsIgnoreCase("delete")){
-			/*Por el momento se borra  
+			
+			/*Por se borra  
 			 * con cCveCia y cUsuario*/
-			System.out.println("Cachorros estoy dentro del delete");
+			
 			sCompania = request.getParameter("cCveCia");
 			sUsuario = request.getParameter("cUsuario");
-			System.out.println(sUsuario);
+			
 			try {
+				
 				syUsuCompania_Dao.remove_sysUsuCompaniaDao("SISIMB", sCompania, sUsuario);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
@@ -244,9 +277,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctCompania", list_Compania);
 			forward = PRINCIPAL;
 		}else if(sAction.equalsIgnoreCase("update")){
-			
-			/*ATENCION METODO NO TERMINADO AUN :V
-			 * Error: Tipo de dato*/
 			
 			sCompania = request.getParameter("cCveCia");
 			sUsuario = request.getParameter("cUsuario");

@@ -28,7 +28,7 @@ td {
 	cursor: pointer;
 }
 
-.hover { background-color: #003344; color: #B10DC9; }
+.hover { background-color: #111111; color: #B10DC9; }
 
 .selected {
 	background-color: orange;
@@ -114,7 +114,8 @@ td {
 
 	<section class="seccionToggle">
 		<div class="wrap">
-			<div id="addUsuMenu_Dialog" style="display: none;">			
+			<div id="addUsuMenu_Dialog" style="display: none;">
+			<%@ include file="sysConfigUsu_Add_UsuMenu.jsp"%>			
 		</div>
 
 	<h1>Configuracion Menu de Usuario</h1>
@@ -138,7 +139,7 @@ td {
 
 			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
 				<tr>
-					<td><c:out value="${syUsuMenu.iMenu}" /></td>
+					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
 					<td><c:out value="${syUsuMenu.lActivo}" /></td>
 					<td><c:out value="${syUsuMenu.cObs}" /></td>
 					<td><nobr>

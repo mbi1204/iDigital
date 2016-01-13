@@ -10,7 +10,10 @@ import com.progress.open4gl.Open4GLException;
 import com.progress.open4gl.ResultSetHolder;
 import com.progress.open4gl.StringHolder;
 import com.progress.open4gl.javaproxy.Connection;
+import com.sinergitec.dao.ct.ctMenuDao;
+import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.sy.syUsuMenuDao;
+import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
 import com.sinergitec.model.sg.sysUsuMenu;
@@ -19,6 +22,8 @@ import com.sinergitec.mydigital.util.DBConexion;
 import mydigital.sinergitec.appserver.myDigital;
 
 public class syUsuMenuDaoImp implements syUsuMenuDao {
+	
+	private ctMenuDao ctMenu_Dao;
 
 	public void add_syUsuMenuDao(String cUsuario, sysUsuMenu obj_sysUsuCompania) throws Open4GLException, IOException{
 		
@@ -34,10 +39,14 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 	
 	public List<sysUsuMenu> list_syUsuMenuDao(boolean bTodos) throws Open4GLException, IOException{
 		
+		ctMenu_Dao = new ctMenuDaoImp();
+		
 		BooleanHolder ps_Resultado = new BooleanHolder();
 		StringHolder ps_Texto = new StringHolder();
 		
 		List<sysUsuMenu> Lista = new ArrayList<sysUsuMenu>();
+		List<ctMenu> listaMenu = new ArrayList<ctMenu>();
+		listaMenu = ctMenu_Dao.list_ctMenu(true);
 		
 		ResultSetHolder tt_sysUsuMenu = new ResultSetHolder();
 		Connection conexion = DBConexion.getConnection();
@@ -54,9 +63,21 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 				sysUsuMenu obj = new sysUsuMenu();
 			
 				obj.setcUsuario(rs_tt_sysUsuMenu.getString("cUsuario"));
+				obj.setiMenu(rs_tt_sysUsuMenu.getInt("iMenu"));
 				obj.setlActivo(rs_tt_sysUsuMenu.getBoolean("lActivo"));
 				obj.setcObs(rs_tt_sysUsuMenu.getString("cObs"));
 				obj.setId(rs_tt_sysUsuMenu.getBytes("id"));
+				
+				for (ctMenu menu : listaMenu) {
+					if(menu.getiMenu().equals(obj.getiMenu())){
+						ctMenu obj_ctMenu = new ctMenu();
+						obj_ctMenu.setiMenu(menu.getiMenu());
+						obj_ctMenu.setcMenu(menu.getcMenu());
+						obj_ctMenu.setlActivo(menu.getlActivo());
+						obj_ctMenu.setId(menu.getId());
+						obj.setMenu(obj_ctMenu);
+					}
+				}
 				
 				Lista.add(obj);
 			}

@@ -1,36 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 
-System.out.println("entro al ctUsuario ADD");
+System.out.println("entro al ctMenu ADD");
 
-	String action = request.getParameter("action");
+	String action2 = request.getParameter("action");
 	//String sCompania = request.getParameter("cCveCia");
 	
-	if (action.equalsIgnoreCase("update")) {
+	if (action2.equalsIgnoreCase("update")) {
 %>
-<c:url var="actionUrl" value="syConfigUsuCtrl?action=update&cCveCia=${param.cCveCia}" />
+<c:url var="actionUrl" value="syConfigUsuCtrl?action=update" />
 <%
 	} else {
 %>
 <c:url var="actionUrl"
-	value="syConfigUsuCtrl?action=add&cCveCia=${param.cCveCia}" />
+	value="syConfigUsuCtrl?action=add" />
 
 <%
 	}
 %>
 
-<form id="AddUsuComp_Form" class="pure-form pure-form-aligned"
+<form id="AddUsuMenu_Form" class="pure-form pure-form-aligned"
 	method="post" action="${actionUrl}">
 
 	<fieldset>
 
 		<legend></legend>
-		<table id="table_ctUsuario">
+		<table id="table_ctMenu">
 			<thead>
 				<tr>
 					<th width="25">Menu</th>
 					<%
-							if (action.equals("update")) {
+							if (action2.equals("update")) {
 					%>
 					<th width="25">Activo</th>
 					<%
@@ -43,25 +43,24 @@ System.out.println("entro al ctUsuario ADD");
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list_UsuCompania}" var="ctUsuario">
+				<c:forEach items="${list_UsuMenu}" var="ctMenu">
 					<tr>
-						<td><c:out value="${ctUsuario.cUsuario}" /></td>
-						<td><c:out value="${ctUsuario.cNombre}" /></td>
-						<td><c:out value="${ctUsuario.puesto.cPuesto}" /></td>
+						<td><c:out value="${ctMenu.cMenu}" /></td>
+						
 						<%
-							if (action.equals("update")) {
+							if (action2.equals("update")) {
 						%>
 						<td><input type="radio" id="lActivo" name="lActivo" value="true"
-							${ctUsuario.lActivo ? 'checked':''}> SI</td>
+							${ctMenu.lActivo ? 'checked':''}> SI</td>
 		
 						<td><input type="radio" id="lActivo" name="lActivo" value="false"
-							${not ctUsuario.lActivo ? 'checked':''}> NO</td>
+							${not ctMenu.lActivo ? 'checked':''}> NO</td>
 						
-						<td><input type="hidden" id ="cUsuarios" name="cUsuarios" value="${ctUsuario.cUsuario}"></td>
+						<td><input type="hidden" id ="cUsuarios" name="cUsuarios" value="${ctMenu.iMenu}"></td>
 						<%
 								} else{
 						%>
-						<td><input type="checkbox" id ="cUsuarios" name="cUsuarios" value="${ctUsuario.cUsuario}"></td>
+						<td><input type="checkbox" id ="cUsuarios" name="cUsuarios" value="${ctMenu.iMenu}"></td>
 						<%
 								}
 						%>

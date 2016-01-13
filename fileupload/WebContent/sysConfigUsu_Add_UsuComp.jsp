@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 
-System.out.println("entro al ctUsuario ADD");
+System.out.println("entro al ctUsuario ADD :P");
 
 	String action = request.getParameter("action");
 	String sCompania = request.getParameter("cCveCia");

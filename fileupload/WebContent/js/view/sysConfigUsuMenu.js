@@ -1,10 +1,10 @@
 
 function add_ctMenu() {
-	alert("Estoy en el menu");
+	alert("Estoy en el menu :P");
 	$.get("syConfigUsuCtrl?action=list_Menu", function(result) {
-		$("#addUsuComp_Dialog").html(result);
-		$('#addUsuComp_Dialog').dialog("option", "title", 'Agregar Menu');
-		$('#addUsuComp_Dialog').dialog('open');
+		$("#addUsuMenu_Dialog").html(result);
+		$('#addUsuMenu_Dialog').dialog("option", "title", 'Agregar Menu');
+		$('#addUsuMenu_Dialog').dialog('open');
 	});
 	
 } 
@@ -15,9 +15,9 @@ function update_sysUsuMenu(cCveCia,cUsuario) {
 	
 
 	$.get("syConfigUsuCtrl?action=update&cCveCia=" + cCveCia+"&cUsuario="+cUsuario, function(result) {
-		$("#addUsuComp_Dialog").html(result);		
-		$('#addUsuComp_Dialog').dialog("option", "title", 'Editar Usuario');
-		$("#addUsuComp_Dialog").dialog('open');
+		$("#addUsuMenu_Dialog").html(result);		
+		$('#addUsuMenu_Dialog').dialog("option", "title", 'Editar Usuario');
+		$("#addUsuMenu_Dialog").dialog('open');
 	});
 
 }
@@ -30,7 +30,7 @@ $(document).ready(function() {
 	
 	
 
-	$('#addUsuComp_Dialog').dialog({
+	$('#addUsuMenu_Dialog').dialog({
 
 		autoOpen : false,
 		position : 'center',
@@ -39,7 +39,7 @@ $(document).ready(function() {
 		width : 440,
 		buttons : {
 			"Agregar" : function() {
-				$('#AddUsuComp_Form').submit();
+				$('#AddUsuMenu_Form').submit();
 			},
 			"Cancelar" : function() {
 				$(this).dialog('close');
@@ -47,7 +47,7 @@ $(document).ready(function() {
 		},
 		close : function() {
 
-			resetDialog($('#AddUsuComp_Form'));
+			resetDialog($('#AddUsuMenu_Form'));
 			$(this).dialog('close');
 		}
 	});

@@ -1,5 +1,7 @@
 package com.sinergitec.model.sg;
 
+import com.sinergitec.model.ct.ctMenu;
+
 public class sysUsuMenu {
 
 	private String cUsuario;
@@ -7,6 +9,7 @@ public class sysUsuMenu {
 	private Boolean lActivo;
 	private String cObs;
 	byte[] Id;
+	private ctMenu menu;
 	
 	public String getcUsuario() {
 		return cUsuario;
@@ -37,6 +40,12 @@ public class sysUsuMenu {
 	}
 	public void setId(byte[] id) {
 		Id = id;
+	}
+	public ctMenu getMenu() {
+		return menu;
+	}
+	public void setMenu(ctMenu menu) {
+		this.menu = menu;
 	}
 	
 }
