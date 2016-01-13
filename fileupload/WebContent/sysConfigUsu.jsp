@@ -28,6 +28,8 @@ td {
 	cursor: pointer;
 }
 
+.hover { background-color: #003344; color: #B10DC9; }
+
 .selected {
 	background-color: orange;
 }
@@ -38,6 +40,7 @@ td {
 <script type="text/javascript" src="js/lib/jquery-ui-1.10.4.custom.js"></script>
 <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="js/view/sysConfigUsu.js"></script>
+<script type="text/javascript" src="js/view/sysConfigUsuMenu.js"></script>
 
 
 </head>
@@ -73,7 +76,7 @@ td {
 
 
 
-	<table class="pure-table pure-table-bordered pure-table-striped">
+	<table id="btn-toggle" class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
 			<tr>
 				<th width="20">Compañia</th>
@@ -112,28 +115,16 @@ td {
 	<section class="seccionToggle">
 		<div class="wrap">
 			<div id="addUsuMenu_Dialog" style="display: none;">
-
-		
-
+			
+			
 	</div>
 
 	<h1>Configuracion Menu de Usuario</h1>
 
-
-	<label for="cMenu">Menu: </label>
-
-
-	<select id="cMenu" name="cMenu">
-		<%--<c:forEach items="${list_ctCompania}" var="ctCompania">
-			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
-		</c:forEach> --%>
-	</select>
-
-
 	<h1>Menu por usuario</h1>
 
 	<button class="pure-button pure-button-primary"
-		onclick="add_ctUsuario()">
+		onclick="add_ctMenu()">
 		<i class="fa fa-plus"></i> Agregar Menu
 	</button>
 
@@ -153,8 +144,6 @@ td {
 				<tr>
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
-					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
-					<td><c:out value="${syUsuCompania.lActivo ? 'SI':'NO'}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
 								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">

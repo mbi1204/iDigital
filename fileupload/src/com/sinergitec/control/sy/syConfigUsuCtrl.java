@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctCompaniaDao;
-import com.sinergitec.dao.ct.ctPuestoDao;
+import com.sinergitec.dao.ct.ctMenuDao;
 import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
+import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
-import com.sinergitec.dao.sg.sysUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
 import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
 import com.sinergitec.model.ct.ctCompania;
-import com.sinergitec.model.ct.ctPuesto;
+import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
 
@@ -34,6 +34,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private ctCompaniaDao ctCompania_Dao;
 	private ctUsuarioDao  ctUsuario_Dao;
 	private syUsuCompaniaDao syUsuCompania_Dao;
+	private ctMenuDao ctMenu_Dao;
+	private List<ctMenu> list_Menu = new ArrayList<ctMenu>();
 	private List<ctCompania> list_Compania = new ArrayList<ctCompania>();
 	private List<ctUsuario>  list_Usuario = new ArrayList<ctUsuario>();
 	private List<sysUsuCompania> list_UsuCompania = new ArrayList<sysUsuCompania>();
@@ -48,6 +50,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	public syConfigUsuCtrl() {
 		super();
 		ctCompania_Dao = new ctCompaniaDaoImp();
+		ctMenu_Dao = new ctMenuDaoImp();
 		ctUsuario_Dao  = new ctUsuarioDaoImp();
 		syUsuCompania_Dao = new syUsuCompaniaDaoImp();
 		
@@ -78,6 +81,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 		if (sAction.equalsIgnoreCase("inicial")) {
 
 			try {
+				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 			} catch (Open4GLException e) {
@@ -85,7 +89,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			
+			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			forward = PRINCIPAL;
@@ -206,6 +210,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 			}
 			request.setAttribute("list_UsuCompania", Lista_nueva);
 			forward = ADDUSER;			
+		}else if(sAction.equalsIgnoreCase("list_Menu")){
+			System.out.println("Estoy dentro del ingreso del menu");
 		}else if (sAction.equalsIgnoreCase("delete")){
 			/*Por el momento se borra  
 			 * con cCveCia y cUsuario*/
