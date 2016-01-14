@@ -63,6 +63,35 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 	
 	public void update_syUsuMenuDao(String cUsuario, sysUsuMenu obj_sysUsuMenu) throws Open4GLException, IOException{
 		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+
+		List<sysUsuMenu> Lista = new ArrayList<sysUsuMenu>();
+		Lista.add(obj_sysUsuMenu);
+		
+		Vector vecTabla1, vecRow1;
+		vecTabla1 = new Vector();
+		
+		Connection conexion = DBConexion.getConnection();
+		myDigital app = new myDigital(conexion);
+		
+		for (sysUsuMenu obj : Lista) {
+			vecRow1 = obj.getVectorDatos();
+			vecTabla1.add(vecRow1);
+		}
+		
+		ResultSet sysUsuMenuModificados = new VectorResultSet(vecTabla1);
+		
+		try {
+			app.as_sysUsuCompania_Actualiza(cUsuario, sysUsuMenuModificados, ps_Resultado, ps_Texto);
+			System.out.println(ps_Texto.getStringValue());
+		} catch (Exception ex) {
+			// TODO: handle exception
+			System.out.println(ex);
+		} finally{
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
 	}
 	
 	public void remove_syUsuMenuDao(String cUsuario, String cUsuario2, Integer iMenu ) throws Open4GLException, IOException{

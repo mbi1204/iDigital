@@ -466,10 +466,18 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			try {
 				syUsuMenu_Dao.update_syUsuMenuDao("SISIMB", obj);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			request.setAttribute("list_ctCompania", list_Compania);
+			request.setAttribute("list_syUsuMenu", list_UsuMenu);
+			forward = PRINCIPAL;
 			
 		}
 		
