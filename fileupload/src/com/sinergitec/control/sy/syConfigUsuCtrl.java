@@ -401,10 +401,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 			sysUsuMenu obj = new sysUsuMenu();
 			
 			for (String string : menus) {
-				obj.setiMenu(Integer.parseInt(string));
 				obj.setcUsuario(vUsuario);
+				System.out.println(obj.getcUsuario());
+				obj.setiMenu(Integer.parseInt(string));
+				System.out.println(obj.getiMenu());
 				obj.setlActivo(true);
-				obj.setcObs(request.getParameter("cMenu"));
 				
 				try {
 					syUsuMenu_Dao.add_syUsuMenuDao("SISIMB", obj);
@@ -413,6 +414,21 @@ public class syConfigUsuCtrl extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			
+			try {
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				list_Compania = ctCompania_Dao.list_ctCompania(true);
+				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
+				syUsuMenu_Dao.add_syUsuMenuDao("SISIMB", obj);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			request.setAttribute("list_ctCompania", list_Compania);
+			request.setAttribute("list_syUsuMenu", list_UsuMenu);
+			forward = PRINCIPAL;
 			
 		}else if(action.equals("updateMenu")){
 			/*Accion Actualizar Menu*/

@@ -44,7 +44,7 @@ System.out.println("entro al ctMenu ADD");
 			<tbody>
 				<c:forEach items="${list_UsuMenu}" var="ctMenu">
 					<tr>
-						<td id="cMenu" name="cMenu"><c:out value="${ctMenu.cMenu}" /></td>
+						<td id="cMenu"><c:out value="${ctMenu.cMenu}" /></td>
 						
 						<%
 							if (action2.equals("update")) {

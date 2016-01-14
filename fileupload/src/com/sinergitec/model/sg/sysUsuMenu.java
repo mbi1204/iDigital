@@ -1,5 +1,7 @@
 package com.sinergitec.model.sg;
 
+import java.util.Vector;
+
 import com.sinergitec.model.ct.ctMenu;
 
 public class sysUsuMenu {
@@ -9,6 +11,7 @@ public class sysUsuMenu {
 	private Boolean lActivo;
 	private String cObs;
 	byte[] Id;
+	
 	private ctMenu menu;
 	
 	public String getcUsuario() {
@@ -46,6 +49,21 @@ public class sysUsuMenu {
 	}
 	public void setMenu(ctMenu menu) {
 		this.menu = menu;
+	}
+	
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Vector getVectorDatos() {
+		
+		Vector vector = new Vector();
+		
+		vector.add(this.getcUsuario());
+		vector.add(this.getiMenu());
+		vector.add(this.getlActivo());
+		vector.add(this.getcObs());
+		vector.add(this.getId());	
+
+		return vector;
 	}
 	
 }
