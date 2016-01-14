@@ -464,7 +464,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
 			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
 			
-			syUsuMenu_Dao.update_syUsuMenuDao("SISIMB", obj);
+			try {
+				syUsuMenu_Dao.update_syUsuMenuDao("SISIMB", obj);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 		
