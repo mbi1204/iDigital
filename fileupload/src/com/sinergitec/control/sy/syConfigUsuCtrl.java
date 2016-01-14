@@ -478,6 +478,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			forward = PRINCIPAL;
+			
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
