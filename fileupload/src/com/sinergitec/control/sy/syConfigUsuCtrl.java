@@ -474,12 +474,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			forward = PRINCIPAL;
-			
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
