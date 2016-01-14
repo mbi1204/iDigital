@@ -19,7 +19,6 @@ import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
 import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
-import com.sinergitec.dao.sg.sysUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuMenuDao;
 import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
@@ -29,6 +28,8 @@ import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
 import com.sinergitec.model.sg.sysUsuMenu;
+
+import javafx.scene.control.ListView;
 
 /**
  * Servlet implementation class syConfigUsu
@@ -87,7 +88,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		sAction = request.getParameter("action");
 		System.out.println("Esta es la accion cabezon: "+sAction);
 		
-		List<sysUsuMenu> list_ViewMenu = new ArrayList<sysUsuMenu>();
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
@@ -102,24 +102,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 				
 				
-				
-				for (sysUsuMenu usuMenu : list_UsuMenu) {
-					if(sUsuario.equals(usuMenu.getcUsuario())){
-						sysUsuMenu obj = new sysUsuMenu();
-						obj.setiMenu(usuMenu.getiMenu());
-						obj.setcUsuario(usuMenu.getcUsuario());
-						obj.setMenu(usuMenu.getMenu());
-						obj.setlActivo(usuMenu.getlActivo());
-						list_ViewMenu.add(obj);
-					}
-				}
-				
-				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("list_syUsuMenu", list_ViewMenu);
+			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
@@ -313,8 +300,18 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			request.setAttribute("list_UsuCompania", lista_ctUsuario);
 			forward = ADDUSER;
+		}else if(sAction.equals("deleteMenu")){
+			String sUsuarioMenu = request.getParameter("cUsuario");
+			Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
+			
+			try {
+				syUsuMenu_Dao.remove_syUsuMenuDao("SISIMB", sUsuarioMenu, iMenu);
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-		
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);

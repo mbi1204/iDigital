@@ -127,9 +127,10 @@ td {
 		<i class="fa fa-plus"></i> Agregar Menu
 	</button>
 
-	<table class="pure-table pure-table-bordered pure-table-striped">
+	<table id="menu" class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
 			<tr>
+				<th width="20">Usuario</th>
 				<th width="20">Menu</th>
 				<th width="20">Estatus</th>
 			</tr>
@@ -139,18 +140,18 @@ td {
 
 			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
 				<tr>
+					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
 					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
 					<td><c:out value="${syUsuMenu.lActivo}" /></td>
-					<td><c:out value="${syUsuMenu.cObs}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
-								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">
+								onclick="update_sysUsuMenu('${syUsuMenu.cUsuario}','${syUsuMenu.iMenu}');">
 								<i class="fa fa-pencil"></i> Editar
 							</button>
 
 							<a class="pure-button pure-button-primary"
 								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
-								href="syConfigUsuCtrl?action=delete&cCveCia=${syUsuCompania.cCveCia}&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
+								href="syConfigUsuCtrl?action=deleteMenu&cUsuario=${syUsuMenu.cUsuario}&iMenu=${syUsuMenu.iMenu}"></i>Eliminar
 							</a>
 						</nobr></td>
 

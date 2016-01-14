@@ -12,7 +12,7 @@ public interface syUsuMenuDao {
 	
 	public void update_syUsuMenuDao(String cUsuario, sysUsuMenu obj_sysUsuMenu) throws Open4GLException, IOException;
 	
-	public void remove_syUsuMenuDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException;
+	public void remove_syUsuMenuDao(String cUsuario, String cUsuario2, Integer iMenu) throws Open4GLException, IOException;
 	
 	public List<sysUsuMenu> list_syUsuMenuDao(boolean bTodos) throws Open4GLException, IOException;
 	

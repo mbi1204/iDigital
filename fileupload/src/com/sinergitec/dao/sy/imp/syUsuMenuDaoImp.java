@@ -65,7 +65,9 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 		
 	}
 	
-	public void remove_syUsuMenuDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException{
+	public void remove_syUsuMenuDao(String cUsuario, String cUsuario2, Integer iMenu ) throws Open4GLException, IOException{
+		
+		
 		
 	}
 	

@@ -10,11 +10,11 @@ function add_ctMenu() {
 } 
 
 
-function update_sysUsuMenu(cCveCia,cUsuario) {
+function update_sysUsuMenu(cUsuario,iMenu) {
 	
 	
 
-	$.get("syConfigUsuCtrl?action=update&cCveCia=" + cCveCia+"&cUsuario="+cUsuario, function(result) {
+	$.get("syConfigUsuCtrl?action=updateMenu&cUsuario=" + cUsuario + "&iMenu="+iMenu, function(result) {
 		$("#addUsuMenu_Dialog").html(result);		
 		$('#addUsuMenu_Dialog').dialog("option", "title", 'Editar Usuario');
 		$("#addUsuMenu_Dialog").dialog('open');
