@@ -459,9 +459,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 		}else if(action.equals("updateMenu")){
 			/*Accion Actualizar Menu*/
 			
-			Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
-			
 			sysUsuMenu obj = new sysUsuMenu();
+			obj.setcUsuario(vUsuario);
+			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
+			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
+			
+			syUsuMenu_Dao.update_syUsuMenuDao("SISIMB", obj);
 			
 		}
 		
