@@ -83,7 +83,7 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 		ResultSet sysUsuMenuModificados = new VectorResultSet(vecTabla1);
 		
 		try {
-			app.as_sysUsuCompania_Actualiza(cUsuario, sysUsuMenuModificados, ps_Resultado, ps_Texto);
+			app.as_sysUsuMenu_Actualiza(cUsuario, sysUsuMenuModificados, ps_Resultado, ps_Texto);
 			System.out.println(ps_Texto.getStringValue());
 		} catch (Exception ex) {
 			// TODO: handle exception
