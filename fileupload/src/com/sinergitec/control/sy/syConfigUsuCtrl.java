@@ -461,6 +461,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
 			
+			sysUsuMenu obj = new sysUsuMenu();
+			
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
