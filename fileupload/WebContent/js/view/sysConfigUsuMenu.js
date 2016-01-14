@@ -1,6 +1,6 @@
 
 function add_ctMenu() {
-	alert("Estoy en el menu :P");
+	
 	$.get("syConfigUsuCtrl?action=list_Menu", function(result) {
 		$("#addUsuMenu_Dialog").html(result);
 		$('#addUsuMenu_Dialog').dialog("option", "title", 'Agregar Menu');

@@ -19,6 +19,7 @@ import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
 import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
+import com.sinergitec.dao.sg.sysUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuMenuDao;
 import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
@@ -49,6 +50,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private static String ADDUSER   = "/sysConfigUsu_Add_UsuComp.jsp";
 	private static String ADDMENU   = "/sysConfigUsu_Add_UsuMenu.jsp";
 	private String forward = "";
+	private String vUsuario;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -89,9 +91,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
-			
 			sUsuario = request.getParameter("cUsuario");
-			System.out.println("Este es el usuario se toma del js: "+sUsuario);
+			vUsuario = request.getParameter("cUsuario");
+			System.out.println("Este es el usuario se toma del js: "+vUsuario);
 			
 			try {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
@@ -391,6 +393,29 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctCompania", list_Compania);
 			forward = PRINCIPAL;
 			
+		}else if(action.equals("addMenu")){
+			/*Accion Agregar Menu*/
+			System.out.println("Estoy dentro del agregar Menu y este es el usuario al que voy a utilizar: "+vUsuario);
+			
+			String [] menus = request.getParameterValues("iMenus");
+			sysUsuMenu obj = new sysUsuMenu();
+			
+			for (String string : menus) {
+				obj.setiMenu(Integer.parseInt(string));
+				obj.setcUsuario(vUsuario);
+				obj.setlActivo(true);
+				obj.setcObs(request.getParameter("cMenu"));
+				
+				try {
+					syUsuMenu_Dao.add_syUsuMenuDao("SISIMB", obj);
+				} catch (Open4GLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}else if(action.equals("updateMenu")){
+			/*Accion Actualizar Menu*/
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);

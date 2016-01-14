@@ -4,16 +4,15 @@
 System.out.println("entro al ctMenu ADD");
 
 	String action2 = request.getParameter("action");
-	//String sCompania = request.getParameter("cCveCia");
 	
 	if (action2.equalsIgnoreCase("update")) {
 %>
-<c:url var="actionUrl" value="syConfigUsuCtrl?action=update" />
+<c:url var="actionUrl" value="syConfigUsuCtrl?action=updateMenu" />
 <%
 	} else {
 %>
 <c:url var="actionUrl"
-	value="syConfigUsuCtrl?action=add" />
+	value="syConfigUsuCtrl?action=addMenu" />
 
 <%
 	}
@@ -45,7 +44,7 @@ System.out.println("entro al ctMenu ADD");
 			<tbody>
 				<c:forEach items="${list_UsuMenu}" var="ctMenu">
 					<tr>
-						<td><c:out value="${ctMenu.cMenu}" /></td>
+						<td id="cMenu" name="cMenu"><c:out value="${ctMenu.cMenu}" /></td>
 						
 						<%
 							if (action2.equals("update")) {
@@ -60,7 +59,7 @@ System.out.println("entro al ctMenu ADD");
 						<%
 								} else{
 						%>
-						<td><input type="checkbox" id ="cUsuarios" name="cUsuarios" value="${ctMenu.iMenu}"></td>
+						<td><input type="checkbox" id ="iMenus" name="iMenus" value="${ctMenu.iMenu}"></td>
 						<%
 								}
 						%>
