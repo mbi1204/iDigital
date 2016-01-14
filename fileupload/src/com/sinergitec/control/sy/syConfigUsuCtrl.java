@@ -462,6 +462,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			sysUsuMenu obj = new sysUsuMenu();
 			obj.setcUsuario(vUsuario);
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
+			
 			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
 			
 			try {
