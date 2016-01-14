@@ -248,7 +248,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			System.out.println("Estoy dentro del ingreso del menu");
 			
 			try {
-				list_Menu = ctMenu_Dao.list_ctMenu(true);
+				list_Menu = ctMenu_Dao.list_ctMenu(true);				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -398,14 +398,16 @@ public class syConfigUsuCtrl extends HttpServlet {
 			System.out.println("Estoy dentro del agregar Menu y este es el usuario al que voy a utilizar: "+vUsuario);
 			
 			String [] menus = request.getParameterValues("iMenus");
-			sysUsuMenu obj = new sysUsuMenu();
+			
 			
 			for (String string : menus) {
+				sysUsuMenu obj = new sysUsuMenu();
 				obj.setcUsuario(vUsuario);
 				System.out.println(obj.getcUsuario());
 				obj.setiMenu(Integer.parseInt(string));
 				System.out.println(obj.getiMenu());
 				obj.setlActivo(true);
+				obj.setcObs("");
 				
 				try {
 					syUsuMenu_Dao.add_syUsuMenuDao("SISIMB", obj);
@@ -419,7 +421,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				syUsuMenu_Dao.add_syUsuMenuDao("SISIMB", obj);
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
