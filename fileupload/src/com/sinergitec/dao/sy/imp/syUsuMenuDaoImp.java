@@ -67,7 +67,22 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 	
 	public void remove_syUsuMenuDao(String cUsuario, String cUsuario2, Integer iMenu ) throws Open4GLException, IOException{
 		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+
+		Connection conexion = DBConexion.getConnection();
+		myDigital app = new myDigital(conexion);
 		
+		try {
+			
+			app.as_sysUsuMenu_Borra(cUsuario, cUsuario2, iMenu, ps_Resultado, ps_Texto);
+
+			System.err.println(ps_Texto.getValue());
+
+		} finally {
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
 		
 	}
 	
