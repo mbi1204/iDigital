@@ -142,7 +142,53 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 		return Lista;
 	}
 	
-	public sysUsuMenu get_syUsuMenuDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException{
-		return null;
+	public sysUsuMenu get_syUsuMenuDao(String cUsuario, String cUsuario2, Integer iMenu) throws Open4GLException, IOException{
+		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+		
+		List<ctMenu> listaMenu = new ArrayList<ctMenu>();
+		listaMenu = ctMenu_Dao.list_ctMenu(true);
+		sysUsuMenu obj = new sysUsuMenu();
+		
+		ResultSetHolder tt_sysUsuMenu = new ResultSetHolder();
+		Connection conexion = DBConexion.getConnection();
+		
+		myDigital app = new myDigital(conexion);
+		
+		try {
+			
+			app.as_sysUsuMenu_get(cUsuario, cUsuario2, iMenu, tt_sysUsuMenu, ps_Resultado, ps_Texto);
+			ResultSet rs_tt_sysUsuMenu = tt_sysUsuMenu.getResultSetValue();
+			
+			while(rs_tt_sysUsuMenu.next()){
+			
+				obj.setcUsuario(rs_tt_sysUsuMenu.getString("cUsuario"));
+				obj.setiMenu(rs_tt_sysUsuMenu.getInt("iMenu"));
+				obj.setlActivo(rs_tt_sysUsuMenu.getBoolean("lActivo"));
+				obj.setcObs(rs_tt_sysUsuMenu.getString("cObs"));
+				obj.setId(rs_tt_sysUsuMenu.getBytes("id"));
+				
+				for (ctMenu menu : listaMenu) {
+					if(menu.getiMenu().equals(obj.getiMenu())){
+						ctMenu obj_ctMenu = new ctMenu();
+						obj_ctMenu.setiMenu(menu.getiMenu());
+						obj_ctMenu.setcMenu(menu.getcMenu());
+						obj_ctMenu.setlActivo(menu.getlActivo());
+						obj_ctMenu.setId(menu.getId());
+						obj.setMenu(obj_ctMenu);
+					}
+				}
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally{
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
+		
+		return obj;
 	}
 }

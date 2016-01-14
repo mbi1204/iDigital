@@ -93,7 +93,7 @@ td {
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
 					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
-					<td><c:out value="${syUsuCompania.lActivo ? 'SI':'NO'}" /></td>
+					<td><c:out value="${syUsuCompania.lActivo ? 'Activo':'Desactivo'}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
 								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">
@@ -142,7 +142,7 @@ td {
 				<tr>
 					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
 					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
-					<td><c:out value="${syUsuMenu.lActivo}" /></td>
+					<td><c:out value="${syUsuMenu.lActivo ? 'Activo':'Desactivo'}" /></td>
 					<td><nobr>
 							<button class="pure-button pure-button-primary"
 								onclick="update_sysUsuMenu('${syUsuMenu.cUsuario}','${syUsuMenu.iMenu}');">

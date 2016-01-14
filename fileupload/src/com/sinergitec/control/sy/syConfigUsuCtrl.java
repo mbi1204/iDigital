@@ -86,8 +86,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		
 
 		sAction = request.getParameter("action");
-		System.out.println("Esta es la accion cabezon: "+sAction);
-		
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
@@ -317,10 +315,30 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			forward = PRINCIPAL;
 		}else if(sAction.equals("updateMenu")){
+			
 			String sUsuarioMenu = request.getParameter("cUsuario");
 			Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
+			List<sysUsuMenu> listaUpdateMenu = new ArrayList<sysUsuMenu>();
+			List<ctMenu> listaUpdateCtMenu = new ArrayList<ctMenu>();
 			
+			try {
+				listaUpdateMenu.add(syUsuMenu_Dao.get_syUsuMenuDao("SISIMB", sUsuarioMenu, iMenu));
+				for (sysUsuMenu listaUMenu : listaUpdateMenu) {
+					ctMenu obj = new ctMenu();
+					obj.setiMenu(listaUMenu.getiMenu());
+					obj.setcMenu(listaUMenu.getMenu().getcMenu());
+					obj.setlActivo(listaUMenu.getlActivo());
+					
+					listaUpdateCtMenu.add(obj);
+					
+				}
+			} catch (Open4GLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
+			request.setAttribute("list_UsuMenu", listaUpdateCtMenu);
+			forward = ADDMENU;
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -440,6 +458,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 		}else if(action.equals("updateMenu")){
 			/*Accion Actualizar Menu*/
+			
+			Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
+			
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);

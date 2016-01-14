@@ -16,5 +16,5 @@ public interface syUsuMenuDao {
 	
 	public List<sysUsuMenu> list_syUsuMenuDao(boolean bTodos) throws Open4GLException, IOException;
 	
-	public sysUsuMenu get_syUsuMenuDao(String cUsuario, String cCveCia, String cUsuario2) throws Open4GLException, IOException;
+	public sysUsuMenu get_syUsuMenuDao(String cUsuario, String cUsuario2, Integer iMenu) throws Open4GLException, IOException;
 }

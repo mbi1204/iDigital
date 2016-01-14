@@ -5,7 +5,7 @@ System.out.println("entro al ctMenu ADD");
 
 	String action2 = request.getParameter("action");
 	
-	if (action2.equalsIgnoreCase("update")) {
+	if (action2.equalsIgnoreCase("updateMenu")) {
 %>
 <c:url var="actionUrl" value="syConfigUsuCtrl?action=updateMenu" />
 <%
@@ -29,7 +29,7 @@ System.out.println("entro al ctMenu ADD");
 				<tr>
 					<th width="25">Menu</th>
 					<%
-							if (action2.equals("update")) {
+							if (action2.equals("updateMenu")) {
 					%>
 					<th width="25">Activo</th>
 					<%
@@ -47,7 +47,7 @@ System.out.println("entro al ctMenu ADD");
 						<td id="cMenu"><c:out value="${ctMenu.cMenu}" /></td>
 						
 						<%
-							if (action2.equals("update")) {
+							if (action2.equals("updateMenu")) {
 						%>
 						<td><input type="radio" id="lActivo" name="lActivo" value="true"
 							${ctMenu.lActivo ? 'checked':''}> SI</td>
@@ -55,7 +55,7 @@ System.out.println("entro al ctMenu ADD");
 						<td><input type="radio" id="lActivo" name="lActivo" value="false"
 							${not ctMenu.lActivo ? 'checked':''}> NO</td>
 						
-						<td><input type="hidden" id ="cUsuarios" name="cUsuarios" value="${ctMenu.iMenu}"></td>
+						<td><input type="hidden" id ="iMenu" name="iMenu" value="${ctMenu.iMenu}"></td>
 						<%
 								} else{
 						%>
