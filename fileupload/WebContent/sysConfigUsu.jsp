@@ -189,7 +189,7 @@ td {
 		</thead>
 
 		<tbody>
-
+		<%-- 
 			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
 				<tr>
 					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
@@ -209,6 +209,7 @@ td {
 
 				</tr>
 			</c:forEach>
+			--%>
 		</tbody>
 	</table>
 		</div>
