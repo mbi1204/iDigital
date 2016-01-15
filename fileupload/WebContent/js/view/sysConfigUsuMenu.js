@@ -16,7 +16,7 @@ function update_sysUsuMenu(cUsuario,iMenu) {
 
 	$.get("syConfigUsuCtrl?action=updateMenu&cUsuario=" + cUsuario + "&iMenu="+iMenu, function(result) {
 		$("#addUsuMenu_Dialog").html(result);		
-		$('#addUsuMenu_Dialog').dialog("option", "title", 'Editar Usuario');
+		$('#addUsuMenu_Dialog').dialog("option", "title", 'Editar Menu');
 		$("#addUsuMenu_Dialog").dialog('open');
 	});
 
@@ -53,9 +53,26 @@ $(document).ready(function() {
 	});
 	
 	
-	$('#table_ctUsuario').on('dblclick','tr',function() {
-		alert ("entro al doble");
-		
+$('.seccionTogglePrograma').hide();
+	
+	$('tbody tr').hover( function(){
+		$(this).find('td').addClass('hover');
+		},
+		function(){
+		$(this).find('td').removeClass('hover');
+		}
+		);
+
+	$('tbody tr').dblclick(function(){
+	$('.seccionTogglePrograma').slideToggle();
+	$(this).find('td:eq(1)').each(function () {
+		 
+		 //obtenemos el valor de la celda
+		 cUsuario = $(this).html();
+		 
+		 
+		 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
+		})
 	});
 
 });

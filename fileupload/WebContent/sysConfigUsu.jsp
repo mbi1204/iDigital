@@ -162,5 +162,59 @@ td {
 		</div>
 	</section>
 	
+	 
+	
+	<section class="seccionTogglePrograma">
+		<div class="wrap">
+			<div id="addUsuMenu_Dialog" style="display: none;">
+						
+		</div>
+
+	<h1>Configuracion Programas de Usuario</h1>
+
+	<h1>Programas por usuario</h1>
+
+	<button class="pure-button pure-button-primary"
+		onclick="add_ctMenu()">
+		<i class="fa fa-plus"></i> Agregar Programa
+	</button>
+
+	<table id="menu" class="pure-table pure-table-bordered pure-table-striped">
+		<thead>
+			<tr>
+				<th width="20">Usuario</th>
+				<th width="20">Programa</th>
+				<th width="20">Estatus</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
+				<tr>
+					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
+					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
+					<td><c:out value="${syUsuMenu.lActivo ? 'Activo':'Desactivo'}" /></td>
+					<td><nobr>
+							<button class="pure-button pure-button-primary"
+								onclick="update_sysUsuMenu('${syUsuMenu.cUsuario}','${syUsuMenu.iMenu}');">
+								<i class="fa fa-pencil"></i> Editar
+							</button>
+
+							<a class="pure-button pure-button-primary"
+								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
+								href="syConfigUsuCtrl?action=deleteMenu&cUsuario=${syUsuMenu.cUsuario}&iMenu=${syUsuMenu.iMenu}"></i>Eliminar
+							</a>
+						</nobr></td>
+
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+		</div>
+	</section>
+	
+	
+	
 </body>
 </html>
