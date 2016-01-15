@@ -49,6 +49,15 @@ function menu_Carga(){
 	 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
 }
 
+$(window).load(function() {
+	
+	var cCveCia = $('#cCompania').val();
+	
+	$.get("syConfigUsuCtrl?action=list_Usu&cCveCia=" + cCveCia, function(result){});
+    alert(cCveCia);
+});
+
+
 $(document).ready(function() {
 	
 	$('#addUsuComp_Dialog').dialog({
