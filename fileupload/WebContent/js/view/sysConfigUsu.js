@@ -28,10 +28,29 @@ function resetDialog(form) {
 
 }
 
+function compania(){
+	var cCveCia = $('#cCompania').val();
+	$.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
+}
+
+function menu_Carga(){
+	
+	$('tbody tr').hover( function(){
+		$(this).find('td').addClass('hover');
+		},
+		function(){
+		$(this).find('td').removeClass('hover');
+		}
+		);
+	$('.seccionToggle').slideToggle();
+	
+	cUsuario = $('#cUsuario').html();
+	alert(cUsuario);
+	 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
+}
+
 $(document).ready(function() {
 	
-	
-
 	$('#addUsuComp_Dialog').dialog({
 
 		autoOpen : false,
@@ -55,26 +74,6 @@ $(document).ready(function() {
 	});
 	
 	$('.seccionToggle').hide();
-	
-	$('tbody tr').hover( function(){
-		$(this).find('td').addClass('hover');
-		},
-		function(){
-		$(this).find('td').removeClass('hover');
-		}
-		);
-
-	$('tbody tr').dblclick(function(){
-	$('.seccionToggle').slideToggle();
-	$(this).find('td:eq(1)').each(function () {
-		 
-		 //obtenemos el valor de la celda
-		 cUsuario = $(this).html();
-		 
-		 
-		 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
-		})
-	});
 
 });
 

@@ -60,7 +60,7 @@ td {
 	<label for="cCompania">Compañia: </label>
 
 
-	<select id="cCompania" name="cCompania">
+	<select id="cCompania" name="cCompania" onchange="compania()">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
@@ -89,7 +89,7 @@ td {
 		<tbody>
 
 			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
-				<tr>
+				<tr ondblclick="menu_Carga()">
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
 					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
@@ -139,7 +139,7 @@ td {
 		<tbody>
 
 			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
-				<tr>
+				<tr onclick="carga_Programa()">
 					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
 					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
 					<td><c:out value="${syUsuMenu.lActivo ? 'Activo':'Desactivo'}" /></td>

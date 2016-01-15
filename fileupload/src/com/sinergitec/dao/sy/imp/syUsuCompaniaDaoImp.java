@@ -64,6 +64,7 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void update_sysUsuCompaniaDao(String cUsuario, sysUsuCompania obj_sysUsuCompania) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
@@ -135,7 +136,6 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		myDigital app = new myDigital(conexion);
 		
 		try {
-			
 			app.as_sysUsuCompania_Carga(bTodos, tt_sysUsuCompania, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_sysUsuCompania = tt_sysUsuCompania.getResultSetValue();
 			
@@ -156,6 +156,117 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 					}
 				}
 				
+				Lista.add(obj);
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally{
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
+		
+		return Lista;
+	}
+
+	public List<sysUsuCompania> list_sysUsuConCompania(String cCveCia, boolean bTodos) throws Open4GLException, IOException{
+		
+		System.out.println("Este es el valor en el dao: "+cCveCia);
+		ctUsuarioDao = new ctUsuarioDaoImp();
+		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+		
+		List<sysUsuCompania> Lista = new ArrayList<sysUsuCompania>();
+		List<ctUsuario> ListaUsu = new ArrayList<ctUsuario>();
+		ListaUsu = ctUsuarioDao.list_ctUsuario(true);
+		
+		ResultSetHolder tt_sysUsuCompania = new ResultSetHolder();
+		Connection conexion = DBConexion.getConnection();
+		
+		myDigital app = new myDigital(conexion);
+		
+		try {
+			app.as_sysUsuConCompania_Carga(cCveCia,bTodos, tt_sysUsuCompania, ps_Resultado, ps_Texto);
+			ResultSet rs_tt_sysUsuCompania = tt_sysUsuCompania.getResultSetValue();
+			System.err.println("Este es un error: "+ps_Texto.getValue());
+			
+			while(rs_tt_sysUsuCompania.next()){
+				
+				sysUsuCompania obj = new sysUsuCompania();
+				
+				obj.setcCveCia(rs_tt_sysUsuCompania.getString("cCveCia"));
+				obj.setcUsuario(rs_tt_sysUsuCompania.getString("cUsuario"));
+				obj.setlActivo(rs_tt_sysUsuCompania.getBoolean("lActivo"));
+				obj.setId(rs_tt_sysUsuCompania.getBytes("id"));
+				
+				for(ctUsuario obj_Usuario : ListaUsu){
+					if(obj_Usuario.getcUsuario().equals(obj.getcUsuario())){
+						ctUsuario obj_nUsuario = new ctUsuario();
+						obj_nUsuario.setcNombre(obj_Usuario.getcNombre());
+						obj.setCtUsu(obj_nUsuario);
+					}
+				}
+				
+				Lista.add(obj);
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+		} finally{
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
+		
+		return Lista;
+		
+	}
+	
+	public List<ctUsuario> list_sysUsuSinCompania(String cCveCia, boolean bTodos) throws Open4GLException, IOException{
+		DaoPuesto = new ctPuestoDaoImp();
+		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+		
+		List<ctUsuario> Lista = new ArrayList<ctUsuario>();
+		List<ctPuesto> Lista_ctPuesto = new ArrayList<ctPuesto>();
+		Lista_ctPuesto = DaoPuesto.list_ctPuesto(true);
+		
+		ResultSetHolder tt_sysUsuSinCompania = new ResultSetHolder();
+		Connection conexion = DBConexion.getConnection();
+		
+		myDigital app = new myDigital(conexion);
+		
+		try {
+			app.as_sysUsuSinCompania_Carga(cCveCia, bTodos, tt_sysUsuSinCompania, ps_Resultado, ps_Texto);
+			ResultSet rs_tt_sysUsuSinCompania = tt_sysUsuSinCompania.getResultSetValue();
+			
+			while(rs_tt_sysUsuSinCompania.next()){
+				
+				ctUsuario obj = new ctUsuario();
+				
+				obj.setcUsuario(rs_tt_sysUsuSinCompania.getString("cUsuario"));
+				obj.setcNombre(rs_tt_sysUsuSinCompania.getString("cNombre"));
+				obj.setcPassword(rs_tt_sysUsuSinCompania.getString("cPassword"));
+				obj.setlActivo(rs_tt_sysUsuSinCompania.getBoolean("lActivo"));
+				obj.setDtFechaAlta(rs_tt_sysUsuSinCompania.getString("dtFechaAlta"));
+				obj.setiPuesto(rs_tt_sysUsuSinCompania.getInt("iPuesto"));
+				
+				for (ctPuesto ctPuesto : Lista_ctPuesto) {
+					if(obj.getiPuesto().equals(ctPuesto.getiPuesto())){
+						
+						ctPuesto obj_nctPuesto = new ctPuesto();
+						obj_nctPuesto.setiPuesto(ctPuesto.getiPuesto());
+						obj_nctPuesto.setcPuesto(ctPuesto.getcPuesto());
+						obj.setPuesto(obj_nctPuesto);
+						
+					}
+				}
+				
+				obj.setId(rs_tt_sysUsuSinCompania.getBytes("id"));
 				Lista.add(obj);
 			}
 			
