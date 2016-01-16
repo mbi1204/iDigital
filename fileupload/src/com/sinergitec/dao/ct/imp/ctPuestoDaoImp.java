@@ -143,8 +143,6 @@ public class ctPuestoDaoImp implements ctPuestoDao {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
-		
-		System.out.println("salio del dao");
 
 		return Lista;
 	}

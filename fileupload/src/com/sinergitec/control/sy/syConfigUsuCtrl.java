@@ -37,7 +37,6 @@ import javafx.scene.control.ListView;
 public class syConfigUsuCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_Dao;
-	private ctUsuarioDao  ctUsuario_Dao;
 	private syUsuCompaniaDao syUsuCompania_Dao;
 	private ctMenuDao ctMenu_Dao;
 	private syUsuMenuDao syUsuMenu_Dao;
@@ -60,7 +59,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		super();
 		ctCompania_Dao = new ctCompaniaDaoImp();
 		ctMenu_Dao = new ctMenuDaoImp();
-		ctUsuario_Dao  = new ctUsuarioDaoImp();
 		syUsuCompania_Dao = new syUsuCompaniaDaoImp();
 		syUsuMenu_Dao = new syUsuMenuDaoImp();
 		
@@ -82,7 +80,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	
 		sAction = request.getParameter("action");
 		sCompania = request.getParameter("cCveCia");
-		
+		System.out.println("compañia -->"+ sCompania);
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
 			sUsuario = request.getParameter("cUsuario");
@@ -93,8 +91,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
-				
-				
 			} catch (Open4GLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

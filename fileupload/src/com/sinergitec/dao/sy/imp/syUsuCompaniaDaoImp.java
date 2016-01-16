@@ -172,7 +172,6 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 
 	public List<sysUsuCompania> list_sysUsuConCompania(String cCveCia, boolean bTodos) throws Open4GLException, IOException{
 		
-		System.out.println("Este es el valor en el dao: "+cCveCia);
 		ctUsuarioDao = new ctUsuarioDaoImp();
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();
@@ -190,7 +189,7 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 		try {
 			app.as_sysUsuConCompania_Carga(cCveCia,bTodos, tt_sysUsuCompania, ps_Resultado, ps_Texto);
 			ResultSet rs_tt_sysUsuCompania = tt_sysUsuCompania.getResultSetValue();
-			System.err.println("Este es un error: "+ps_Texto.getValue());
+			System.err.println(ps_Texto.getValue());
 			
 			while(rs_tt_sysUsuCompania.next()){
 				

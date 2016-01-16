@@ -15,7 +15,6 @@ import com.sinergitec.dao.ct.ctMenuDao;
 import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
 import com.sinergitec.dao.sy.syUsuMenuDao;
 import com.sinergitec.model.ct.ctMenu;
-import com.sinergitec.model.sg.sysUsuCompania;
 import com.sinergitec.model.sg.sysUsuMenu;
 import com.sinergitec.mydigital.util.DBConexion;
 import com.sinergitec.mydigital.util.VectorResultSet;
@@ -61,6 +60,7 @@ public class syUsuMenuDaoImp implements syUsuMenuDao {
 		
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void update_syUsuMenuDao(String cUsuario, sysUsuMenu obj_sysUsuMenu) throws Open4GLException, IOException{
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();

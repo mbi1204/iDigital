@@ -143,8 +143,6 @@ public class ctMenuDaoImp implements ctMenuDao {
 			app._release();
 			DBConexion.closeConnection(conexion);
 		}
-		
-		System.out.println("salio del dao");
 
 		return Lista;
 	}
