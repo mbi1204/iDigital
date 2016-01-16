@@ -89,7 +89,7 @@ td {
 		<tbody>
 
 			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
-				<tr ondblclick="menu_Carga()">
+				<tr>
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
 					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
@@ -214,8 +214,6 @@ td {
 	</table>
 		</div>
 	</section>
-	
-	
 	
 </body>
 </html>

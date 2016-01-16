@@ -3,8 +3,8 @@ function add_ctUsuario() {
 	
 	var cCveCia = $('#cCompania').val();
 	
-	$.get("syConfigUsuCtrl?action=list_Usu&cCveCia=" + cCveCia, function(result) {
-		$("#addUsuComp_Dialog").html(result);
+	$.get('syConfigUsuCtrl?action=list_Usu&cCveCia=' + cCveCia, function(result) {
+		$('#addUsuComp_Dialog').html(result);
 		$('#addUsuComp_Dialog').dialog("option", "title", 'Agregar Usuario');
 		$('#addUsuComp_Dialog').dialog('open');
 	});
@@ -13,9 +13,6 @@ function add_ctUsuario() {
 
 
 function update_sysUsuCompania(cCveCia,cUsuario) {
-	
-	
-
 	$.get("syConfigUsuCtrl?action=update&cCveCia=" + cCveCia+"&cUsuario="+cUsuario, function(result) {
 		$("#addUsuComp_Dialog").html(result);		
 		$('#addUsuComp_Dialog').dialog("option", "title", 'Editar Usuario');
@@ -29,23 +26,22 @@ function resetDialog(form) {
 }
 
 function compania(){
-	var cCveCia = $("#cCompania").val();
 	$.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
 }
 
 function menu_Carga(){
 	$('.seccionToggle').slideToggle();
 	
-	$('tbody tr')(function(){
-		$('.seccionTogglePrograma').slideToggle();
+	$('tbody tr').change(function(){
+		
 		$(this).find('td:eq(1)').each(function () {
-			 
 			 //obtenemos el valor de la celda
 			 cUsuario = $(this).html();
 			 alert(cUsuario);
-			 
 			 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
 			})
+			
+		$('.seccionToggle').slideToggle();	
 		});
 }
 
@@ -82,6 +78,15 @@ $(document).ready(function() {
 		$(this).find('td').removeClass('hover');
 		}
 		);
+	
+	$('#btn-toggle tbody tr').dblclick(function(){
+		$('.seccionToggle').slideToggle();
+		$(this).find('td:eq(1)').each(function () {
+			 //obtenemos el valor de la celda
+			 cUsuario = $(this).html();
+			 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
+			})
+		});
 
 });
 

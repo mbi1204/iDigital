@@ -2,8 +2,6 @@ package com.sinergitec.control.sy;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,10 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctMenuDao;
-import com.sinergitec.dao.ct.ctUsuarioDao;
 import com.sinergitec.dao.ct.imp.ctCompaniaDaoImp;
 import com.sinergitec.dao.ct.imp.ctMenuDaoImp;
-import com.sinergitec.dao.ct.imp.ctUsuarioDaoImp;
 import com.sinergitec.dao.sy.syUsuCompaniaDao;
 import com.sinergitec.dao.sy.syUsuMenuDao;
 import com.sinergitec.dao.sy.imp.syUsuCompaniaDaoImp;
@@ -28,8 +24,6 @@ import com.sinergitec.model.ct.ctMenu;
 import com.sinergitec.model.ct.ctUsuario;
 import com.sinergitec.model.sg.sysUsuCompania;
 import com.sinergitec.model.sg.sysUsuMenu;
-
-import javafx.scene.control.ListView;
 
 /**
  * Servlet implementation class syConfigUsu
@@ -62,7 +56,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		syUsuCompania_Dao = new syUsuCompaniaDaoImp();
 		syUsuMenu_Dao = new syUsuMenuDaoImp();
 		
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -71,18 +64,18 @@ public class syConfigUsuCtrl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String sUsuario;
 		String sCompania;
 		String sAction;
-	
+		
 		sAction = request.getParameter("action");
-		sCompania = request.getParameter("cCveCia");
-		System.out.println("compañia -->"+ sCompania);
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
+			
+			sCompania = request.getParameter("cCveCia");
+			System.out.println("compañia -->"+ sCompania);
 			sUsuario = request.getParameter("cUsuario");
 			vUsuario = request.getParameter("cUsuario");
 			System.out.println("Este es el usuario se toma del js: "+vUsuario);
@@ -90,9 +83,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania("SINERGIT",true);
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
@@ -117,7 +109,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				
 				
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("list_UsuCompania", list_Usuario);
@@ -129,7 +120,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			try {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);				
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("list_UsuMenu", list_Menu);
@@ -151,13 +141,13 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 				
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			request.setAttribute("list_ctCompania", list_Compania);
 			forward = PRINCIPAL;
+			
 		}else if(sAction.equalsIgnoreCase("update")){
 			
 			sCompania = request.getParameter("cCveCia");
@@ -182,20 +172,20 @@ public class syConfigUsuCtrl extends HttpServlet {
 					}
 				}
 			 catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("list_UsuCompania", lista_ctUsuario);
 			forward = ADDUSER;
+			
 		}else if(sAction.equals("deleteMenu")){
+			
 			String sUsuarioMenu = request.getParameter("cUsuario");
 			Integer iMenu = Integer.parseInt(request.getParameter("iMenu"));
 			
 			try {
 				syUsuMenu_Dao.remove_syUsuMenuDao("SISIMB", sUsuarioMenu, iMenu);
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -203,6 +193,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			forward = PRINCIPAL;
+			
 		}else if(sAction.equals("updateMenu")){
 			
 			String sUsuarioMenu = request.getParameter("cUsuario");
@@ -222,7 +213,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 					
 				}
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -240,7 +230,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
 		String action = request.getParameter("action");
@@ -270,7 +259,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 					try {
 						syUsuCompania_Dao.add_sysUsuCompaniaDao("SISIMB", obj);
 						} catch (Open4GLException e) {
-							//TODO Auto-generated catch block
 							e.printStackTrace();
 							}
 					}
@@ -288,7 +276,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 					try {
 						syUsuCompania_Dao.update_sysUsuCompaniaDao("SISIMB", obj);
 					} catch (Open4GLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -296,10 +283,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 			}
 			
 			try {
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania("MOCOSOFT",true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -308,6 +294,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			forward = PRINCIPAL;
 			
 		}else if(action.equals("addMenu")){
+			
 			/*Accion Agregar Menu*/
 			String [] menus = request.getParameterValues("iMenus");			
 			
@@ -321,7 +308,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				try {
 					syUsuMenu_Dao.add_syUsuMenuDao("SISIMB", obj);
 				} catch (Open4GLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -331,7 +317,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -354,7 +339,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 			} catch (Open4GLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
