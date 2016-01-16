@@ -83,8 +83,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		sAction = request.getParameter("action");
 		sCompania = request.getParameter("cCveCia");
 		
-		System.out.println("Este es el valor del combo box de las compañias al iniciar: "+sCompania);
-		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
 			sUsuario = request.getParameter("cUsuario");
@@ -94,7 +92,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				System.out.println("Antes de entrar al metodo: "+sCompania);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 				
 				
@@ -114,7 +111,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			 * en una determinada compania, es decir filtra a los usuarios*/
 			
 			sCompania = request.getParameter("cCveCia");// Esta variable rescata a la compañia
-			System.out.println(sCompania);
 			
 			try {
 				
@@ -134,8 +130,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		}else if(sAction.equalsIgnoreCase("list_Menu")){
 			
 			/*Aqui se va a cargara la lista de los menus*/
-			System.out.println("Estoy dentro del ingreso del menu");
-			
 			try {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);				
 			} catch (Open4GLException e) {
@@ -174,9 +168,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			sUsuario = request.getParameter("cUsuario");
 			List<ctUsuario> lista_ctUsuario = new ArrayList<ctUsuario>();
 			List<sysUsuCompania> lista_sysUsuCompania = new ArrayList<sysUsuCompania>();
-
-			System.out.println("Este es el valor de la compañia en update: "+sCompania);
-			System.out.println("Este es el valor del usuario en update: "+sUsuario);
 			
 			try {
 								
@@ -190,8 +181,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 					obj.setcNombre(sysUsuCompania.getCtUsu().getcNombre());
 					obj.setPuesto(sysUsuCompania.getCtUsu().getPuesto());
 					obj.setlActivo(sysUsuCompania.getlActivo());
-					
-					System.out.println("Este es el valor del  puesto: "+obj.getPuesto().getcPuesto());
 					
 					lista_ctUsuario.add(obj);
 					}
@@ -324,17 +313,12 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 		}else if(action.equals("addMenu")){
 			/*Accion Agregar Menu*/
-			System.out.println("Estoy dentro del agregar Menu y este es el usuario al que voy a utilizar: "+vUsuario);
-			
-			String [] menus = request.getParameterValues("iMenus");
-			
+			String [] menus = request.getParameterValues("iMenus");			
 			
 			for (String string : menus) {
 				sysUsuMenu obj = new sysUsuMenu();
 				obj.setcUsuario(vUsuario);
-				System.out.println(obj.getcUsuario());
 				obj.setiMenu(Integer.parseInt(string));
-				System.out.println(obj.getiMenu());
 				obj.setlActivo(true);
 				obj.setcObs("");
 				
@@ -366,7 +350,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			sysUsuMenu obj = new sysUsuMenu();
 			obj.setcUsuario(vUsuario);
 			obj.setiMenu(Integer.parseInt(request.getParameter("iMenu")));
-			
 			obj.setlActivo(Boolean.parseBoolean(request.getParameter("lActivo")));
 			
 			try {
