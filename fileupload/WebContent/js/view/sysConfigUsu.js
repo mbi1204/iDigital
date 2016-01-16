@@ -34,29 +34,20 @@ function compania(){
 }
 
 function menu_Carga(){
-	
-	$('tbody tr').hover( function(){
-		$(this).find('td').addClass('hover');
-		},
-		function(){
-		$(this).find('td').removeClass('hover');
-		}
-		);
 	$('.seccionToggle').slideToggle();
 	
-	cUsuario = $('#cUsuario').html();
-	alert(cUsuario);
-	 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
+	$('tbody tr')(function(){
+		$('.seccionTogglePrograma').slideToggle();
+		$(this).find('td:eq(1)').each(function () {
+			 
+			 //obtenemos el valor de la celda
+			 cUsuario = $(this).html();
+			 alert(cUsuario);
+			 
+			 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
+			})
+		});
 }
-
-$(window).load(function() {
-	
-	var cCveCia = $('#cCompania').val();
-	
-	$.get("syConfigUsuCtrl?action=list_Usu&cCveCia=" + cCveCia, function(result){});
-    alert(cCveCia);
-});
-
 
 $(document).ready(function() {
 	
@@ -83,6 +74,14 @@ $(document).ready(function() {
 	});
 	
 	$('.seccionToggle').hide();
+	
+	$('tbody tr').hover( function(){
+		$(this).find('td').addClass('hover');
+		},
+		function(){
+		$(this).find('td').removeClass('hover');
+		}
+		);
 
 });
 
