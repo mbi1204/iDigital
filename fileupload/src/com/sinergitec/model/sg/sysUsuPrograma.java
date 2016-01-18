@@ -7,6 +7,7 @@ public class sysUsuPrograma {
 	private Integer iPrograma;
 	private Boolean lActivo;
 	private String cObs;
+	byte[] Id;
 	
 	public String getcUsuario() {
 		return cUsuario;
@@ -37,6 +38,12 @@ public class sysUsuPrograma {
 	}
 	public void setcObs(String cObs) {
 		this.cObs = cObs;
+	}
+	public byte[] getId() {
+		return Id;
+	}
+	public void setId(byte[] id) {
+		Id = id;
 	}
 	
 }
