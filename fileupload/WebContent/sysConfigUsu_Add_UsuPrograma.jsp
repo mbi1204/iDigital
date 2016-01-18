@@ -42,22 +42,22 @@
 			<tbody>
 				<c:forEach items="${list_UsuMenu}" var="ctPrograma">
 					<tr>
-						<td id="cMenu"><c:out value="${ctMenu.cMenu}" /></td>
+						<td id="cMenu"><c:out value="${ctPrograma.cMenu}" /></td>
 						
 						<%
-							if (action3.equals("updateMenu")) {
+							if (action3.equals("updatePrograma")) {
 						%>
 						<td><input type="radio" id="lActivo" name="lActivo" value="true"
-							${ctMenu.lActivo ? 'checked':''}> SI</td>
+							${ctPrograma.lActivo ? 'checked':''}> SI</td>
 		
 						<td><input type="radio" id="lActivo" name="lActivo" value="false"
-							${not ctMenu.lActivo ? 'checked':''}> NO</td>
+							${not ctPrograma.lActivo ? 'checked':''}> NO</td>
 						
-						<td><input type="hidden" id ="iMenu" name="iMenu" value="${ctMenu.iMenu}"></td>
+						<td><input type="hidden" id ="iMenu" name="iMenu" value="${ctPrograma.iMenu}"></td>
 						<%
 								} else{
 						%>
-						<td><input type="checkbox" id ="iMenus" name="iMenus" value="${ctMenu.iMenu}"></td>
+						<td><input type="checkbox" id ="iMenus" name="iMenus" value="${ctPrograma.iMenu}"></td>
 						<%
 								}
 						%>

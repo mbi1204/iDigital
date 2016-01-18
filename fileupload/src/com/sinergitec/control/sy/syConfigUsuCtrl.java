@@ -127,6 +127,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_UsuMenu", list_Menu);
 			forward = ADDMENU;
 			
+		}else if(sAction.equalsIgnoreCase("list_Programa")){
+			
 		}else if (sAction.equalsIgnoreCase("delete")){
 			
 			/*Por se borra  
@@ -220,6 +222,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			request.setAttribute("list_UsuMenu", listaUpdateCtMenu);
 			forward = ADDMENU;
+		}else if(sAction.equalsIgnoreCase("deletePrograma")){
+			
+		}else if(sAction.equalsIgnoreCase("updatePrograma")){
+			
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -347,6 +353,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			forward = PRINCIPAL;
+			
+		}else if(action.equals("addPrograma")){
+			
+		}else if(action.equals("updatePrograma")){
 			
 		}
 		
