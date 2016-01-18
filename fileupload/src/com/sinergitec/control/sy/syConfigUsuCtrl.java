@@ -150,6 +150,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			request.setAttribute("list_ctCompania", list_Compania);
+			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			forward = PRINCIPAL;
 			
 		}else if(sAction.equalsIgnoreCase("update")){

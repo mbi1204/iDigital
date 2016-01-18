@@ -55,7 +55,7 @@ $(document).ready(function() {
 	
 $('.seccionTogglePrograma').hide();
 
-$('tbody tr').hover( function(){
+$('#menu tbody tr').hover( function(){
 	$(this).find('td').addClass('hover');
 	},
 	function(){
@@ -64,7 +64,7 @@ $('tbody tr').hover( function(){
 	);
 
 $('#menu tbody tr').dblclick(function(){
-	$('.seccionToggle').slideToggle();
+	$('.seccionTogglePrograma').slideToggle();
 	$(this).find('td:eq(0)').each(function () {
 		 //obtenemos el valor de la celda
 		 cUsuario = $(this).html();

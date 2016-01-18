@@ -140,7 +140,7 @@ td {
 		<tbody>
 
 			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
-				<tr onclick="carga_Programa()">
+				<tr>
 					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
 					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
 					<td><c:out value="${syUsuMenu.lActivo ? 'Activo':'Desactivo'}" /></td>
@@ -190,7 +190,7 @@ td {
 		</thead>
 
 		<tbody>
-			<c:forEach items="${list_syUsuMenu}" var="sysUsuPrograma">
+			<c:forEach items="${list_syUsuPrograma}" var="sysUsuPrograma">
 				<tr>
 					<td><c:out value="${sysUsuPrograma.cUsuario}" /></td>
 					<td><c:out value="${sysUsuPrograma.iMenu}" /></td>
