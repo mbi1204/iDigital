@@ -9,7 +9,7 @@ function add_ctPrograma() {
 } 
 
 
-function update_sysUsuMenu(cUsuario,iMenu) {
+function update_sysUsuPrograma(cUsuario,iMenu) {
 	
 	
 
