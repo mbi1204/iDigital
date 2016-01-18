@@ -180,7 +180,7 @@ td {
 		<i class="fa fa-plus"></i> Agregar Programa
 	</button>
 
-	<table id="menu" class="pure-table pure-table-bordered pure-table-striped">
+	<table id="programa" class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
 			<tr>
 				<th width="20">Usuario</th>
@@ -190,7 +190,25 @@ td {
 		</thead>
 
 		<tbody>
+			<c:forEach items="${list_syUsuMenu}" var="sysUsuPrograma">
+				<tr>
+					<td><c:out value="${sysUsuPrograma.cUsuario}" /></td>
+					<td><c:out value="${sysUsuPrograma.iMenu}" /></td>
+					<td><c:out value="${sysUsuPrograma.iPrograma}" /></td>
+					<td><c:out value="${sysUsuPrograma.lActivo ? 'Activo':'Desactivo'}" /></td>
+					<td><nobr>
+							<button class="pure-button pure-button-primary"
+								onclick="update_sysUsuPrograma('${sysUsuPrograma.cUsuario}','${sysUsuPrograma.iMenu}','${sysUsuPrograma.iPrograma}');">
+								<i class="fa fa-pencil"></i> Editar
+							</button>
 
+							<a class="pure-button pure-button-primary"
+								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
+								href="syConfigUsuCtrl?action=deletePrograma&cUsuario=${sysUsuPrograma.cUsuario}&iMenu=${sysUsuPrograma.iMenu}&iPrograma=${sysUsuPrograma.iPrograma}"></i>Eliminar
+							</a>
+						</nobr></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 		</div>

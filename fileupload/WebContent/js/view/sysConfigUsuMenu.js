@@ -26,30 +26,6 @@ function resetDialog(form) {
 
 }
 
-function carga_Programa(){
-	
-	$('tbody tr').hover( function(){
-		$(this).find('td').addClass('hover');
-		},
-		function(){
-		$(this).find('td').removeClass('hover');
-		}
-		);
-
-	$('tbody tr').dblclick(function(){
-	$('.seccionTogglePrograma').slideToggle();
-	$(this).find('td:eq(1)').each(function () {
-		 
-		 //obtenemos el valor de la celda
-		 cUsuario = $(this).html();
-		 
-		 
-		 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
-		})
-	});
-	
-}
-
 $(document).ready(function() {
 	
 	
@@ -78,5 +54,27 @@ $(document).ready(function() {
 	
 	
 $('.seccionTogglePrograma').hide();
+
+$('tbody tr').hover( function(){
+	$(this).find('td').addClass('hover');
+	},
+	function(){
+	$(this).find('td').removeClass('hover');
+	}
+	);
+
+$('#menu tbody tr').dblclick(function(){
+	$('.seccionToggle').slideToggle();
+	$(this).find('td:eq(0)').each(function () {
+		 //obtenemos el valor de la celda
+		 cUsuario = $(this).html();
+		})
+		
+	$(this).find('td:eq(1)').each(function () {
+		 //obtenemos el valor de la celda
+		 iMenu = $(this).html();
+		})
+		$.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario+"&iMenu="+iMenu, function(result) {});
+	});
 
 });
