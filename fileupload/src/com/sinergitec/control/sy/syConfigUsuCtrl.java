@@ -43,6 +43,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private static String PRINCIPAL = "/sysConfigUsu.jsp";
 	private static String ADDUSER   = "/sysConfigUsu_Add_UsuComp.jsp";
 	private static String ADDMENU   = "/sysConfigUsu_Add_UsuMenu.jsp";
+	private static String ADDPROGRAMA = "/sysConfigUsu_Add_UsuPrograma.jsp";
 	private String forward = "";
 	private String vUsuario;
 
@@ -128,7 +129,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			forward = ADDMENU;
 			
 		}else if(sAction.equalsIgnoreCase("list_Programa")){
-			
+			forward = ADDPROGRAMA;
 		}else if (sAction.equalsIgnoreCase("delete")){
 			
 			/*Por se borra  

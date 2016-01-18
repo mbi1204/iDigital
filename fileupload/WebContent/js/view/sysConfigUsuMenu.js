@@ -28,8 +28,6 @@ function resetDialog(form) {
 
 $(document).ready(function() {
 	
-	
-
 	$('#addUsuMenu_Dialog').dialog({
 
 		autoOpen : false,

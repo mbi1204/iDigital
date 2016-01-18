@@ -47,8 +47,6 @@ td {
 </head>
 <body>
 
-
-
 	<div id="addUsuComp_Dialog" style="display: none;">
 
 		<%@ include file="sysConfigUsu_Add_UsuComp.jsp"%>
@@ -162,8 +160,6 @@ td {
 	</table>
 		</div>
 	</section>
-	
-	 
 	
 	<section class="seccionTogglePrograma">
 		<div class="wrap">
