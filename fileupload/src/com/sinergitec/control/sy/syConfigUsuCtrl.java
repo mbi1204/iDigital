@@ -70,7 +70,8 @@ public class syConfigUsuCtrl extends HttpServlet {
 		String sCompania;
 		String sAction;
 		
-		sAction = request.getParameter("action");
+		
+		sAction = request.getParameter("action");		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
 			
@@ -83,7 +84,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania("SINERGIT",true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
@@ -92,6 +93,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
 			forward = PRINCIPAL;
+		
 
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
 			
@@ -283,7 +285,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			}
 			
 			try {
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania("MOCOSOFT",true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 			} catch (Open4GLException e) {
 				e.printStackTrace();

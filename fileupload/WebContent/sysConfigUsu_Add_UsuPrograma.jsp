@@ -1,33 +1,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 
-	String action2 = request.getParameter("action");
+	String action3 = request.getParameter("action");
 	
-	if (action2.equalsIgnoreCase("updateMenu")) {
+	if (action3.equalsIgnoreCase("updatePrograma")) {
 %>
-<c:url var="actionUrl" value="syConfigUsuCtrl?action=updateMenu" />
+<c:url var="actionUrl" value="syConfigUsuCtrl?action=updatePrograma" />
 <%
 	} else {
 %>
 <c:url var="actionUrl"
-	value="syConfigUsuCtrl?action=addMenu" />
+	value="syConfigUsuCtrl?action=addPrograma" />
 
 <%
 	}
 %>
 
-<form id="AddUsuMenu_Form" class="pure-form pure-form-aligned"
+<form id="AddUsuPrograma_Form" class="pure-form pure-form-aligned"
 	method="post" action="${actionUrl}">
 
 	<fieldset>
 
 		<legend></legend>
-		<table id="table_ctMenu">
+		<table id="table_ctPrograma">
 			<thead>
 				<tr>
-					<th width="25">Menu</th>
+					<th width="25">Programa</th>
 					<%
-							if (action2.equals("updateMenu")) {
+							if (action3.equals("updatePrograma")) {
 					%>
 					<th width="25">Activo</th>
 					<%
@@ -40,12 +40,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list_UsuMenu}" var="ctMenu">
+				<c:forEach items="${list_UsuMenu}" var="ctPrograma">
 					<tr>
 						<td id="cMenu"><c:out value="${ctMenu.cMenu}" /></td>
 						
 						<%
-							if (action2.equals("updateMenu")) {
+							if (action3.equals("updateMenu")) {
 						%>
 						<td><input type="radio" id="lActivo" name="lActivo" value="true"
 							${ctMenu.lActivo ? 'checked':''}> SI</td>

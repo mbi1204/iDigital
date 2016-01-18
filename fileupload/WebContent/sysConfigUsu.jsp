@@ -41,6 +41,7 @@ td {
 <script type="text/javascript" src="js/lib/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="js/view/sysConfigUsu.js"></script>
 <script type="text/javascript" src="js/view/sysConfigUsuMenu.js"></script>
+<script type="text/javascript" src="js/view/sysConfigUsuPrograma.js"></script>
 
 
 </head>
@@ -166,8 +167,8 @@ td {
 	
 	<section class="seccionTogglePrograma">
 		<div class="wrap">
-			<div id="addUsuMenu_Dialog" style="display: none;">
-						
+			<div id="addUsuPrograma_Dialog" style="display: none;">
+			<%@include file = "sysConfigUsu_Add_UsuPrograma.jsp" %>
 		</div>
 
 	<h1>Configuracion Programas de Usuario</h1>
@@ -175,7 +176,7 @@ td {
 	<h1>Programas por usuario</h1>
 
 	<button class="pure-button pure-button-primary"
-		onclick="add_ctMenu()">
+		onclick="add_ctPrograma()">
 		<i class="fa fa-plus"></i> Agregar Programa
 	</button>
 
@@ -189,27 +190,7 @@ td {
 		</thead>
 
 		<tbody>
-		<%-- 
-			<c:forEach items="${list_syUsuMenu}" var="syUsuMenu">
-				<tr>
-					<td><c:out value="${syUsuMenu.cUsuario}" /></td>
-					<td><c:out value="${syUsuMenu.menu.cMenu}" /></td>
-					<td><c:out value="${syUsuMenu.lActivo ? 'Activo':'Desactivo'}" /></td>
-					<td><nobr>
-							<button class="pure-button pure-button-primary"
-								onclick="update_sysUsuMenu('${syUsuMenu.cUsuario}','${syUsuMenu.iMenu}');">
-								<i class="fa fa-pencil"></i> Editar
-							</button>
 
-							<a class="pure-button pure-button-primary"
-								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
-								href="syConfigUsuCtrl?action=deleteMenu&cUsuario=${syUsuMenu.cUsuario}&iMenu=${syUsuMenu.iMenu}"></i>Eliminar
-							</a>
-						</nobr></td>
-
-				</tr>
-			</c:forEach>
-			--%>
 		</tbody>
 	</table>
 		</div>

@@ -26,6 +26,7 @@ function resetDialog(form) {
 }
 
 function compania(){
+	var cCveCia = $('#cCompania').val();
 	$.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
 }
 
