@@ -26,8 +26,11 @@ function resetDialog(form) {
 }
 
 function compania(){
-	var cCveCia = $('#cCompania').val();
-	$.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
+	refrescar($('#cCompania').val());
+}
+
+function refrescar(cCveCia){
+	$.get("syConfigUsuCtrl?action=inicial&cCveCia="+cCveCia, function(){});
 }
 
 function menu_Carga(){

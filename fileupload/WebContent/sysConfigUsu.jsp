@@ -45,7 +45,7 @@ td {
 
 
 </head>
-<body>
+<body onload="compania()">
 
 	<div id="addUsuComp_Dialog" style="display: none;">
 
