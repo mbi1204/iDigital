@@ -26,7 +26,13 @@ function resetDialog(form) {
 }
 
 function compania(){
-	$.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
+	$(document).ready(function() {
+	    // Así accedemos al Valor de la opción seleccionada
+	    var cCveCia = $("#cCompania").val();
+	    $.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
+	    // Si seleccionamos la opción "Texto 1"
+	    // nos mostrará por pantalla "1"
+	});
 }
 
 function menu_Carga(){

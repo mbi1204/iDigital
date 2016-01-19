@@ -83,7 +83,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania("SINERGIT",true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
