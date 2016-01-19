@@ -11,7 +11,6 @@ function add_ctUsuario() {
 	
 } 
 
-
 function update_sysUsuCompania(cCveCia,cUsuario) {
 	$.get("syConfigUsuCtrl?action=update&cCveCia=" + cCveCia+"&cUsuario="+cUsuario, function(result) {
 		$("#addUsuComp_Dialog").html(result);		
