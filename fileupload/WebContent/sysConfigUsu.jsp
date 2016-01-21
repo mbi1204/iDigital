@@ -44,7 +44,7 @@ td {
 
 
 </head>
-<body>
+<body onload="valor_Menu();">
 
 
 
@@ -60,7 +60,7 @@ td {
 	<label for="cCompania">Compañia: </label>
 
 
-	<select id="cCompania" name="cCompania" onchange="compania()">
+	<select id="cCompania" name="cCompania" onchange="compania();">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
@@ -87,7 +87,6 @@ td {
 		</thead>
 
 		<tbody>
-
 			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 				<tr>
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
@@ -105,9 +104,9 @@ td {
 								href="syConfigUsuCtrl?action=delete&cCveCia=${syUsuCompania.cCveCia}&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
 							</a>
 						</nobr></td>
-
 				</tr>
 			</c:forEach>
+			
 		</tbody>
 	</table>
 

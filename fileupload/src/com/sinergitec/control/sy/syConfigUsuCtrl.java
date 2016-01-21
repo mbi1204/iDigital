@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctMenuDao;
@@ -64,16 +65,16 @@ public class syConfigUsuCtrl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		String sUsuario;
 		String sCompania;
 		String sAction;
 		
 		sAction = request.getParameter("action");
+		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
-			
 			sCompania = request.getParameter("cCveCia");
 			System.out.println("compañia -->"+ sCompania);
 			sUsuario = request.getParameter("cUsuario");

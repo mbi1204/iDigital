@@ -34,20 +34,51 @@ function compania(){
 	});
 }
 
-function menu_Carga(){
-	$('.seccionToggle').slideToggle();
+function valor_Menu(){
+		carga_ctMenu($('#cCompania').val());
 	
-	$('tbody tr').change(function(){
-		
-		$(this).find('td:eq(1)').each(function () {
-			 //obtenemos el valor de la celda
-			 cUsuario = $(this).html();
-			 alert(cUsuario);
-			 $.get("syConfigUsuCtrl?action=inicial&cUsuario=" + cUsuario, function(result) {});
-			})
-			
-		$('.seccionToggle').slideToggle();	
-		});
+}
+
+function carga_ctMenu(cCveCia) {
+
+	var errorInfo;
+
+	$.ajax({
+		type : "GET",
+		url : "syConfigUsuCtrl?action=inicial",
+		dataType : "json",
+		contentType : "application/json; charset=utf-8",
+		data : {
+			cCveCia : cCveCia
+		},
+		success : function(data, textStatus, jqXHR) {
+
+			$("#btn-toggle > tbody").empty();
+			$("#mytable2 > tbody").empty();
+			for ( var item in data) {
+				$('#btn-toggle > tbody').append(
+						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
+								+ data[item].cUsuario + '</td>' + '<td>'
+								+ data[item].lActivo + '</td>' + '<td><nobr>'
+
+								+ '<a class="pure-button pure-button-primary"'
+								+ 'onclick="return confirm('
+								+ "'¿Desea Eliminar el usuario selecionado?'"
+								+ ');" ' + 'href="javascript:remove_sysMenu('
+								+ data[item].iIdMenu + ' )"> <i'
+								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
+
+								+ '</nobr></td>' + '</tr>');
+
+			}
+
+		},
+		error : function() {
+			alert("erro al ejecutar el BuscaMenu" + textStatus);
+		}
+
+	});
+
 }
 
 $(document).ready(function() {
