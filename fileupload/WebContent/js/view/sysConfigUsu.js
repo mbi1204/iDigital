@@ -25,22 +25,17 @@ function resetDialog(form) {
 }
 
 function compania(){
-	refrescar($('#cCompania').val());
-}
-
-function refrescar(cCveCia){
-	$.get("syConfigUsuCtrl?action=inicial&cCveCia="+cCveCia, function(){});
 	$(document).ready(function() {
-	    // Así accedemos al Valor de la opción seleccionada
-	    var cCveCia = $("#cCompania").val();
-	    $.get("syConfigUsuCtrl?action=inicial&cCveCia=" + cCveCia, function(result) {});
-	    // Si seleccionamos la opción "Texto 1"
-	    // nos mostrará por pantalla "1"
+		var cCveCia = $('#cCompania').val();
+		$.get('syConfigUsuCtrl?action=inicial&cCveCia=' + cCveCia, function(result) {});
+		$('.inicio').html();
 	});
 }
 
 function valor_Menu(){
+	$(document).ready(function() {
 		carga_ctMenu($('#cCompania').val());
+	});
 	
 }
 
@@ -49,17 +44,18 @@ function carga_ctMenu(cCveCia) {
 	var errorInfo;
 
 	$.ajax({
+		
 		type : "GET",
 		url : "syConfigUsuCtrl?action=inicial",
 		dataType : "json",
 		contentType : "application/json; charset=utf-8",
-		data : {
+		data : {			
 			cCveCia : cCveCia
 		},
-		success : function(data, textStatus, jqXHR) {
+		success : function(data) {
 
+			alert("Entra dadadds");
 			$("#btn-toggle > tbody").empty();
-			$("#mytable2 > tbody").empty();
 			for ( var item in data) {
 				$('#btn-toggle > tbody').append(
 						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
@@ -70,7 +66,7 @@ function carga_ctMenu(cCveCia) {
 								+ 'onclick="return confirm('
 								+ "'¿Desea Eliminar el usuario selecionado?'"
 								+ ');" ' + 'href="javascript:remove_sysMenu('
-								+ data[item].iIdMenu + ' )"> <i'
+								+ data[item].cCveCia + ' )"> <i'
 								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
 
 								+ '</nobr></td>' + '</tr>');
@@ -79,7 +75,7 @@ function carga_ctMenu(cCveCia) {
 
 		},
 		error : function() {
-			alert("erro al ejecutar el BuscaMenu" + textStatus);
+			alert("erro al ejecutar el BuscaMenu");
 		}
 
 	});

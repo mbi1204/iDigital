@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,8 @@ import com.sinergitec.model.sg.sysUsuMenu;
 /**
  * Servlet implementation class syConfigUsu
  */
+
+@WebServlet("/noFunKA")
 public class syConfigUsuCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_Dao;
@@ -67,14 +70,16 @@ public class syConfigUsuCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		
 		String sUsuario;
 		String sCompania;
 		String sAction;
+		String json = null;
 		
 		
 		sAction = request.getParameter("action");		
-		sAction = request.getParameter("action");
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
@@ -87,7 +92,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
+				json = new Gson().toJson(syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true));
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
@@ -95,6 +100,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			response.getWriter().write(json);
 			forward = PRINCIPAL;
 		
 

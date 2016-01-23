@@ -45,13 +45,8 @@ td {
 
 
 </head>
-<<<<<<< HEAD
-<body onload="compania()">
-=======
 <body onload="valor_Menu();">
 
-
->>>>>>> branch 'master' of https://github.com/mbi1204/iDigital.git
 
 	<div id="addUsuComp_Dialog" style="display: none;">
 
@@ -65,7 +60,7 @@ td {
 	<label for="cCompania">Compañia: </label>
 
 
-	<select id="cCompania" name="cCompania" onchange="compania();">
+	<select id="cCompania" name="cCompania" onchange="valor_Menu();">
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
@@ -79,7 +74,7 @@ td {
 		<i class="fa fa-plus"></i> Agregar Usuario
 	</button>
 
-
+<section class="inicio">
 
 	<table id="btn-toggle" class="pure-table pure-table-bordered pure-table-striped">
 		<thead>
@@ -111,10 +106,9 @@ td {
 						</nobr></td>
 				</tr>
 			</c:forEach>
-			
 		</tbody>
 	</table>
-
+</section>
 
 	<section class="seccionToggle">
 		<div class="wrap">
