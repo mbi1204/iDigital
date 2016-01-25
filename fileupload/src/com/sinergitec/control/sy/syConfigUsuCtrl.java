@@ -1,6 +1,7 @@
 package com.sinergitec.control.sy;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +84,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 		
 		System.out.println("ENTRO -->"+ sAction);
 		if (sAction.equalsIgnoreCase("inicial")) {
+			
+			PrintWriter out = response.getWriter();
+			out.write("Mames este dato viene del servelt");
+			
 			sCompania = request.getParameter("cCveCia");
 			System.out.println("compañia -->"+ sCompania);
 			sUsuario = request.getParameter("cUsuario");
@@ -92,7 +97,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				json = new Gson().toJson(syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true));
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
@@ -100,7 +105,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
-			response.getWriter().write(json);
 			forward = PRINCIPAL;
 		
 

@@ -47,35 +47,33 @@ function carga_ctMenu(cCveCia) {
 		
 		type : "GET",
 		url : "syConfigUsuCtrl?action=inicial",
-		dataType : "json",
-		contentType : "application/json; charset=utf-8",
-		data : {			
-			cCveCia : cCveCia
-		},
+		data: 'cCveCia='+$('#cCompania').val(),
+		
 		success : function(data) {
-
-			alert("Entra dadadds");
+			console.log("Entra Si funciona :)");
+			console.log(data);
 			$("#btn-toggle > tbody").empty();
+			
 			for ( var item in data) {
 				$('#btn-toggle > tbody').append(
-						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
-								+ data[item].cUsuario + '</td>' + '<td>'
+						'<tr>' + '<td>' + data[item].iIdMenu + '</td>' + '<td>'
+								+ data[item].cMenu + '</td>' + '<td>'
 								+ data[item].lActivo + '</td>' + '<td><nobr>'
 
 								+ '<a class="pure-button pure-button-primary"'
 								+ 'onclick="return confirm('
 								+ "'¿Desea Eliminar el usuario selecionado?'"
 								+ ');" ' + 'href="javascript:remove_sysMenu('
-								+ data[item].cCveCia + ' )"> <i'
+								+ data[item].iIdMenu + ' )"> <i'
 								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
 
 								+ '</nobr></td>' + '</tr>');
 
 			}
-
+			
 		},
 		error : function() {
-			alert("erro al ejecutar el BuscaMenu");
+			console.log("erro al ejecutar el BuscaMenu");
 		}
 
 	});
