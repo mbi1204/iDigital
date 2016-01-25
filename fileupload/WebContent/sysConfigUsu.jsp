@@ -45,7 +45,7 @@ td {
 
 
 </head>
-<body onload="valor_Menu();">
+<body>
 
 
 	<div id="addUsuComp_Dialog" style="display: none;">
@@ -60,7 +60,8 @@ td {
 	<label for="cCompania">Compañia: </label>
 
 
-	<select id="cCompania" name="cCompania">
+	<select id="cCompania" name="cCompania" onchange="valor_Menu();">
+	<option selected="selected">Selecciona una Compañia</option>
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>

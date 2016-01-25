@@ -33,15 +33,7 @@ function compania(){
 }
 
 function valor_Menu(){
-	$(document).ready(function() {
-	$('#cCompania').on('change', function () {
-		   var val = $(this).text(); // gives you 2012, 2013, 2014
-		   console.log($(this).val());
-		   $('#tablaCompania').load('syConfigUsuCtrl?action=inicial&cCveCia=' + $('#cCompania').val(), function () {
-			   console.log('content was loaded'); // call back after content is loaded
-		   });
-		});
-	});
+	window.location = "syConfigUsuCtrl?action=inicial&cCveCia=" + $('#cCompania').val();
 }
 
 function carga_ctMenu(cCveCia) {
