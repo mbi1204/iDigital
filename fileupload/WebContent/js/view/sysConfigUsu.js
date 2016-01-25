@@ -34,9 +34,14 @@ function compania(){
 
 function valor_Menu(){
 	$(document).ready(function() {
-		carga_ctMenu($('#cCompania').val());
+	$('#cCompania').on('change', function () {
+		   var val = $(this).text(); // gives you 2012, 2013, 2014
+		   console.log($(this).val());
+		   $('#tablaCompania').load('syConfigUsuCtrl?action=inicial&cCveCia=' + $('#cCompania').val(), function () {
+			   console.log('content was loaded'); // call back after content is loaded
+		   });
+		});
 	});
-	
 }
 
 function carga_ctMenu(cCveCia) {
@@ -52,24 +57,6 @@ function carga_ctMenu(cCveCia) {
 		success : function(data) {
 			console.log("Entra Si funciona :)");
 			console.log(data);
-			$("#btn-toggle > tbody").empty();
-			
-			for ( var item in data) {
-				$('#btn-toggle > tbody').append(
-						'<tr>' + '<td>' + data[item].iIdMenu + '</td>' + '<td>'
-								+ data[item].cMenu + '</td>' + '<td>'
-								+ data[item].lActivo + '</td>' + '<td><nobr>'
-
-								+ '<a class="pure-button pure-button-primary"'
-								+ 'onclick="return confirm('
-								+ "'¿Desea Eliminar el usuario selecionado?'"
-								+ ');" ' + 'href="javascript:remove_sysMenu('
-								+ data[item].iIdMenu + ' )"> <i'
-								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
-
-								+ '</nobr></td>' + '</tr>');
-
-			}
 			
 		},
 		error : function() {
