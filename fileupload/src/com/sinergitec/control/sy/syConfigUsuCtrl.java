@@ -51,6 +51,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private static String ADDPROGRAMA = "/sysConfigUsu_Add_UsuPrograma.jsp";
 	private String forward = "";
 	private String vUsuario;
+	private String vCompania;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -77,8 +78,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 		String sUsuario;
 		String sCompania;
 		String sAction;
-		String json = null;
-		
 		
 		sAction = request.getParameter("action");		
 		
@@ -92,6 +91,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			System.out.println("compañia -->"+ sCompania);
 			sUsuario = request.getParameter("cUsuario");
 			vUsuario = request.getParameter("cUsuario");
+			vCompania = request.getParameter("cCveCia");
 			System.out.println("Este es el usuario se toma del js: "+vUsuario);
 			try {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
