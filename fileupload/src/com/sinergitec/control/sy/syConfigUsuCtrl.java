@@ -31,7 +31,7 @@ import com.sinergitec.model.sg.sysUsuMenu;
  * Servlet implementation class syConfigUsu
  */
 
-@WebServlet("/noFunKA")
+@WebServlet("/noFunka")
 public class syConfigUsuCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_Dao;
