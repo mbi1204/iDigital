@@ -40,46 +40,7 @@ function valor_Menu(){
 }
 
 function carga_ctMenu(cCveCia) {
-
-	var errorInfo;
-
-	$.ajax({
-		
-		type : "GET",
-		url : "syConfigUsuCtrl?action=inicial",
-		dataType : "json",
-		contentType : "application/json; charset=utf-8",
-		data : {			
-			cCveCia : cCveCia
-		},
-		success : function(data) {
-
-			alert("Entra dadadds");
-			$("#btn-toggle > tbody").empty();
-			for ( var item in data) {
-				$('#btn-toggle > tbody').append(
-						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
-								+ data[item].cUsuario + '</td>' + '<td>'
-								+ data[item].lActivo + '</td>' + '<td><nobr>'
-
-								+ '<a class="pure-button pure-button-primary"'
-								+ 'onclick="return confirm('
-								+ "'¿Desea Eliminar el usuario selecionado?'"
-								+ ');" ' + 'href="javascript:remove_sysMenu('
-								+ data[item].cCveCia + ' )"> <i'
-								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
-
-								+ '</nobr></td>' + '</tr>');
-
-			}
-
-		},
-		error : function() {
-			alert("erro al ejecutar el BuscaMenu");
-		}
-
-	});
-
+	window.location = "syConfigUsuCtrl?action=inicial&cCveCia=" + $('#cCompania').val();
 }
 
 $(document).ready(function() {

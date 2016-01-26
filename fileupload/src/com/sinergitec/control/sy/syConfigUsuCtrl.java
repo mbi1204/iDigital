@@ -70,13 +70,10 @@ public class syConfigUsuCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
 		
 		String sUsuario;
 		String sCompania;
 		String sAction;
-		String json = null;
 		
 		
 		sAction = request.getParameter("action");		
@@ -92,7 +89,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				json = new Gson().toJson(syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true));
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
@@ -100,7 +97,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
-			response.getWriter().write(json);
 			forward = PRINCIPAL;
 		
 
