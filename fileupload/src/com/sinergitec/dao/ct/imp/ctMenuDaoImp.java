@@ -146,6 +146,43 @@ public class ctMenuDaoImp implements ctMenuDao {
 
 		return Lista;
 	}
+
+	public List<ctMenu> list_ctMenu(String cUsuario, boolean bTodos) throws Open4GLException, IOException{
+		
+		BooleanHolder ps_Resultado = new BooleanHolder();
+		StringHolder ps_Texto = new StringHolder();
+
+		List<ctMenu> Lista = new ArrayList<ctMenu>();
+
+		ResultSetHolder tt_ctMenu = new ResultSetHolder();
+		Connection conexion = DBConexion.getConnection();
+		myDigital app = new myDigital(conexion);
+	try {
+
+			app.as_sysUsuSinMenu_Carga(cUsuario, bTodos, tt_ctMenu, ps_Resultado, ps_Texto);
+			ResultSet rs_tt_ctMenu = tt_ctMenu.getResultSetValue();
+
+			while (rs_tt_ctMenu.next()) {
+
+				ctMenu obj = new ctMenu();
+
+				obj.setiMenu(rs_tt_ctMenu.getInt("iMenu"));
+				obj.setcMenu(rs_tt_ctMenu.getString("cMenu"));
+				obj.setlActivo(rs_tt_ctMenu.getBoolean("lActivo"));				
+				obj.setId(rs_tt_ctMenu.getBytes("id"));
+				Lista.add(obj);
+
+			}
+		} catch (Exception ex) {
+			System.err.println(ex);
+
+		} finally {
+			app._release();
+			DBConexion.closeConnection(conexion);
+		}
+
+		return Lista;
+	}
 	
 	public ctMenu get_ctMenu(String cUsuario, int iMenu) throws Open4GLException, IOException{
 		

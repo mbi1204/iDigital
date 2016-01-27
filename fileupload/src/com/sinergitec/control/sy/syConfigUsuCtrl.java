@@ -131,7 +131,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			
 			/*Aqui se va a cargara la lista de los menus*/
 			try {
-				list_Menu = ctMenu_Dao.list_ctMenu(true);				
+				list_Menu = ctMenu_Dao.list_ctMenu(vUsuario,false);				
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
@@ -142,7 +142,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			forward = ADDPROGRAMA;
 		}else if (sAction.equalsIgnoreCase("delete")){
 			
-			/*Por se borra  
+			/* Se borra  
 			 * con cCveCia y cUsuario*/
 			
 			sCompania = request.getParameter("cCveCia");
@@ -333,7 +333,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 			}
 			
 			try {
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuCompania(true);
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 			} catch (Open4GLException e) {

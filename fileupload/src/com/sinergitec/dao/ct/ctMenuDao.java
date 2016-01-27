@@ -17,6 +17,8 @@ public interface ctMenuDao {
 	
 	public List<ctMenu> list_ctMenu(boolean bTodos) throws Open4GLException, IOException;
 	
+	public List<ctMenu> list_ctMenu(String cUsuario, boolean bTodos) throws Open4GLException, IOException;
+	
 	public ctMenu get_ctMenu(String cUsuario ,int iMenu) throws Open4GLException, IOException;
 
 }
