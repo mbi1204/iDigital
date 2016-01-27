@@ -56,7 +56,7 @@ function carga_ctMenu(cCveCia) {
 		}
 
 	});
-
+	window.location = "syConfigUsuCtrl?action=inicial&cCveCia=" + $('#cCompania').val();
 }
 
 $(document).ready(function() {

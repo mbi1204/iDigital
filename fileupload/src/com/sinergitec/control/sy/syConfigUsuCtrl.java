@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctMenuDao;
@@ -32,7 +31,7 @@ import com.sinergitec.model.sg.sysUsuMenu;
  * Servlet implementation class syConfigUsu
  */
 
-@WebServlet("/noFunKA")
+@WebServlet("/noFunka")
 public class syConfigUsuCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_Dao;
@@ -72,12 +71,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
 		
 		String sUsuario;
 		String sCompania;
 		String sAction;
+
 		
 		sAction = request.getParameter("action");		
 		

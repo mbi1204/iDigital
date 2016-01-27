@@ -172,6 +172,8 @@ public class syUsuCompaniaDaoImp implements syUsuCompaniaDao {
 
 	public List<sysUsuCompania> list_sysUsuConCompania(String cCveCia, boolean bTodos) throws Open4GLException, IOException{
 		
+		System.out.println("SOY EL VALOR QUE VIENEN DESDE LA VISTA: "+cCveCia);
+		
 		ctUsuarioDao = new ctUsuarioDaoImp();
 		
 		BooleanHolder ps_Resultado = new BooleanHolder();

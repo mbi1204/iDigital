@@ -61,7 +61,7 @@ td {
 
 
 	<select id="cCompania" name="cCompania" onchange="valor_Menu();">
-	<option selected="selected">Selecciona una Compañia</option>
+	<option selected="selected">Selecciona una compania:</option>
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
 		</c:forEach>
