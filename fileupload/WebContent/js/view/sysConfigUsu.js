@@ -39,14 +39,14 @@ function valor_Menu(){
 	window.location = "syConfigUsuCtrl?action=inicial&cCveCia=" + $('#cCompania').val();
 }
 
-function carga_ctMenu(cCveCia) {
+function carga_ctMenu() {
 
 	var errorInfo;
 
 	$.ajax({
 		
 		type : "GET",
-		url : "syConfigUsuCtrl?action=inicial",
+		url : "noFunka",
 		data: 'cCveCia='+$('#cCompania').val(),
 		
 		success : function(data) {
