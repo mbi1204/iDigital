@@ -25,10 +25,13 @@ function resetDialog(form) {
 }
 
 function compania(){
+	var cCveCia = $('#cCompania').val();
+	var url = 'syConfigUsuCtrl?action=inicial&cCveCia=' + cCveCia;
+	
 	$(document).ready(function() {
-		var cCveCia = $('#cCompania').val();
-		$.get('syConfigUsuCtrl?action=inicial&cCveCia=' + cCveCia, function(result) {});
-		$('.inicio').html();
+		$.ajaxSetup({ cache: false }); 
+		$("#tablaCompania").load(url);
+		console.log("Estoy actualizando la tabla");
 	});
 }
 
