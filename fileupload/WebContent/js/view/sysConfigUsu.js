@@ -46,12 +46,22 @@ function carga_ctMenu() {
 	$.ajax({
 		
 		type : "GET",
-		url : "noFunka",
-		data: 'cCveCia='+$('#cCompania').val(),
-		
-		success : function(data) {
+		url : "syConfigUsuCtrl?action=inicial&",
+		data: {
+            cCveCia : $('#cCompania').val()
+        },
+		success : function(responseText) {
 			console.log("Entra Si funciona :)");
-			console.log(data);
+			console.log(responseText);
+			
+			$("#btn-toggle > tbody").empty();
+			
+			$.each(responseText, function(index, list_UsuCompania) {    
+                $('<tr>').appendTo($table)                     
+                    .append($('<td>').text(list_UsuCompania.cCveCia))        
+                    .append($('<td>').text(list_UsuCompania.cUsuario))      
+                    .append($('<td>').text(list_UsuCompania.lActivo));    
+            });
 			
 		},
 		error : function() {
@@ -59,7 +69,7 @@ function carga_ctMenu() {
 		}
 
 	});
-	window.location = "syConfigUsuCtrl?action=inicial&cCveCia=" + $('#cCompania').val();
+	
 }
 
 $(document).ready(function() {

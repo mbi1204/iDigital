@@ -60,7 +60,7 @@ td {
 	<label for="cCompania">Compañia: </label>
 
 
-	<select id="cCompania" name="cCompania" onchange="valor_Menu();">
+	<select id="cCompania" name="cCompania" onchange="carga_ctMenu();">
 	<option selected="selected">Selecciona una compania:</option>
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
@@ -71,7 +71,7 @@ td {
 	<h1>Usuarios por compañia</h1>
 
 	<button class="pure-button pure-button-primary"
-		onclick="add_ctUsuario()">
+		onclick="add_ctUsuario();">
 		<i class="fa fa-plus"></i> Agregar Usuario
 	</button>
 
@@ -88,7 +88,7 @@ td {
 		</thead>
 
 		<tbody id="tablaCompania">
-			<c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
+			<%-- <c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
 				<tr>
 					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
 					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
@@ -106,7 +106,7 @@ td {
 							</a>
 						</nobr></td>
 				</tr>
-			</c:forEach>
+			</c:forEach> --%>
 		</tbody>
 	</table>
 </section>

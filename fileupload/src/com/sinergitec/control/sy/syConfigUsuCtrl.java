@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.progress.open4gl.Open4GLException;
 import com.sinergitec.dao.ct.ctCompaniaDao;
 import com.sinergitec.dao.ct.ctMenuDao;
@@ -75,6 +76,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 		String sUsuario;
 		String sCompania;
 		String sAction;
+		String json = null;
 
 		
 		sAction = request.getParameter("action");		
@@ -96,9 +98,16 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
 				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
+				
+				json = new Gson().toJson(list_UsuCompania);
+				response.setContentType("application/json");
+			    response.setCharacterEncoding("UTF-8");
+			    response.getWriter().write(json);
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
+			
+			
 			request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
