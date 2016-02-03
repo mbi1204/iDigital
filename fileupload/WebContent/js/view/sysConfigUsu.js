@@ -56,13 +56,6 @@ function carga_ctMenu() {
 			
 			$("#btn-toggle > tbody").empty();
 			
-			$.each(responseText, function(index, list_UsuCompania) {    
-                $('<tr>').appendTo($table)                     
-                    .append($('<td>').text(list_UsuCompania.cCveCia))        
-                    .append($('<td>').text(list_UsuCompania.cUsuario))      
-                    .append($('<td>').text(list_UsuCompania.lActivo));    
-            });
-			
 		},
 		error : function() {
 			console.log("erro al ejecutar el BuscaMenu");
