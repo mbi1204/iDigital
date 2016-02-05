@@ -98,19 +98,21 @@ public class syConfigUsuCtrl extends HttpServlet {
 				
 				json = new Gson().toJson(list_UsuCompania);
 				System.out.println("Esto es lo que se carga en el json: "+json);
-				response.setContentType("application/json");
-			    response.setCharacterEncoding("UTF-8");
-			    response.getWriter().write(json);
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
 			
+			/*ALEX: Lo que vas hacer es dejar limpio todos los if, else if
+			 * vas a dejar unicamente el json para saber si te lo regresa unicamente el arreglo
+			 * declara las variables como globales y hasta el final del requestDispacher
+			 * indica que te lo mande y veamos que realiza el codigo*/
 			
-			request.setAttribute("list_syUsuMenu", list_UsuMenu);
+			/*request.setAttribute("list_syUsuMenu", list_UsuMenu);
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
-			request.setAttribute("list_ctCompania", list_Compania);
+			request.setAttribute("list_ctCompania", list_Compania);*/
+			
 			json = new Gson().toJson(list_UsuCompania);
 			response.setContentType("application/json");
 		    response.setCharacterEncoding("UTF-8");
