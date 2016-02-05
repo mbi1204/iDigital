@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +31,6 @@ import com.sinergitec.model.sg.sysUsuMenu;
  * Servlet implementation class syConfigUsu
  */
 
-@WebServlet("/noFunka")
 public class syConfigUsuCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ctCompaniaDao ctCompania_Dao;
@@ -44,7 +42,6 @@ public class syConfigUsuCtrl extends HttpServlet {
 	private List<ctUsuario>  list_Usuario = new ArrayList<ctUsuario>();
 	private List<sysUsuCompania> list_UsuCompania = new ArrayList<sysUsuCompania>();
 	private List<sysUsuMenu> list_UsuMenu = new ArrayList<sysUsuMenu>();
-	
 	private static String PRINCIPAL = "/sysConfigUsu.jsp";
 	private static String ADDUSER   = "/sysConfigUsu_Add_UsuComp.jsp";
 	private static String ADDMENU   = "/sysConfigUsu_Add_UsuMenu.jsp";
@@ -100,6 +97,7 @@ public class syConfigUsuCtrl extends HttpServlet {
 				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(sCompania,true);
 				
 				json = new Gson().toJson(list_UsuCompania);
+				System.out.println("Esto es lo que se carga en el json: "+json);
 				response.setContentType("application/json");
 			    response.setCharacterEncoding("UTF-8");
 			    response.getWriter().write(json);
@@ -112,6 +110,11 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_ctMenu", list_Menu);
 			request.setAttribute("list_ctCompania", list_Compania);
 			request.setAttribute("list_syUsuCompania", list_UsuCompania);
+			request.setAttribute("list_ctCompania", list_Compania);
+			json = new Gson().toJson(list_UsuCompania);
+			response.setContentType("application/json");
+		    response.setCharacterEncoding("UTF-8");
+		    response.getWriter().write(json);
 			forward = PRINCIPAL;
 		
 

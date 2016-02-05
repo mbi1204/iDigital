@@ -25,14 +25,15 @@ function resetDialog(form) {
 }
 
 function compania(){
-	var cCveCia = $('#cCompania').val();
-	var url = 'syConfigUsuCtrl?action=inicial&cCveCia=' + cCveCia;
-	
-	$(document).ready(function() {
-		$.ajaxSetup({ cache: false }); 
-		$("#tablaCompania").load(url);
-		console.log("Estoy actualizando la tabla");
-	});
+	 $.get("Configuracion", function(responseJson) {          
+	        var $table = $("<table>").appendTo($(".class"));
+	        $.each(responseJson, function(index, list_UsuCompania) {   
+	            $("<tr>").appendTo($table)                    
+	                .append($("<td>").text(list_UsuCompania.cCveCia))       
+	                .append($("<td>").text(list_UsuCompania.cUsuario))     
+	                .append($("<td>").text(list_UsuCompania.lActivo));  
+	        });
+	    });
 }
 
 function valor_Menu(){
@@ -55,6 +56,23 @@ function carga_ctMenu() {
 			console.log(responseText);
 			
 			$("#btn-toggle > tbody").empty();
+			
+			for ( var item in responseText) {
+				$('#btn-toggle > tbody').append(
+						'<tr>' + '<td>' + responseText[item].cCveCia + '</td>' + '<td>'
+								+ responseText[item].cUsuario + '</td>' + '<td>'
+								+ responseText[item].lActivo + '</td>' + '<td><nobr>'
+
+								+ '<a class="pure-button pure-button-primary"'
+								+ 'onclick="return confirm('
+								+ "'¿Desea Eliminar el usuario selecionado?'"
+								+ ');" ' + 'href="javascript:remove_sysMenu('
+								+ responseText[item].cCveCia + ' )"> <i'
+								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
+
+								+ '</nobr></td>' + '</tr>');
+
+			}
 			
 		},
 		error : function() {
