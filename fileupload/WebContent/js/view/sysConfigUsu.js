@@ -47,37 +47,41 @@ function carga_ctMenu() {
 	$.ajax({
 		
 		type : "GET",
-		url : "syConfigUsuCtrl?action=inicial&",
+		url : "syConfigUsuCtrl",		
+        contentType: "json",
 		data: {
-            cCveCia : $('#cCompania').val()
+			action  : "inicial" , 
+            cCveCia : $('#cCompania').val(),            
         },
-		success : function(responseText) {
+		success : function(data)  {			
+			
 			console.log("Entra Si funciona :)");
-			console.log(responseText);
-			
-			$("#btn-toggle > tbody").empty();
-			
-			for ( var item in responseText) {
-				$('#btn-toggle > tbody').append(
-						'<tr>' + '<td>' + responseText[item].cCveCia + '</td>' + '<td>'
-								+ responseText[item].cUsuario + '</td>' + '<td>'
-								+ responseText[item].lActivo + '</td>' + '<td><nobr>'
-
-								+ '<a class="pure-button pure-button-primary"'
-								+ 'onclick="return confirm('
-								+ "'¿Desea Eliminar el usuario selecionado?'"
-								+ ');" ' + 'href="javascript:remove_sysMenu('
-								+ responseText[item].cCveCia + ' )"> <i'
-								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
-
-								+ '</nobr></td>' + '</tr>');
-
-			}
+		
+//
+//			
+//			$("#btn-toggle > tbody").empty();
+//			
+//			for ( var item in data) {
+//				$('#btn-toggle > tbody').append(
+//						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
+//						+ data[item].cUsuario + '</td>' + '<td>'
+//								+ data[item].lActivo + '</td>' + '<td><nobr>'
+//
+//								+ '<a class="pure-button pure-button-primary"'
+//								+ 'onclick="return confirm('
+//								+ "'¿Desea Eliminar el usuario selecionado?'"
+//								+ ');" ' + 'href="javascript:remove_sysMenu('
+//								+ data[item].cCveCia + ' )"> <i'
+//								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
+//
+//								+ '</nobr></td>' + '</tr>');
+//
+//			}
 			
 		},
-		error : function() {
-			console.log("erro al ejecutar el BuscaMenu");
-		}
+		error: function(XMLHttpRequest, textStatus, errorThrown) { 
+            alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+        } 
 
 	});
 	
