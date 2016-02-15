@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Configuracion de Usuarios</title>
@@ -43,8 +44,9 @@ td {
 <script type="text/javascript" src="js/view/sysConfigUsuMenu.js"></script>
 <script type="text/javascript" src="js/view/sysConfigUsuPrograma.js"></script>
 
-
 </head>
+
+
 <body>
 
 
@@ -60,7 +62,7 @@ td {
 	<label for="cCompania">Compañia: </label>
 
 
-	<select id="cCompania" name="cCompania" onchange="carga_ctMenu();">
+	<select id="cCompania" name="cCompania" onchange="carga_ctUsuario();">
 	<option selected="selected">Selecciona una compania:</option>
 		<c:forEach items="${list_ctCompania}" var="ctCompania">
 			<option value="${ctCompania.cCveCia}">${ctCompania.cRazonS}</option>
@@ -88,7 +90,7 @@ td {
 		</thead>
 
 		<tbody id="tablaCompania">
-			
+
 		</tbody>
 	</table>
 </section>

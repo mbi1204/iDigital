@@ -144,6 +144,9 @@ public class syConfigUsuCtrl extends HttpServlet {
 			request.setAttribute("list_UsuCompania", list_Usuario);
 			forward = ADDUSER;
 			
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
+			
 		}else if(sAction.equalsIgnoreCase("list_Menu")){
 			
 			/*Aqui se va a cargara la lista de los menus*/

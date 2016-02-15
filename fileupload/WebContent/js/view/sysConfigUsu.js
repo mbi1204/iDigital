@@ -24,23 +24,8 @@ function resetDialog(form) {
 
 }
 
-function compania(){
-	 $.get("Configuracion", function(responseJson) {          
-	        var $table = $("<table>").appendTo($(".class"));
-	        $.each(responseJson, function(index, list_UsuCompania) {   
-	            $("<tr>").appendTo($table)                    
-	                .append($("<td>").text(list_UsuCompania.cCveCia))       
-	                .append($("<td>").text(list_UsuCompania.cUsuario))     
-	                .append($("<td>").text(list_UsuCompania.lActivo));  
-	        });
-	    });
-}
 
-function valor_Menu(){
-	window.location = "syConfigUsuCtrl?action=inicial&cCveCia=" + $('#cCompania').val();
-}
-
-function carga_ctMenu() {
+function carga_ctUsuario() {
 
 	var errorInfo;
 
@@ -67,7 +52,14 @@ function carga_ctMenu() {
 						'<tr>' + '<td>' + data[item].cCveCia + '</td>'  + 
 								 '<td>' + data[item].cUsuario + '</td>' +
 								 '<td>' + data[item].ctUsu.cNombre + '</td>' +
-								 '<td>'	+ data[item].lActivo  + '</td>'  + '<td><nobr>'
+								 '<td>'	+ (data[item].lActivo   ? "Activo" : "Inactivo") + '</td>'  + '<td><nobr>'
+								 
+								+ '<a class="pure-button pure-button-primary"'
+								+ 'href="javascript:remove_sysMenu('
+								+ data[item].cCveCia + ' )"> <i'
+								+ '	class="fa fa-pencil"></i>Editar' + '</a>'
+								+ '</nobr>'
+
 
 								+ '<a class="pure-button pure-button-primary"'
 								+ 'onclick="return confirm('
