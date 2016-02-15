@@ -50,37 +50,39 @@ function carga_ctMenu() {
 		url : "syConfigUsuCtrl",		
         contentType: "json",
 		data: {
-			action  : "inicial" , 
+			action  : "arreglo" , 
             cCveCia : $('#cCompania').val(),            
         },
 		success : function(data)  {			
 			
 			console.log("Entra Si funciona :)");
+			console.log(data);
 		
-//
-//			
-//			$("#btn-toggle > tbody").empty();
-//			
-//			for ( var item in data) {
-//				$('#btn-toggle > tbody').append(
-//						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
-//						+ data[item].cUsuario + '</td>' + '<td>'
-//								+ data[item].lActivo + '</td>' + '<td><nobr>'
-//
-//								+ '<a class="pure-button pure-button-primary"'
-//								+ 'onclick="return confirm('
-//								+ "'¿Desea Eliminar el usuario selecionado?'"
-//								+ ');" ' + 'href="javascript:remove_sysMenu('
-//								+ data[item].cCveCia + ' )"> <i'
-//								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
-//
-//								+ '</nobr></td>' + '</tr>');
-//
-//			}
+
+			
+			$("#btn-toggle > tbody").empty();
+			
+			for ( var item in data) {
+				$('#btn-toggle > tbody').append(
+						'<tr>' + '<td>' + data[item].cCveCia + '</td>'  + 
+								 '<td>' + data[item].cUsuario + '</td>' +
+								 '<td>' + data[item].ctUsu.cNombre + '</td>' +
+								 '<td>'	+ data[item].lActivo  + '</td>'  + '<td><nobr>'
+
+								+ '<a class="pure-button pure-button-primary"'
+								+ 'onclick="return confirm('
+								+ "'¿Desea Eliminar el usuario selecionado?'"
+								+ ');" ' + 'href="javascript:remove_sysMenu('
+								+ data[item].cCveCia + ' )"> <i'
+								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
+
+								+ '</nobr></td>' + '</tr>');
+
+			}
 			
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+            alert("Status: " + textStatus); alert("Error: " + errorThrown);
         } 
 
 	});

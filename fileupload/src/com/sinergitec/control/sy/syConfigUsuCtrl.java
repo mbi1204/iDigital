@@ -68,76 +68,61 @@ public class syConfigUsuCtrl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String sUsuario;
 		String sCompania;
 		String sAction;
-		String json = null;
 
 		
-		sAction = request.getParameter("action");		
-		
+		sAction = request.getParameter("action");	
+		vUsuario = request.getParameter("cUsuario");
+		vCompania = request.getParameter("cCveCia");
+		System.out.println("compañia 1:: -->"+ vCompania);
 	
 		if (sAction.equalsIgnoreCase("inicial")) {
 			System.out.println("ENTRO -->"+ sAction);
 			
-			PrintWriter out = response.getWriter();
-			//out.write("Mames este dato viene del servelt");
-			
-			sCompania = request.getParameter("cCveCia");
-			System.out.println("compañia -->"+ sCompania);
-			sUsuario = request.getParameter("cUsuario");
-			vUsuario = request.getParameter("cUsuario");
-			vCompania = request.getParameter("cCveCia");
-			//System.out.println("Este es el usuario se toma del js: "+vUsuario);
 			try {
 				list_Menu = ctMenu_Dao.list_ctMenu(true);
 				list_Compania = ctCompania_Dao.list_ctCompania(true);
-				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);
-				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania("SINERGIT",true);
-				
+				list_UsuMenu = syUsuMenu_Dao.list_syUsuMenuDao(true);				
 				
 				request.setAttribute("list_syUsuMenu", list_UsuMenu);
 				request.setAttribute("list_ctMenu", list_Menu);
 				request.setAttribute("list_ctCompania", list_Compania);
 				request.setAttribute("list_syUsuCompania", list_UsuCompania);
 				request.setAttribute("list_ctCompania", list_Compania);
-				
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(new Gson().toJson(list_UsuCompania));
+
 				
 			} catch (Open4GLException e) {
 				e.printStackTrace();
 			}
 			
-			/*ALEX: Lo que vas hacer es dejar limpio todos los if, else if
-			 * vas a dejar unicamente el json para saber si te lo regresa unicamente el arreglo
-			 * declara las variables como globales y hasta el final del requestDispacher
-			 * indica que te lo mande y veamos que realiza el codigo*/
-			
-//			request.setAttribute("list_syUsuMenu", list_UsuMenu);
-//			request.setAttribute("list_ctMenu", list_Menu);
-//			request.setAttribute("list_ctCompania", list_Compania);
-//			request.setAttribute("list_syUsuCompania", list_UsuCompania);
-//			request.setAttribute("list_ctCompania", list_Compania);
-//			
-			/*json = new Gson().toJson(list_UsuCompania);
-			response.setContentType("application/json");
-		    response.setCharacterEncoding("UTF-8");
-		    response.getWriter().write(json);		    
-		    */
-			
-			
-
-
-			
-			
-			
 			forward = PRINCIPAL;
+			
+			RequestDispatcher view = request.getRequestDispatcher(forward);
+			view.forward(request, response);
 		
 
+		}else if(sAction.equalsIgnoreCase("arreglo")){
+			
+			try {
+				
+				System.out.println("Entro en json");
+				
+				list_UsuCompania = syUsuCompania_Dao.list_sysUsuConCompania(vCompania,true);
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				System.out.println(new Gson().toJson(list_UsuCompania));
+				response.getWriter().write(new Gson().toJson(list_UsuCompania));
+				
+				
+			} catch (Open4GLException e) {
+				e.printStackTrace();
+			}
+			
 		}else if (sAction.equalsIgnoreCase("list_Usu")){
 			
 			/*Este opcion permite cargar la lista de usuarios que no estan

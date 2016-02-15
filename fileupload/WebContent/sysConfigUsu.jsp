@@ -88,25 +88,7 @@ td {
 		</thead>
 
 		<tbody id="tablaCompania">
-			<%-- <c:forEach items="${list_syUsuCompania}" var="syUsuCompania">
-				<tr>
-					<td><c:out value="${syUsuCompania.cCveCia}" /></td>
-					<td><c:out value="${syUsuCompania.cUsuario}" /></td>
-					<td><c:out value="${syUsuCompania.ctUsu.cNombre}" /></td>
-					<td><c:out value="${syUsuCompania.lActivo ? 'Activo':'Desactivo'}" /></td>
-					<td><nobr>
-							<button class="pure-button pure-button-primary"
-								onclick="update_sysUsuCompania('${syUsuCompania.cCveCia}','${syUsuCompania.cUsuario}');">
-								<i class="fa fa-pencil"></i> Editar
-							</button>
-
-							<a class="pure-button pure-button-primary"
-								onclick="return confirm('¿De verdad quieres eliminar este registro?');"
-								href="syConfigUsuCtrl?action=delete&cCveCia=${syUsuCompania.cCveCia}&cUsuario=${syUsuCompania.cUsuario}"></i>Eliminar
-							</a>
-						</nobr></td>
-				</tr>
-			</c:forEach> --%>
+			
 		</tbody>
 	</table>
 </section>
