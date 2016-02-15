@@ -81,6 +81,47 @@ function carga_ctUsuario() {
 	
 }
 
+
+function submit_ctUsuario() {
+	vcUsuario = $('#cUsuario').val();
+	viMenu = $('#iIdMenu').val();
+
+	$.ajax({
+		type : "POST",
+		url : "syConfigUsuCtrl",
+		data : {
+			cUsuario : vcUsuario,
+			iIdMenu : viMenu
+		},
+
+		success : function(data, textStatus, jqXHR) {
+			$("#mytable > tbody").empty();
+			for ( var item in data) {
+				$('#mytable > tbody').append(
+						'<tr>' + '<td>' + data[item].iIdMenu + '</td>' + '<td>'
+								+ data[item].cMenu + '</td>' + '<td>'
+								+ data[item].lActivo + '</td>' + '<td><nobr>'
+
+								+ '<a class="pure-button pure-button-primary"'
+								+ 'onclick="return confirm('
+								+ "'¿Desea Eliminar el Menu selecionado?'"
+								+ ');" ' + 'href="javascript:remove_sysMenu('
+								+ data[item].iIdMenu + ' )"> <i'
+								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
+
+								+ '</nobr></td>' + '</tr>');
+
+			}
+
+		},
+		error : function() {
+			alert('error');
+		}
+	});
+
+}
+
+
 $(document).ready(function() {
 	
 	$('#addUsuComp_Dialog').dialog({
