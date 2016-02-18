@@ -64,7 +64,7 @@ function carga_ctUsuario() {
 								+ '<a class="pure-button pure-button-primary"'
 								+ 'onclick="return confirm('
 								+ "'¿Desea Eliminar el usuario selecionado?'"
-								+ ');" ' + 'href="javascript:remove_sysMenu('
+								+ ');" ' + 'href="javascript:remove_Usuario('
 								+ data[item].cCveCia + ' )"> <i'
 								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
 
@@ -90,6 +90,7 @@ function submit_ctUsuario() {
 		type : "POST",
 		url : "syConfigUsuCtrl",
 		data : {
+			action  : "delete" ,
 			cUsuario : vcUsuario,
 			iIdMenu : viMenu
 		},
@@ -98,8 +99,8 @@ function submit_ctUsuario() {
 			$("#mytable > tbody").empty();
 			for ( var item in data) {
 				$('#mytable > tbody').append(
-						'<tr>' + '<td>' + data[item].iIdMenu + '</td>' + '<td>'
-								+ data[item].cMenu + '</td>' + '<td>'
+						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
+								+ data[item].cUsuario + '</td>' + '<td>'
 								+ data[item].lActivo + '</td>' + '<td><nobr>'
 
 								+ '<a class="pure-button pure-button-primary"'
@@ -119,6 +120,45 @@ function submit_ctUsuario() {
 		}
 	});
 
+}
+
+function remove_Usuario(cUsuario){
+	
+	
+	
+	$.ajax({
+		type : "GET",
+		url : "syConfigUsuCtrl",
+		data : {
+			cCveCia : $('#cCompania').val(),
+			cUsuario : cUsuario
+		},
+
+		success : function(data, textStatus, jqXHR) {
+			$("#mytable > tbody").empty();
+			for ( var item in data) {
+				$('#mytable > tbody').append(
+						'<tr>' + '<td>' + data[item].cCveCia + '</td>' + '<td>'
+								+ data[item].cUsuario + '</td>' + '<td>'
+								+'<td>' + data[item].ctUsu.cNombre + '</td>' 
+								+ data[item].lActivo + '</td>' + '<td><nobr>'
+
+								+ '<a class="pure-button pure-button-primary"'
+								+ 'onclick="return confirm('
+								+ "'¿Desea Eliminar el usuario selecionado?'"
+								+ ');" ' + 'href="javascript:remove_sysMenu('
+								+ data[item].cCveCia + ' )"> <i'
+								+ '	class="fa fa-times"></i>Eliminar' + '</a>'
+
+								+ '</nobr></td>' + '</tr>');
+			}
+
+		},
+		error : function() {
+			alert('error ');
+		}
+	});
+	
 }
 
 
